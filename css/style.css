@@ -193,11 +193,31 @@ main {
   margin-right: auto;
   width: 90%;
   height: 40rem;
-  background-color: var(--bg-primary);;
+  background-color: var(--bg-primary);
 }
 
 div, h3{
   text-align: center;
+}
+
+/* Code is for images on project pages */
+
+.page-continer{
+  display: block;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.page-image {
+  width: 30rem;
+  height: auto;
+  padding: 1rem;
+  margin: .5rem;
+  background-color: var(--bg-secondary);
+  border-width: .5rem;
+  border-style: solid;
+  border-color: #0dc134;
 }
 
 /* Code is for links to the pages that showcase my projects. */
