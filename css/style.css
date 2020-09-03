@@ -200,26 +200,6 @@ div, h3{
   text-align: center;
 }
 
-/* Code is for images on project pages */
-
-.page-continer{
-  display: block;
-  text-align: center;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.page-image {
-  width: 30rem;
-  height: auto;
-  padding: 1rem;
-  margin: .5rem;
-  background-color: var(--bg-secondary);
-  border-width: .5rem;
-  border-style: solid;
-  border-color: #0dc134;
-}
-
 /* Code is for links to the pages that showcase my projects. */
 .project-link-container {
   position: fixed;
@@ -238,6 +218,7 @@ div, h3{
   width: 3rem;
   min-width: 2rem;
   margin: 0 1.5rem;
+  height: 3rem;
 }
 
 .project-link {
@@ -284,6 +265,43 @@ div, h3{
   main {
     margin: 0;
   }
+
+  /* Code is for images on project pages */
+
+  .page-continer{
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .flex-container{
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+  }
+
+  .flex-container p{
+    text-align: center;
+  }
+
+  .page-image {
+    width: 50%;
+    height: auto;
+    padding: 1rem;
+    margin: .5rem;
+    background-color: var(--bg-secondary);
+    border-width: .5rem;
+    border-style: solid;
+    border-color: #0dc134;
+  }
+
+  .page-image {
+     transition: all .2s ease-in-out;
+   }
+
+  .page-image:hover {
+     transform: scale(1.5);
+  }
+
 }
 
 /* Large screens */
@@ -310,5 +328,34 @@ div, h3{
   .navbar:hover .logo-text
   {
     left: 0px;
+  }
+
+  /* Code is for images on project pages */
+
+  .page-continer{
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .flex-container{
+   display: flex;
+   flex-wrap: nowrap;
+   align-items: center;
+  }
+
+  .flex-container p{
+    text-align: left;
+    padding-left: 1rem;
+  }
+
+  .page-image {
+    width: 50%;
+    height: auto;
+    padding: 1rem;
+    margin: .5rem;
+    background-color: var(--bg-secondary);
+    border-width: .5rem;
+    border-style: solid;
+    border-color: #0dc134;
   }
 }
