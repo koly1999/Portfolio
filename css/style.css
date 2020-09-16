@@ -36,7 +36,7 @@ body {
 }
 
 body::-webkit-scrollbar {
-  width: 0.5rem;
+  width: .5rem;
 }
 
 body::-webkit-scrollbar-track {
@@ -200,41 +200,93 @@ div, h3{
   text-align: center;
 }
 
-/* Code is for links to the pages that showcase my projects. */
-.project-link-container {
-  position: fixed;
-  background-color: var(--bg-primary);
-  width: 100%;
-  transition: width 450ms ease;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+/* Card Slides */
+
+.card-list {
+    display: flex;
+    padding: 3rem;
+    overflow-x: scroll;
 }
 
-.project-link svg{
-  width: 3rem;
-  min-width: 2rem;
-  margin: 0 1.5rem;
-  height: 3rem;
+.card-list::-webkit-scrollbar {
+    width: 1rem;
+    height: 1rem;
+}
+.card-list::-webkit-scrollbar-thumb {
+    background: #0dc134;
 }
 
-.project-link {
-  display: flex;
-  align-items: center;
-  height: 5rem;
-  color: var(--text-primary);
-  text-decoration: none;
-  filter: grayscale(100%) opacity(0.7);
-  transition: var(--transition-speed);
+.card-list::-webkit-scrollbar-track {
+    background: #1e1e24;
 }
 
-.project-link:hover{
-  filter: grayscale(0%) opacity(1);
-  background: var(--bg-secondary);
-  color: var(--text-secondary);
+.card {
+    height: 22rem;
+    width: 25rem;
+    min-width: 15.6rem;
+    padding: 1.5rem;
+    border-radius: 1.5rem;
+    background: var(--bg-secondary);
+    box-shadow: -1rem 0 3rem #000;
+    flex-direction: column;
+    transition: var(--transition-speed);
+    margin: 0;
+    scroll-snap-align: start;
+    clear: both;
+    display: flex;
+    justify-content: space-around;
+    align-items: center
+}
+
+.card-header {
+    font-size: 1.5rem;
+    text-decoration: none;
+    color: inherit;
+    border: 0;
+    cursor: pointer;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
+
+.card-header:hover {
+    background: #0dc134;
+    text-shadow: none;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+a.card-link:link
+{
+   color: var(--text-primary);
+   text-decoration: none;
+}
+a.card-link:visited
+{
+   color: var(--text-primary);
+   text-decoration: none;
+}
+a.card-link:hover
+{
+   color: #0dc134;
+   text-decoration: none;
+}
+a.card-link:active
+{
+   color: #0dc134;
+   text-decoration: none;
+}
+
+.card:focus-within~.card, .card:hover~.card {
+    transform: translateX(8.125rem);
+}
+
+.card:hover {
+    transform: translateY(-1rem);
+}
+
+.card:not(:first-child) {
+    margin-left: -8.125rem;
 }
 
 /* Small screens */
