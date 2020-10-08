@@ -98,6 +98,18 @@ main {
 	text-align: center;
 }
 
+/* Info for the Navbar on the Index Page */
+
+.index-text{
+  color: #0dc134;
+}
+
+.index-text:hover {
+  color:  var(--text-secondary);
+}
+
+/* Nav-Bar code */
+
 .navbar {
   z-index: 1;
   position: fixed;
@@ -198,6 +210,80 @@ main {
 
 div, h3{
   text-align: center;
+}
+
+/* Slideshow for intro page.*/
+
+.mySlides {display: none;}
+img {
+  vertical-align: middle;
+
+}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
+
+.index-page-image {
+  width: 60%;
+  height: auto;
+  padding: 1rem;
+  margin: .5rem;
+  background-color: var(--bg-secondary);
+  border-width: .5rem;
+  border-style: solid;
+  border-color: #0dc134;
+}
+
+/* Caption text */
+.text {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  margin-top: .5rem;
+  position: absolute;
+  width: 100%;
+  text-align: center;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  height: 2rem;
+  width: 2rem;
+  margin-top: 1.5rem;
+  background-color: #1a1a1a;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active {
+  background-color: #0dc134;
+}
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .text {font-size: 16px}
 }
 
 /* Card Slides */
@@ -318,6 +404,17 @@ a.card-link:active
   border-color: #0dc134;
 }
 
+.page-image-tall {
+  width: 38%;
+  height: auto;
+  padding: 1rem;
+  margin: .5rem;
+  background-color: var(--bg-secondary);
+  border-width: .5rem;
+  border-style: solid;
+  border-color: #0dc134;
+}
+
 /* Small screens */
 @media only screen and (max-width: 800px) {
   .navbar {
@@ -365,6 +462,25 @@ a.card-link:active
    }
 
   .page-image:hover {
+     transform: scale(1.5);
+  }
+
+  .page-image-tall {
+    width: 60%;
+    height: auto;
+    padding: 1rem;
+    margin: .5rem;
+    background-color: var(--bg-secondary);
+    border-width: .5rem;
+    border-style: solid;
+    border-color: #0dc134;
+  }
+
+  .page-image-tall {
+     transition: all .2s ease-in-out;
+   }
+
+  .page-image-tall:hover {
      transform: scale(1.5);
   }
 

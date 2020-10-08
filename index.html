@@ -44,14 +44,84 @@
 	<h1 class="logo-header">Luke Morrison's Portfolio</h1>
 	<!-- Page Information -->
 	<p>
-	placeholder text. this should be filled eventually.
+	Welcome to my portfolio website! This is where I showcase some of my more interesting projects or pieces of art. Thank you for taking the time to stop by and see what I'm working on!
 	</p>
 
 		<hr class="dotted-line">
 
 		<!-- Page Content -->
 
+				<p class="index-text">Click the lightbulb to the left, or on the bottom, to see my Portfolio!</p>
 
+				<hr class="dotted-line">
+
+		<div class="slideshow-container">
+
+		<div class="mySlides fade">
+		  <img src="media/index_images/champ.jpg" class="index-page-image">
+		  <div class="text">Me and my medals</div>
+		</div>
+
+		<div class="mySlides fade">
+		  <img src="media/index_images/spark.png" class="index-page-image">
+		  <div class="text">Big sparks</div>
+		</div>
+
+		<div class="mySlides fade">
+		  <img src="media/index_images/speaker.jpg" class="index-page-image">
+		  <div class="text">Speaker mount I made</div>
+		</div>
+
+		<div class="mySlides fade">
+		  <img src="media/index_images/explosion.gif" class="index-page-image">
+		  <div class="text">Blowing up hydrogen gas</div>
+		</div>
+
+		<div class="mySlides fade">
+		  <img src="media/index_images/electric.jpg" class="index-page-image">
+		  <div class="text">LED dimmer I made</div>
+		</div>
+
+		<div class="mySlides fade">
+		  <img src="media/index_images/final11.jpg" class="index-page-image">
+		  <div class="text">One of my catapults</div>
+		</div>
+
+		</div>
+		<br>
+
+		<div style="text-align:center">
+		  <span class="dot"></span>
+		  <span class="dot"></span>
+		  <span class="dot"></span>
+		  <span class="dot"></span>
+			<span class="dot"></span>
+			<span class="dot"></span>
+		</div>
+
+		<script>
+		var slideIndex = 0;
+		showSlides();
+
+		function showSlides() {
+		  var i;
+		  var slides = document.getElementsByClassName("mySlides");
+		  var dots = document.getElementsByClassName("dot");
+		  for (i = 0; i < slides.length; i++) {
+		    slides[i].style.display = "none";
+		  }
+		  slideIndex++;
+		  if (slideIndex > slides.length) {slideIndex = 1}
+		  for (i = 0; i < dots.length; i++) {
+		    dots[i].className = dots[i].className.replace(" active", "");
+		  }
+		  slides[slideIndex-1].style.display = "block";
+		  dots[slideIndex-1].className += " active";
+		  setTimeout(showSlides, 2900); // Change image every 2 seconds
+		}
+		</script>
+
+	</div>
 
 		<hr class="dotted-line">
 
