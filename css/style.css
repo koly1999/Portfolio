@@ -423,6 +423,12 @@ a.card-link:active
     height: 5rem;
   }
 
+  .about-me-text{
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 90%;
+  }
+
 
   footer {
     margin-bottom: 5rem;
@@ -493,6 +499,13 @@ a.card-link:active
     width: 5rem;
     height: 100vh;
   }
+
+
+.about-me-text{
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 80%;
+}
 
   .navbar:hover {
     width: 16rem;
