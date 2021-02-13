@@ -24,7 +24,7 @@ body::-webkit-scrollbar-thumb {
 
 .logo-container{
   width: 100%;
-  background: linear-gradient(90deg, #5B6463 10%, #bc6e64) ;
+  background: linear-gradient(90deg, #e1aead 10%, #bc6e64) ;
   margin-top: 0px;
 }
 
@@ -35,7 +35,8 @@ body::-webkit-scrollbar-thumb {
   text-align: center;
   font-size: 1.5rem;
   letter-spacing: 0.3ch;
-  width: 100%;
+  width: calc(100% - 0.5rem);
+
 
   background: linear-gradient(to right, #ad1027 20%, #e1aead 40%, #e1aead 60%, #ad1027 80%);
   background-size: 175% auto;
@@ -72,10 +73,16 @@ body::-webkit-scrollbar-thumb {
 	letter-spacing: 0.3ch;
 	text-align: center;
   text-shadow: 1px;
+  border-bottom: 0.25rem;
+  border-top: 0.25rem;
+  border-right: 0.25rem;
+  border-left: 0.25rem;
+  border-style: solid;
+  border-color: #ad1027;
 }
 
 .master-container{
-  width: 50%;
+  width: 80%;
   max-width: 1440px;
   display: flex;
   flex-direction: column;
@@ -573,4 +580,80 @@ ul{
   0%, 45%, 100% {
     transform: translateY(0);
   }
+}
+
+.heart-container{
+  border-bottom: 0.25rem;
+  border-top: 0.25rem;
+  border-right: 0.25rem;
+  border-left: 0.25rem;
+  border-style: solid;
+  border-color: #ad1027;
+  margin-top: 1rem;
+  background: linear-gradient(90deg, #e1aead 10%, #bc6e64) ;
+}
+
+.wrap {
+	height: 7rem;
+	width: 85%;
+	perspective: none;
+	perspective-origin: center center;
+	display: block;
+	margin-right: auto;
+	margin-left: auto;
+	overflow: auto;
+  justify-content: center;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.cube {
+	margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+	position: static;
+	transform-style: preserve-3d;
+	animation: spin 5s infinite linear;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.cube div {
+	position: absolute;
+	width: 6rem;
+	height: 6rem;
+}
+
+.back {
+	transform: translateZ(-50px) rotateY(180deg);
+	background-color: pink;
+}
+
+.right {
+	transform: rotateY(-270deg) translateX(50px);
+	transform-origin: top right;
+	background-color: pink;
+}
+.left {
+	transform: rotateY(270deg) translateX(-50px);
+	transform-origin: center left;
+	background-color: pink;
+
+}
+
+.front {
+	transform: translateZ(50px);
+	background-color: pink;
+}
+
+@keyframes spin {
+	from { transform: rotateY(0); }
+	to { transform: rotateY(360deg); }
+}
+
+h2{
+  text-align: center;
+}
+
+.valentines-text {
+  text-align: center;
 }
