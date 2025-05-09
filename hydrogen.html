@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hydrogen Gas Experiments · Luke Morrison’s Portfolio</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+  <script>
+    // Dark mode toggle (and persistence)
+    function toggleTheme() {
+      document.documentElement.classList.toggle('dark');
+      localStorage.theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+    }
+    document.addEventListener('DOMContentLoaded', () => {
+      if (localStorage.theme === 'dark') {
+        document.documentElement.classList.add('dark');
+      }
+    });
+  </script>
+</head>
+<body>
+
+  <!-- ==================================================
+       COMPONENT: Navigation Bar
+  ================================================== -->
+  <nav class="navbar">
+    <ul class="navbar-nav">
+      <li class="logo">
+        <a href="index.html" class="nav-link">
+          <span class="logo-icon">
+            <!-- fighter-jet icon -->
+            <svg aria-hidden="true" focusable="false" data-prefix="fad" data-icon="fighter-jet" role="img"
+                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
+              <g class="fa-group">
+                <path fill="currentColor" class="fa-secondary"
+                      d="M168 192h176L227.16 44h39.51c11.66 0 21.33-2.62 21.33-6s-9.67-6-21.33-6H152v12h16zm0 128v148h-16v12h114.67c11.66 0 21.33-2.62 21.33-6s-9.67-6-21.33-6h-39.51L344 320z"/>
+                <path fill="currentColor" class="fa-primary"
+                      d="M640 256c0 5.42 0 10.67-96 32l-128 16-48 16H106.67l-53.34 64H18.67L8 373.33V304h8v-16h48v-2.67l-64-8v-42.66l64-8V224H16v-16H8v-69.33L18.67 128h34.66l53.34 64H368l48 16 128 16c96 21.33 96 26.58 96 32z"/>
+              </g>
+            </svg>
+          </span>
+          <span class="link-text logo-text">Portfolio</span>
+        </a>
+      </li>
+      <li class="nav-item"><a href="index.html#about"   class="nav-link"><span class="link-text">About</span></a></li>
+      <li class="nav-item"><a href="index.html#skills"  class="nav-link"><span class="link-text">Skills</span></a></li>
+      <li class="nav-item"><a href="index.html#projects" class="nav-link"><span class="link-text">Projects</span></a></li>
+      <li class="nav-item"><a href="index.html#contact" class="nav-link"><span class="link-text">Contact</span></a></li>
+    </ul>
+  </nav>
+
+  <!-- ==================================================
+       COMPONENT: Theme Switcher (fixed top-right)
+  ================================================== -->
+  <div class="theme-switcher">
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"></button>
+  </div>
+
+  <main>
+    <!-- ==================================================
+         COMPONENT: Project Header
+    ================================================== -->
+    <section class="project-hero">
+      <h1 class="section-heading">Hydrogen Gas Experiments</h1>
+      <p class="project-intro">
+        Built a custom electrolysis rig, captured and tested hydrogen gas, and demonstrated safe handling and visualization techniques.
+      </p>
+    </section>
+
+    <hr class="dotted-line">
+
+    <!-- ==================================================
+         COMPONENT: Project Gallery (Banner Style)
+    ================================================== -->
+    <section class="project-gallery">
+
+      <div class="project-banner">
+        <img
+          src="media/hydrogen/IMG_7846.jpg"
+          alt="Custom electrolysis rig setup"
+          class="banner-image">
+        <div class="banner-text">
+          <h3>Electrolysis Rig</h3>
+          <p>
+            Crude Proof of concept for hydrogen production using electrolysis. 
+          </p>
+        </div>
+      </div>
+
+      <div class="project-banner">
+        <div class="banner-text">
+          <h3>Gas Collection</h3>
+          <p>
+            Pressurised gas collection over water to capture hydrogen and oxygen separately, incorporated check valves and trash bag to collect the gas.
+          </p>
+        </div>
+        <img
+          src="media/hydrogen/IMG_7849.jpg"
+          alt="Gas collection over water"
+          class="banner-image">
+      </div>
+
+      <div class="project-banner">
+        <video
+          class="banner-video"
+          src="media/hydrogen/boom.mp4"
+          muted
+          autoplay
+          loop
+          playsinline
+        ></video>
+        <div class="banner-text">
+          <h3>BOOM Test</h3>
+          <p>
+            I filled a garbage bag with collected hydrogen and ignited it—what an explosion!
+            Definitely taught me how critical lab safety really is.
+          </p>
+        </div>
+      </div>
+      
+
+    </section>
+
+    <hr class="dotted-line">
+
+    <!-- ==================================================
+         COMPONENT: Footer & Contact
+    ================================================== -->
+    <footer>
+      <section id="contact" class="contact-footer">
+        <h2>Get in Touch</h2>
+        <p>Email me at <a href="mailto:koly1999@gmail.com">koly1999@gmail.com</a></p>
+        </div>
+      </section>
+    </footer>
+  </main>
+
+</body>
+</html>

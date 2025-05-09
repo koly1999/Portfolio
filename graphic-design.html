@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Graphic Design · Luke Morrison’s Portfolio</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+  <script>
+    // Dark mode toggle (and persistence)
+    function toggleTheme() {
+      document.documentElement.classList.toggle('dark');
+      localStorage.theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+    }
+    document.addEventListener('DOMContentLoaded', () => {
+      if (localStorage.theme === 'dark') {
+        document.documentElement.classList.add('dark');
+      }
+    });
+  </script>
+</head>
+<body>
+
+  <!-- ==================================================
+       NAVIGATION BAR
+  ================================================== -->
+  <nav class="navbar">
+    <ul class="navbar-nav">
+      <li class="logo">
+        <a href="index.html" class="nav-link">
+          <span class="logo-icon">
+            <!-- fighter-jet icon -->
+            <svg aria-hidden="true" focusable="false" data-prefix="fad" data-icon="fighter-jet" role="img"
+                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
+              <g class="fa-group">
+                <path fill="currentColor" class="fa-secondary"
+                      d="M168 192h176L227.16 44h39.51c11.66 0 21.33-2.62 21.33-6s-9.67-6-21.33-6H152v12h16zm0 128v148h-16v12h114.67c11.66 0 21.33-2.62 21.33-6s-9.67-6-21.33-6h-39.51L344 320z"/>
+                <path fill="currentColor" class="fa-primary"
+                      d="M640 256c0 5.42 0 10.67-96 32l-128 16-48 16H106.67l-53.34 64H18.67L8 373.33V304h8v-16h48v-2.67l-64-8v-42.66l64-8V224H16v-16H8v-69.33L18.67 128h34.66l53.34 64H368l48 16 128 16c96 21.33 96 26.58 96 32z"/>
+              </g>
+            </svg>
+          </span>
+          <span class="link-text logo-text">Portfolio</span>
+        </a>
+      </li>
+      <li class="nav-item"><a href="index.html#about"   class="nav-link"><span class="link-text">About</span></a></li>
+      <li class="nav-item"><a href="index.html#skills"  class="nav-link"><span class="link-text">Skills</span></a></li>
+      <li class="nav-item"><a href="index.html#projects" class="nav-link"><span class="link-text">Projects</span></a></li>
+      <li class="nav-item"><a href="index.html#contact" class="nav-link"><span class="link-text">Contact</span></a></li>
+    </ul>
+  </nav>
+
+  <!-- ==================================================
+       THEME SWITCHER (fixed top-right)
+  ================================================== -->
+  <div class="theme-switcher">
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"></button>
+  </div>
+
+  <main>
+    <!-- ==================================================
+         PROJECT HEADER
+    ================================================== -->
+    <section class="project-hero">
+      <h1 class="section-heading">Graphic Design</h1>
+      <p class="project-intro">
+        A curated selection of pamphlet spreads, posters, logos, and illustrations—bringing concepts to life with clean, bold visuals.
+      </p>
+    </section>
+
+    <hr class="dotted-line">
+
+    <!-- ==================================================
+         PROJECT GALLERY (Banner Style)
+    ================================================== -->
+    <section class="project-gallery">
+
+      <div class="project-banner">
+        <img src="media/graphic_design/Luke_Morrison_dmb-frontcover.png"
+             alt="Book cover illustration"
+             class="banner-image">
+        <div class="banner-text">
+          <h3>Pamphlet Cover</h3>
+          <p>
+            Mockup of the front cover of the manifesto I designed. 
+          </p>
+        </div>
+      </div>
+
+            <div class="project-banner">
+        <img src="media/graphic_design/Luke_Morrison_dmb-center.png"
+             alt="Informational infographic"
+             class="banner-image">
+        <div class="banner-text">
+          <h3>Center Pages</h3>
+          <p>
+            Mockup of the center pages of the manifesto I designed.
+          </p>
+        </div>
+      </div>
+
+            <div class="project-banner">
+        <img src="media/graphic_design/Luke_Morrison_dmb-backcover.png"
+             alt="Brand identity logo"
+             class="banner-image">
+        <div class="banner-text">
+          <h3>Back Cover</h3>
+          <p>
+            Mockup of the back cover of the manifesto I designed.
+          </p>
+        </div>
+      </div>
+
+      <!-- Pamphlet pages (1–8) -->
+      <div class="project-banner">
+        <img src="media/graphic_design/DMB–RefinementGRID.jpg"
+             alt="Pamphlet – Page 1"
+             class="banner-image">
+        <div class="banner-text">
+          <h3>Pamphlet – Page 1</h3>
+          <p>Cover spread introducing the pamphlet’s theme and branding.</p>
+        </div>
+      </div>
+
+      <div class="project-banner">
+        <div class="banner-text">
+          <h3>Pamphlet – Page 2</h3>
+          <p>Introduction to the topics and style.</p>
+        </div>
+        <img src="media/graphic_design/DMB–RefinementGRID2.jpg"
+             alt="Pamphlet – Page 2"
+             class="banner-image">
+      </div>
+
+      <div class="project-banner">
+        <img src="media/graphic_design/DMB–RefinementGRID3.jpg"
+             alt="Pamphlet – Page 3"
+             class="banner-image">
+        <div class="banner-text">
+          <h3>Pamphlet – Page 3</h3>
+          <p>Continuation of themeing and topics.</p>
+        </div>
+      </div>
+
+      <div class="project-banner">
+        <div class="banner-text">
+          <h3>Pamphlet – Page 4</h3>
+          <p>Playing with alignment and colors more.</p>
+        </div>
+        <img src="media/graphic_design/DMB–RefinementGRID4.jpg"
+             alt="Pamphlet – Page 4"
+             class="banner-image">
+      </div>
+
+      <div class="project-banner">
+        <img src="media/graphic_design/DMB–RefinementGRID5.jpg"
+             alt="Pamphlet – Page 5"
+             class="banner-image">
+        <div class="banner-text">
+          <h3>Pamphlet – Page 5</h3>
+          <p>Continuing, this time with more call to action.</p>
+        </div>
+      </div>
+
+      <div class="project-banner">
+        <div class="banner-text">
+          <h3>Pamphlet – Page 6</h3>
+          <p>Having fun with color and negative space.</p>
+        </div>
+        <img src="media/graphic_design/DMB–RefinementGRID6.jpg"
+             alt="Pamphlet – Page 6"
+             class="banner-image">
+      </div>
+
+      <div class="project-banner">
+        <img src="media/graphic_design/DMB–RefinementGRID7.jpg"
+             alt="Pamphlet – Page 7"
+             class="banner-image">
+        <div class="banner-text">
+          <h3>Pamphlet – Page 7</h3>
+          <p>Wrapping up with final call to action and expressing the themeing.</p>
+        </div>
+      </div>
+
+      <div class="project-banner">
+        <div class="banner-text">
+          <h3>Pamphlet – Page 8</h3>
+          <p>Back cover with final call-to-action and Abe Lincoln quote.</p>
+        </div>
+        <img src="media/graphic_design/DMB–RefinementGRID8.jpg"
+             alt="Pamphlet – Page 8"
+             class="banner-image">
+      </div>
+
+
+      <!-- Curated Pieces (from original snippet) -->
+
+      <div class="project-banner">
+        <img src="media/graphic_design/Mockup.png"
+             alt="Event poster design"
+             class="banner-image">
+        <div class="banner-text">
+          <h3>Money Poster Mockup</h3>
+          <p>
+            A Mockup of a poster in the style of the Why Not Assocates? with a focus on the theme of money.
+          </p>
+        </div>
+      </div>
+
+
+      <div class="project-banner">
+        <img src="media/graphic_design/Poster2-longer.png"
+             alt="Social media graphic"
+             class="banner-image">
+        <div class="banner-text">
+          <h3>Money Poster</h3>
+          <p>
+            Engaging square graphic optimized for Instagram—combines bold type and layered imagery.
+          </p>
+        </div>
+      </div>
+
+      <div class="project-banner">
+        <img src="media/graphic_design/poster1.jpg"
+             alt="Digital illustration sample"
+             class="banner-image">
+        <div class="banner-text">
+          <h3>Movie Quote Poster</h3>
+          <p>
+            A poster incorporating movie quotes from LaLa Land and Whiplash. 
+          </p>
+        </div>
+      </div>
+
+    </section>
+
+    <hr class="dotted-line">
+
+    <!-- ==================================================
+         FOOTER & CONTACT
+    ================================================== -->
+    <footer>
+      <section id="contact" class="contact-footer">
+        <h2>Get in Touch</h2>
+        <p>Email me at <a href="mailto:koly1999@gmail.com">koly1999@gmail.com</a></p>
+      </section>
+    </footer>
+
+  </main>
+</body>
+</html>

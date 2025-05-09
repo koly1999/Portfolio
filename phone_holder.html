@@ -1,130 +1,171 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<link rel="stylesheet" href="css\style.css">
-	<link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
-
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Phone Holder · Luke Morrison’s Portfolio</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+  <script>
+    // Dark mode toggle (and persistence)
+    function toggleTheme() {
+      document.documentElement.classList.toggle('dark');
+      localStorage.theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+    }
+    document.addEventListener('DOMContentLoaded', () => {
+      if (localStorage.theme === 'dark') {
+        document.documentElement.classList.add('dark');
+      }
+    });
+  </script>
 </head>
-
 <body>
 
-	<nav class="navbar">
-		<ul class="navbar-nav">
-
-			<li class="logo">
+  <!-- ==================================================
+       COMPONENT: Navigation Bar
+  ================================================== -->
+  <nav class="navbar">
+    <ul class="navbar-nav">
+      <li class="logo">
         <a href="index.html" class="nav-link">
+          <span class="logo-icon">
+            <!-- fighter-jet icon -->
+            <svg aria-hidden="true" focusable="false" data-prefix="fad" data-icon="fighter-jet" role="img"
+                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
+              <g class="fa-group">
+                <path fill="currentColor" class="fa-secondary"
+                      d="M168 192h176L227.16 44h39.51c11.66 0 21.33-2.62 21.33-6s-9.67-6-21.33-6H152v12h16zm0 128v148h-16v12h114.67c11.66 0 21.33-2.62 21.33-6s-9.67-6-21.33-6h-39.51L344 320z"/>
+                <path fill="currentColor" class="fa-primary"
+                      d="M640 256c0 5.42 0 10.67-96 32l-128 16-48 16H106.67l-53.34 64H18.67L8 373.33V304h8v-16h48v-2.67l-64-8v-42.66l64-8V224H16v-16H8v-69.33L18.67 128h34.66l53.34 64H368l48 16 128 16c96 21.33 96 26.58 96 32z"/>
+              </g>
+            </svg>
+          </span>
           <span class="link-text logo-text">Portfolio</span>
-						<svg aria-hidden="true" focusable="false" data-prefix="fad" data-icon="fighter-jet" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" class="svg-inline--fa fa-fighter-jet fa-w-20 fa-3x">
-							<g class="fa-group">
-								<path fill="currentColor" d="M168 192h176L227.16 44h39.51c11.66 0 21.33-2.62 21.33-6s-9.67-6-21.33-6H152v12h16zm0 128v148h-16v12h114.67c11.66 0 21.33-2.62 21.33-6s-9.67-6-21.33-6h-39.51L344 320z" class="fa-secondary">
-								</path>
-								<path fill="currentColor" d="M640 256c0 5.42 0 10.67-96 32l-128 16-48 16H106.67l-53.34 64H18.67L8 373.33V304h8v-16h48v-2.67l-64-8v-42.66l64-8V224H16v-16H8v-69.33L18.67 128h34.66l53.34 64H368l48 16 128 16c96 21.33 96 26.58 96 32z" class="fa-primary">
-								</path>
-							</g>
-						</svg>
         </a>
       </li>
+      <li class="nav-item"><a href="index.html#about"   class="nav-link"><span class="link-text">About</span></a></li>
+      <li class="nav-item"><a href="index.html#skills"  class="nav-link"><span class="link-text">Skills</span></a></li>
+      <li class="nav-item"><a href="index.html#projects" class="nav-link"><span class="link-text">Projects</span></a></li>
+      <li class="nav-item"><a href="index.html#contact" class="nav-link"><span class="link-text">Contact</span></a></li>
+    </ul>
+  </nav>
 
-			<li class="nav-item">
-				<a href="index.html" class="nav-link">
-					<svg aria-hidden="true" focusable="false" data-prefix="fad" data-icon="lightbulb" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 352 512" class="svg-inline--fa fa-lightbulb fa-w-11 fa-3x"><g class="fa-group"><path fill="currentColor" d="M175.45 0C73.44.31 0 83 0 176a175 175 0 0 0 43.56 115.78c16.52 18.85 42.36 58.22 52.21 91.45 0 .26.07.52.11.78h160.24c0-.26.07-.51.11-.78 9.85-33.22 35.69-72.6 52.21-91.45A175.9 175.9 0 0 0 175.45 0zm.55 96a80.09 80.09 0 0 0-80 80 16 16 0 0 1-32 0A112.12 112.12 0 0 1 176 64a16 16 0 0 1 0 32z" class="fa-secondary"></path><path fill="currentColor" d="M96.06 454.35L96 416h160v38.35a32 32 0 0 1-5.41 17.65l-17.09 25.73A32 32 0 0 1 206.86 512h-61.71a32 32 0 0 1-26.64-14.28L101.42 472a32 32 0 0 1-5.36-17.65z" class="fa-primary">
-					</path>
-					</g>
-					</svg>
-					<span class="link-text">Projects</span>
-				</a>
-			</li>
+  <!-- ==================================================
+       COMPONENT: Theme Switcher (fixed top-right)
+  ================================================== -->
+  <div class="theme-switcher">
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"></button>
+  </div>
 
-			<li class="nav-item">
-				<a href="about-me.html" class="nav-link">
-					<svg aria-hidden="true" focusable="false" data-prefix="fad" data-icon="user-tie" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="svg-inline--fa fa-user-tie fa-w-14 fa-3x"><g class="fa-group"><path fill="currentColor" d="M191.35 414.77L208 344l-32-56h96l-32 56 16.65 70.77L224 480zM224 256A128 128 0 1 0 96 128a128 128 0 0 0 128 128z" class="fa-secondary"></path><path fill="currentColor" d="M319.8 288.6L224 480l-95.8-191.4C56.9 292 0 350.3 0 422.4V464a48 48 0 0 0 48 48h352a48 48 0 0 0 48-48v-41.6c0-72.1-56.9-130.4-128.2-133.8z" class="fa-primary">
-						</path>
-						</g>
-						</svg>
-					<span class="link-text">About Me</span>
-				</a>
-			</li>
+  <main>
+    <!-- ==================================================
+         COMPONENT: Project Header
+    ================================================== -->
+    <section class="project-hero">
+      <h1 class="section-heading">Phone Holder</h1>
+      <p class="project-intro">
+        I needed a Phone holder for my Mini Cooper, so I designed and 3D printed a custom mount that fits perfectly into the air-vent.
+        The design features a ball-joint for easy adjustment and a cradle that securely holds the phone in place. It took an existing phone holder design and improved it.
+      </p>
+    </section>
 
-		</ul>
-	</nav>
+    <hr class="dotted-line">
 
-<main>
-	<!-- Page Header -->
-	<h1 class="logo-header">Phone Holder</h1>
-	<!-- Page Information -->
-	<p>
-	For this project I set out to re-design my phone holder for my car, as the one I had was not doing a very good job.
-	</p>
+    <!-- ==================================================
+         COMPONENT: Project Gallery (Banner Style)
+    ================================================== -->
+    <section class="project-gallery">
+      <div class="project-banner">
+        <img
+          src="media/phone_holder/Phone ball_plate3.jpg"
+          alt="CAD model of redesigned ball joint"
+          class="banner-image">
+        <div class="banner-text">
+          <h3>Ball-Joint CAD Model</h3>
+          <p>
+            Initial computer model of a ball-joint mount—integrated into the phone holder for easy adjustment.
+          </p>
+        </div>
+      </div>
 
-		<hr class="dotted-line">
+      <div class="project-banner">
+        <img
+          src="media/phone_holder/Phone bottom_plate3.jpg"
+          alt="CAD model of bottom plate"
+          class="banner-image">
+        <div class="banner-text">
+          <h3>Bottom Plate Design</h3>
+          <p>
+            Refined phone cradle lip geometry to improve retention—ensures a firm hold during sharp turns.
+          </p>
+        </div>
+      </div>
 
-		<!-- Page Content -->
+      <div class="project-banner">
+        <img
+          src="media/phone_holder/3dPrint1.jpg"
+          alt="3D printed phone holder parts"
+          class="banner-image">
+        <div class="banner-text">
+          <h3>3D Printed Parts</h3>
+          <p>
+            3d printed parts in PLA—demonstrates the design's fit and finish before final assembly.
+          </p>
+        </div>
+      </div>
 
-		<div class="flex-container">
-		<img class="page-image" src="media\phone_holder\Phone ball_plate3.jpg">
-	<p>
-	Computer model of	my re-designed ball joint for my car phone holder.
-	</p>
-		</div>
+      <div class="project-banner">
+        <img
+          src="media/phone_holder/parts.jpg"
+          alt="All phone holder parts laid out"
+          class="banner-image">
+        <div class="banner-text">
+          <h3>All Components</h3>
+          <p>
+            Showing all parts of the phone holder, including the ball-joint and cradle—ready for assembly.
+          </p>
+        </div>
+      </div>
 
-		<hr class="dotted-line">
+      <div class="project-banner">
+        <img
+          src="media/phone_holder/assembly.jpg"
+          alt="Assembled phone holder installed in car"
+          class="banner-image">
+        <div class="banner-text">
+          <h3>Completed Assembly</h3>
+          <p>
+            Put it all together! The ball-joint fit and worked perfectly, allowing for easy adjustment of the phone angle.
+          </p>
+        </div>
+      </div>
 
-		<div class="flex-container">
-		<img class="page-image" src="media\phone_holder\Phone bottom_plate3.jpg">
-		<p>
-		Another computer model of my re-designed phone holder. The most importat change I made was the lip that cradled the phone better.
-		</p>
-		</div>
+      <div class="project-banner">
+        <img
+          src="media/phone_holder/Re-Designed-Phone-Holder.jpg"
+          alt="Composite photo of parts and phone holder in action"
+          class="banner-image">
+        <div class="banner-text">
+          <h3>In-Action Composite</h3>
+          <p>
+            Side-by-side: CAD parts next to the fully assembled mount!
+          </p>
+        </div>
+      </div>
+    </section>
 
-	<hr class="dotted-line">
+    <hr class="dotted-line">
 
-	<div class="flex-container">
-	<img class="page-image" src="media\phone_holder\3dPrint1.jpg">
-	<p>
-		I 3D printed my new parts for the phone holder.
-	</p>
-	</div>
-
-<hr class="dotted-line">
-
-<div class="flex-container">
-<img class="page-image" src="media\phone_holder\parts.jpg">
-<p>
-	Here is a picture of all the parts including my parts.
-</p>
-</div>
-
-<hr class="dotted-line">
-
-<div class="flex-container">
-<img class="page-image" src="media\phone_holder\assembly.jpg">
-<p>
-The completed phone holder, which is significantly better than the previous version.
-</p>
-</div>
-
-<hr class="dotted-line">
-
-<div class="flex-container">
-<img class="page-image" src="media\phone_holder\Re-Designed-Phone-Holder.jpg">
-<p>
-This is a composite photo of the parts I designed and the completed phone holder in action.
-</p>
-</div>
-
-<hr class="dotted-line">
-
-	<footer>
-
-	  <p>
-	    Website designed By Luke Morrison. The purpose of this site it to showcase some of the projects I have worked on. Contact me at: <strong>koly1999@gmail.com</strong>
-	  </p>
-
-	</footer>
-
-</main>
+<!-- ==================================================
+     COMPONENT: Footer & Contact
+================================================== -->
+<footer>
+  <hr class="dotted-line">
+  <section id="contact" class="contact-footer">
+    <h2>Get in Touch</h2>
+    <p>Email me at <a href="mailto:koly1999@gmail.com">koly1999@gmail.
+  </section>
+</footer>
 
 </body>
-
 </html>

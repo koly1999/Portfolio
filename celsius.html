@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Celsius Advertisement · Luke Morrison’s Portfolio</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+  <script>
+    // Dark mode toggle (and persistence)
+    function toggleTheme() {
+      document.documentElement.classList.toggle('dark');
+      localStorage.theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+    }
+    document.addEventListener('DOMContentLoaded', () => {
+      if (localStorage.theme === 'dark') {
+        document.documentElement.classList.add('dark');
+      }
+    });
+  </script>
+</head>
+<body>
+
+  <!-- ==================================================
+       COMPONENT: Navigation Bar
+  ================================================== -->
+  <nav class="navbar">
+    <ul class="navbar-nav">
+      <li class="logo">
+        <a href="index.html" class="nav-link">
+          <span class="logo-icon">
+            <!-- fighter-jet icon -->
+            <svg aria-hidden="true" focusable="false" data-prefix="fad" data-icon="fighter-jet" role="img"
+                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
+              <g class="fa-group">
+                <path fill="currentColor" class="fa-secondary"
+                      d="M168 192h176L227.16 44h39.51c11.66 0 21.33-2.62 21.33-6s-9.67-6-21.33-6H152v12h16zm0 128v148h-16v12h114.67c11.66 0 21.33-2.62 21.33-6s-9.67-6-21.33-6h-39.51L344 320z"/>
+                <path fill="currentColor" class="fa-primary"
+                      d="M640 256c0 5.42 0 10.67-96 32l-128 16-48 16H106.67l-53.34 64H18.67L8 373.33V304h8v-16h48v-2.67l-64-8v-42.66l64-8V224H16v-16H8v-69.33L18.67 128h34.66l53.34 64H368l48 16 128 16c96 21.33 96 26.58 96 32z"/>
+              </g>
+            </svg>
+          </span>
+          <span class="link-text logo-text">Portfolio</span>
+        </a>
+      </li>
+      <li class="nav-item"><a href="index.html#about"   class="nav-link"><span class="link-text">About</span></a></li>
+      <li class="nav-item"><a href="index.html#skills"  class="nav-link"><span class="link-text">Skills</span></a></li>
+      <li class="nav-item"><a href="index.html#projects" class="nav-link"><span class="link-text">Projects</span></a></li>
+      <li class="nav-item"><a href="index.html#contact" class="nav-link"><span class="link-text">Contact</span></a></li>
+    </ul>
+  </nav>
+
+  <!-- ==================================================
+       COMPONENT: Theme Switcher (fixed top-right)
+  ================================================== -->
+  <div class="theme-switcher">
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"></button>
+  </div>
+
+  <main>
+    <!-- ==================================================
+         COMPONENT: Project Header
+    ================================================== -->
+    <section class="project-hero">
+      <h1 class="section-heading">Celsius Advertisement</h1>
+      <p class="project-intro">
+        A 30-second video spot plus hero-shot stills showcasing the energy, lifestyle, and bold design of Celsius.
+      </p>
+    </section>
+
+    <hr class="dotted-line">
+
+    <!-- ==================================================
+         COMPONENT: Video Banner (Full-Width 16:9)
+    ================================================== -->
+    <section class="project-gallery">
+
+      <div class="project-video-banner">
+        <div class="video-container">
+          <iframe
+            src="https://www.youtube.com/embed/VKdRYhu_Onk?start=8&autoplay=1&mute=1&loop=1&playlist=VKdRYhu_Onk"
+            title="Celsius 30-second spot"
+            frameborder="0"
+            allow="autoplay; encrypted-media; picture-in-picture"
+            allowfullscreen>
+          </iframe>
+        </div>
+        <div class="banner-text">
+          <h3>30-Second Video Spot</h3>
+          <p>
+            A dynamic video ad showcasing the Celsius brand, with slow-motion fruit and enticing shots of the drink in action!
+          </p>
+        </div>
+      </div>
+
+      <!-- ==================================================
+           COMPONENT: Hero Shots (Alternate Left/Right)
+      ================================================== -->
+
+      <!-- Hero Shot 1 -->
+      <div class="project-banner">
+        <img
+          src="media/celsius/IMG_7689.jpg"
+          alt="Celsius can in gym setting"
+          class="banner-image">
+        <div class="banner-text">
+          <h3>Fruit Shot</h3>
+          <p>
+            Photographed various Celsius flavors, staged with fruit and warm lighting to evoke energy and refreshment.
+          </p>
+        </div>
+      </div>
+
+      <!-- Hero Shot 2 -->
+      <div class="project-banner">
+        <div class="banner-text">
+          <h3>Angled Fruit Shot</h3>
+          <p>
+            Another fruit shot, this time with a more dynamic angle and a focus on the condensation on the can.
+          </p>
+        </div>
+        <img
+          src="media/celsius/IMG_7687.jpg"
+          alt="Celsius can in outdoor setting"
+          class="banner-image">
+      </div>
+
+      <!-- Hero Shot 3 -->
+      <div class="project-banner">
+        <img
+          src="media/celsius/IMG_7811.jpg"
+          alt="Close-up studio shot of Celsius can"
+          class="banner-image">
+        <div class="banner-text">
+          <h3>Hero Shot</h3>
+          <p>
+            Crisp, well-lit product portrait to highlight label design, condensation details, and branding, with a nice glow!
+          </p>
+        </div>
+      </div>
+
+    </section>
+
+    <hr class="dotted-line">
+
+<!-- ==================================================
+     COMPONENT: Footer & Contact
+================================================== -->
+<footer>
+  <hr class="dotted-line">
+  <section id="contact" class="contact-footer">
+    <h2>Get in Touch</h2>
+    <p>Email me at <a href="mailto:koly1999@gmail.com">koly1999@gmail.
+  </section>
+</footer>
+
+</body>
+</html>

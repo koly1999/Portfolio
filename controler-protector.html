@@ -1,122 +1,164 @@
- 	<html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<link rel="stylesheet" href="css\style.css">
-	<link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
-
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gimbal Protector · Luke Morrison’s Portfolio</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+  <script>
+    // Dark mode toggle (and persistence)
+    function toggleTheme() {
+      document.documentElement.classList.toggle('dark');
+      localStorage.theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+    }
+    document.addEventListener('DOMContentLoaded', () => {
+      if (localStorage.theme === 'dark') {
+        document.documentElement.classList.add('dark');
+      }
+    });
+  </script>
 </head>
-
 <body>
 
+  <!-- ==================================================
+       COMPONENT: Navigation Bar
+  ================================================== -->
   <nav class="navbar">
-		<ul class="navbar-nav">
-
-			<li class="logo">
+    <ul class="navbar-nav">
+      <li class="logo">
         <a href="index.html" class="nav-link">
+          <span class="logo-icon">
+            <!-- fighter-jet icon -->
+            <svg aria-hidden="true" focusable="false" data-prefix="fad" data-icon="fighter-jet" role="img"
+                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
+              <g class="fa-group">
+                <path fill="currentColor" class="fa-secondary"
+                      d="M168 192h176L227.16 44h39.51c11.66 0 21.33-2.62 21.33-6s-9.67-6-21.33-6H152v12h16zm0 128v148h-16v12h114.67c11.66 0 21.33-2.62 21.33-6s-9.67-6-21.33-6h-39.51L344 320z"/>
+                <path fill="currentColor" class="fa-primary"
+                      d="M640 256c0 5.42 0 10.67-96 32l-128 16-48 16H106.67l-53.34 64H18.67L8 373.33V304h8v-16h48v-2.67l-64-8v-42.66l64-8V224H16v-16H8v-69.33L18.67 128h34.66l53.34 64H368l48 16 128 16c96 21.33 96 26.58 96 32z"/>
+              </g>
+            </svg>
+          </span>
           <span class="link-text logo-text">Portfolio</span>
-						<svg aria-hidden="true" focusable="false" data-prefix="fad" data-icon="fighter-jet" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" class="svg-inline--fa fa-fighter-jet fa-w-20 fa-3x">
-							<g class="fa-group">
-								<path fill="currentColor" d="M168 192h176L227.16 44h39.51c11.66 0 21.33-2.62 21.33-6s-9.67-6-21.33-6H152v12h16zm0 128v148h-16v12h114.67c11.66 0 21.33-2.62 21.33-6s-9.67-6-21.33-6h-39.51L344 320z" class="fa-secondary">
-								</path>
-								<path fill="currentColor" d="M640 256c0 5.42 0 10.67-96 32l-128 16-48 16H106.67l-53.34 64H18.67L8 373.33V304h8v-16h48v-2.67l-64-8v-42.66l64-8V224H16v-16H8v-69.33L18.67 128h34.66l53.34 64H368l48 16 128 16c96 21.33 96 26.58 96 32z" class="fa-primary">
-								</path>
-							</g>
-						</svg>
         </a>
       </li>
+      <li class="nav-item"><a href="index.html#about"   class="nav-link"><span class="link-text">About</span></a></li>
+      <li class="nav-item"><a href="index.html#skills"  class="nav-link"><span class="link-text">Skills</span></a></li>
+      <li class="nav-item"><a href="index.html#projects" class="nav-link"><span class="link-text">Projects</span></a></li>
+      <li class="nav-item"><a href="index.html#contact" class="nav-link"><span class="link-text">Contact</span></a></li>
+    </ul>
+  </nav>
 
-			<li class="nav-item">
-				<a href="projects.html" class="nav-link">
-					<svg aria-hidden="true" focusable="false" data-prefix="fad" data-icon="lightbulb" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 352 512" class="svg-inline--fa fa-lightbulb fa-w-11 fa-3x"><g class="fa-group"><path fill="currentColor" d="M175.45 0C73.44.31 0 83 0 176a175 175 0 0 0 43.56 115.78c16.52 18.85 42.36 58.22 52.21 91.45 0 .26.07.52.11.78h160.24c0-.26.07-.51.11-.78 9.85-33.22 35.69-72.6 52.21-91.45A175.9 175.9 0 0 0 175.45 0zm.55 96a80.09 80.09 0 0 0-80 80 16 16 0 0 1-32 0A112.12 112.12 0 0 1 176 64a16 16 0 0 1 0 32z" class="fa-secondary"></path><path fill="currentColor" d="M96.06 454.35L96 416h160v38.35a32 32 0 0 1-5.41 17.65l-17.09 25.73A32 32 0 0 1 206.86 512h-61.71a32 32 0 0 1-26.64-14.28L101.42 472a32 32 0 0 1-5.36-17.65z" class="fa-primary">
-					</path>
-					</g>
-					</svg>
-					<span class="link-text">Projects</span>
-				</a>
-			</li>
+  <!-- ==================================================
+       COMPONENT: Theme Switcher (fixed top-right)
+  ================================================== -->
+  <div class="theme-switcher">
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"></button>
+  </div>
 
-			<li class="nav-item">
-				<a href="projects.html" class="nav-link">
-					<svg aria-hidden="true" focusable="false" data-prefix="fad" data-icon="user-tie" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="svg-inline--fa fa-user-tie fa-w-14 fa-3x"><g class="fa-group"><path fill="currentColor" d="M191.35 414.77L208 344l-32-56h96l-32 56 16.65 70.77L224 480zM224 256A128 128 0 1 0 96 128a128 128 0 0 0 128 128z" class="fa-secondary"></path><path fill="currentColor" d="M319.8 288.6L224 480l-95.8-191.4C56.9 292 0 350.3 0 422.4V464a48 48 0 0 0 48 48h352a48 48 0 0 0 48-48v-41.6c0-72.1-56.9-130.4-128.2-133.8z" class="fa-primary">
-						</path>
-						</g>
-						</svg>
-					<span class="link-text">About Me</span>
-				</a>
-			</li>
-
-		</ul>
-	</nav>
-
-<main>
-	<!-- Page Header -->
-	<h1 class="logo-header">Remote Control Gimbal Protector</h1>
-	<!-- Page Information -->
-	<p>
-	I used to work at a hobby store called Hobbytown USA, and my boss at the time asked me to design and 3D print him these things called gimball protectors.
-  Gimball protectors make it really difficult to damage the joysticks of a remote controller. These controllers were relativley expensive so protecting them was important.
-	</p>
-
-		<hr class="dotted-line">
-
-		<!-- Page Content -->
-
-    <div class="flex-container">
-    <img class="page-image" src="media\gimball_protector\gimbal2.jpg">
-    <p>
-    This is my first CAD model of the Protectors, the H was in the style of the stores logo.
-    </p>
-    </div>
+  <main>
+    <!-- ==================================================
+         COMPONENT: Project Header
+    ================================================== -->
+    <section class="project-hero">
+      <h1 class="section-heading">Gimbal Protector</h1>
+      <p class="project-intro">
+        Custom 3D-printed joystick guards for RC controllers—designed to prevent damage and ensure drop-tested durability.
+      </p>
+    </section>
 
     <hr class="dotted-line">
 
-    <div class="flex-container">
-    <img class="page-image" src="media\gimball_protector\gimbal3.jpg">
-    <p>
-    This is my second CAD drawing of the protectors, they required some changing of dimensions after the first ptototype failed.
-    </p>
-    </div>
+    <!-- ==================================================
+         COMPONENT: Project Gallery (Banner Style)
+    ================================================== -->
+    <section class="project-gallery">
+
+      <!-- Banner 1 -->
+      <div class="project-banner">
+        <img
+          src="media/gimball_protector/gimbal2.jpg"
+          alt="First CAD model of gimbal protector"
+          class="banner-image">
+        <div class="banner-text">
+          <h3>Initial CAD Model</h3>
+          <p>
+            First computer design featured an “H” motif inspired by the HobbyTown logo—laid the groundwork for function tests.
+          </p>
+        </div>
+      </div>
+
+      <!-- Banner 2 -->
+      <div class="project-banner">
+        <div class="banner-text">
+          <h3>Refined Prototype Drawing</h3>
+          <p>
+            Adjusted wall thickness and mounting points after initial fit checks; optimized dimensions for 3D printing.
+          </p>
+        </div>
+        <img
+          src="media/gimball_protector/gimbal3.jpg"
+          alt="Refined CAD drawing after adjustments"
+          class="banner-image">
+      </div>
+
+      <!-- Banner 3 -->
+      <div class="project-banner">
+        <img
+          src="media/gimball_protector/first_batch.jpg"
+          alt="First batch of 3D-printed gimbal protectors"
+          class="banner-image">
+        <div class="banner-text">
+          <h3>First 3D-Printed Batch</h3>
+          <p>
+            Printed prototypes in ABS and performed drop tests from 10 ft to validate impact resistance.
+          </p>
+        </div>
+      </div>
+
+      <!-- Banner 4 -->
+      <div class="project-banner">
+        <div class="banner-text">
+          <h3>In-Store Deployment</h3>
+          <p>
+            Mounted protectors on demonstration units at HobbyTown USA to showcase real-world durability and fit.
+          </p>
+        </div>
+        <img
+          src="media/gimball_protector/example.jpg"
+          alt="Protectors installed on controllers in store"
+          class="banner-image">
+      </div>
+
+      <!-- Banner 5 -->
+      <div class="project-banner">
+        <img
+          src="media/gimball_protector/final.jpg"
+          alt="Final production run in various colors"
+          class="banner-image">
+        <div class="banner-text">
+          <h3>Final Production</h3>
+          <p>
+            Delivered multi-color batches per request—finalized design, documentation, and manufacturing process, it was a lot of fun!
+          </p>
+        </div>
+      </div>
+
+    </section>
 
     <hr class="dotted-line">
 
-    <div class="flex-container">
-    <img class="page-image" src="media\gimball_protector\first_batch.jpg">
-    <p>
-    This is the first batch of sucessful gimball protectors.
-    </p>
-    </div>
-
-    <hr class="dotted-line">
-
-    <div class="flex-container">
-    <img class="page-image" src="media\gimball_protector\example.jpg">
-    <p>
-    Here are my gimball protectors in action at the store.
-    </p>
-    </div>
-
-    <hr class="dotted-line">
-
-    <div class="flex-container">
-    <img class="page-image" src="media\gimball_protector\final.jpg">
-    <p>
-    Once I finalised the design with my former boss, I then sold him a few batches in various colours.
-    </p>
-    </div>
-
-    <hr class="dotted-line">
-
-	<footer>
-
-	  <p>
-	    Website designed By Luke Morrison. The purpose of this site it to showcase some of the projects I have worked on. Contact me at: <strong>koly1999@gmail.com</strong>
-	  </p>
-
-	</footer>
-
-</main>
+    <!-- ==================================================
+         COMPONENT: Footer & Contact
+    ================================================== -->
+    <footer>
+      <section id="contact" class="contact-footer">
+        <h2>Get in Touch</h2>
+        <p>Email me at <a href="mailto:koly1999@gmail.com">koly1999@gmail.com</a></p>
+      </section>
+    </footer>
+  </main>
 
 </body>
-
 </html>

@@ -1,183 +1,299 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<link rel="stylesheet" href="css\style.css">
-	<link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
-
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+  <title>Luke Morrison's Portfolio</title>
+  <script>
+    // Dark mode toggle
+    function toggleTheme() {
+      document.documentElement.classList.toggle('dark');
+      localStorage.theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+    }
+    document.addEventListener('DOMContentLoaded', () => {
+      if (localStorage.theme === 'dark') document.documentElement.classList.add('dark');
+    });
+  </script>
 </head>
-
 <body>
 
-	<nav class="navbar">
-		<ul class="navbar-nav">
+<!-- ==================================================
+     COMPONENT: Navigation Bar
+================================================== -->
+<nav class="navbar">
+  <ul class="navbar-nav">
+    <li class="logo">
+      <a href="index.html" class="nav-link">
+        <!-- The fighter jet icon -->
+        <span class="logo-icon">
+          <svg aria-hidden="true" focusable="false" data-prefix="fad" data-icon="fighter-jet" role="img"
+               xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" class="svg-inline--fa fa-fighter-jet fa-w-20 fa-3x">
+            <g class="fa-group">
+              <path fill="currentColor"
+                    d="M168 192h176L227.16 44h39.51c11.66 0 21.33-2.62 21.33-6s-9.67-6-21.33-6H152v12h16zm0 128v148h-16v12h114.67c11.66 0 21.33-2.62 21.33-6s-9.67-6-21.33-6h-39.51L344 320z"
+                    class="fa-secondary"></path>
+              <path fill="currentColor"
+                    d="M640 256c0 5.42 0 10.67-96 32l-128 16-48 16H106.67l-53.34 64H18.67L8 373.33V304h8v-16h48v-2.67l-64-8v-42.66l64-8V224H16v-16H8v-69.33L18.67 128h34.66l53.34 64H368l48 16 128 16c96 21.33 96 26.58 96 32z"
+                    class="fa-primary"></path>
+            </g>
+          </svg>
+        </span>
+        <!-- The title text that slides in on hover -->
+        <span class="link-text logo-text">Portfolio</span>
+      </a>
+    </li>
+    <li class="nav-item"><a href="#about" class="nav-link"><span class="link-text">About</span></a></li>
+    <li class="nav-item"><a href="#skills" class="nav-link"><span class="link-text">Skills</span></a></li>
+    <li class="nav-item"><a href="#projects" class="nav-link"><span class="link-text">Projects</span></a></li>
+    <li class="nav-item"><a href="#contact" class="nav-link"><span class="link-text">Contact</span></a></li>
+  </ul>
+</nav>
 
-			<li class="logo">
-        <a href="index.html" class="nav-link">
-          <span class="link-text logo-text">Portfolio</span>
-						<svg aria-hidden="true" focusable="false" data-prefix="fad" data-icon="fighter-jet" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" class="svg-inline--fa fa-fighter-jet fa-w-20 fa-3x">
-							<g class="fa-group">
-								<path fill="currentColor" d="M168 192h176L227.16 44h39.51c11.66 0 21.33-2.62 21.33-6s-9.67-6-21.33-6H152v12h16zm0 128v148h-16v12h114.67c11.66 0 21.33-2.62 21.33-6s-9.67-6-21.33-6h-39.51L344 320z" class="fa-secondary">
-								</path>
-								<path fill="currentColor" d="M640 256c0 5.42 0 10.67-96 32l-128 16-48 16H106.67l-53.34 64H18.67L8 373.33V304h8v-16h48v-2.67l-64-8v-42.66l64-8V224H16v-16H8v-69.33L18.67 128h34.66l53.34 64H368l48 16 128 16c96 21.33 96 26.58 96 32z" class="fa-primary">
-								</path>
-							</g>
-						</svg>
-        </a>
-      </li>
-
-			<li class="nav-item">
-				<a href="projects.html" class="nav-link">
-					<svg aria-hidden="true" focusable="false" data-prefix="fad" data-icon="lightbulb" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 352 512" class="svg-inline--fa fa-lightbulb fa-w-11 fa-3x"><g class="fa-group"><path fill="currentColor" d="M175.45 0C73.44.31 0 83 0 176a175 175 0 0 0 43.56 115.78c16.52 18.85 42.36 58.22 52.21 91.45 0 .26.07.52.11.78h160.24c0-.26.07-.51.11-.78 9.85-33.22 35.69-72.6 52.21-91.45A175.9 175.9 0 0 0 175.45 0zm.55 96a80.09 80.09 0 0 0-80 80 16 16 0 0 1-32 0A112.12 112.12 0 0 1 176 64a16 16 0 0 1 0 32z" class="fa-secondary"></path><path fill="currentColor" d="M96.06 454.35L96 416h160v38.35a32 32 0 0 1-5.41 17.65l-17.09 25.73A32 32 0 0 1 206.86 512h-61.71a32 32 0 0 1-26.64-14.28L101.42 472a32 32 0 0 1-5.36-17.65z" class="fa-primary">
-					</path>
-					</g>
-					</svg>
-					<span class="link-text">Projects</span>
-				</a>
-			</li>
-
-			<li class="nav-item">
-				<a href="about-me.html" class="nav-link">
-					<svg aria-hidden="true" focusable="false" data-prefix="fad" data-icon="user-tie" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="svg-inline--fa fa-user-tie fa-w-14 fa-3x"><g class="fa-group"><path fill="currentColor" d="M191.35 414.77L208 344l-32-56h96l-32 56 16.65 70.77L224 480zM224 256A128 128 0 1 0 96 128a128 128 0 0 0 128 128z" class="fa-secondary"></path><path fill="currentColor" d="M319.8 288.6L224 480l-95.8-191.4C56.9 292 0 350.3 0 422.4V464a48 48 0 0 0 48 48h352a48 48 0 0 0 48-48v-41.6c0-72.1-56.9-130.4-128.2-133.8z" class="fa-primary">
-						</path>
-						</g>
-						</svg>
-					<span class="link-text">About Me</span>
-				</a>
-			</li>
-
-		</ul>
-	</nav>
+<!-- ==================================================
+     COMPONENT: Theme Switcher (top-right)
+================================================== -->
+<div class="theme-switcher">
+  <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">
+    <span class="icon icon-sun">☀️</span>
+    <span class="icon icon-moon">🌙</span>
+  </button>
+</div>
 
 <main>
-	<!-- Page Header -->
-	<h1 class="logo-header">Luke Morrison's Projects</h1>
-	<!-- Page Information -->
-	<p>
-		Welcome to my portfolio website! This is where I showcase some of my more interesting projects or pieces of art. Thank you for taking the time to stop by and see what I'm working on!
-	</p>
+ <!-- ==================================================
+       COMPONENT: Hero Banner
+  ================================================== -->
+  <section class="hero">
+    <h1 class="hero-title">Hi, I'm <span class="highlight">Luke Morrison</span></h1>
+    <p class="hero-subtitle">I’m a fast learner who excels in product development—transforming ideas into prototypes, circuits, and designs.</p>
+    <p class="hero-note">(And yes: I hand‑coded this entire site in vanilla HTML &amp; CSS.)</p>
+    <a href="#projects" class="cta-btn">Explore My Work</a>
+  </section>
 
-		<hr class="dotted-line">
+  <hr class="dotted-line">
 
-		<!-- Page Content -->
+<!-- ==================================================
+     COMPONENT: About Me (Banner Style)
+================================================== -->
+<section id="about" class="about-gallery">
+  <h1 class="section-heading">About Me</h1>
+  <blockquote class="lead-quote">
+    “A jack of all trades is a master of none… often better than a master of one.”
+  </blockquote>
 
-		<ul class="card-list">
+  <!-- Banner 1: Roots & Mentorship -->
+  <div class="about-banner">
+    <img
+      src="media/index_images/dad.jpg"
+      alt="Father teaching design"
+      class="banner-image">
+    <div class="banner-text">
+      <h3>Built to Make</h3>
+      <p>
+        My dad trained at London’s Royal College of Art—and made sure I learned every trade: wood, metal, electronics and more.  
+        From day one, I’ve lived in the workshop.
+      </p>
+    </div>
+  </div>
 
-				 <li class="card">
-					 <a class="card-link" href="electric_car.html">
-						 <p class="card-header">Electric Car</p>
-					 <div class="graphic-svg">
-					  	<svg aria-hidden="true" focusable="false" data-prefix="fad" data-icon="car-side" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" class="svg-inline--fa fa-car-side fa-w-20 fa-3x"><g class="fa-group"><path fill="currentColor" d="M144 320a80 80 0 1 0 80 80 80 80 0 0 0-80-80zm352 0a80 80 0 1 0 80 80 80 80 0 0 0-80-80zM369.24 96H280v96h166zm-252.31 96H232V96h-76.67z" class="fa-secondary"></path><path fill="currentColor" d="M16 384h17.14a112 112 0 0 1 221.72 0h130.28a112 112 0 0 1 221.72 0H624a16 16 0 0 0 16-16v-80a96 96 0 0 0-96-96h-16L419.22 56a64 64 0 0 0-50-24H155.33a64 64 0 0 0-59.42 40.23L48 194.26A63.85 63.85 0 0 0 0 256v112a16 16 0 0 0 16 16zM280 96h89.24L446 192H280zm-124.67 0H232v96H116.93z" class="fa-primary">
-			 				</path>
-			 				</g>
-			 				</svg>
-						</div>
-					</a>
-				</li>
+  <!-- Banner 2: Mini Cooper Mechanic -->
+  <div class="about-banner">
+    <div class="banner-text">
+      <h3>Mini Cooper Mechanic</h3>
+      <p>
+        My ’06 Mini was always breaking—so I fixed brakes, wiring, sensors, suspension, engine components, and more, until maintenance costs made me sell it. 
+      </p>
+    </div>
+    <img
+      src="media/index_images/mini.jpg"
+      alt="Mini Cooper dashboard"
+      class="banner-image">
+  </div>
 
-				 <li class="card">
-					 <a class="card-link" href="artwork.html">
-						 <p class="card-header">Artwork</p>
-					 <div class="graphic-svg">
-						<svg aria-hidden="true" focusable="false" data-prefix="fad" data-icon="pencil-paintbrush" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="svg-inline--fa fa-pencil-paintbrush fa-w-16 fa-3x"><g class="fa-group"><path fill="currentColor" d="M21.08 133l99.11 100.33L216 137.52 146 33.11C84.06-55.29-52.15 52.53 21.08 133zm435.68 258.63a15.26 15.26 0 0 1-14.59-10c-18.13-47.78-48.4-65.38-82.65-70.71l-101.69 101.7C266.65 476 315.43 512 384 512c90.07 0 128-72.38 128-154.73-9.78 6.73-44.14 34.36-55.24 34.36z" class="fa-secondary"></path><path fill="currentColor" d="M19.08 379.68L.33 487.12a21.23 21.23 0 0 0 24.59 24.56l107.44-18.84 296.93-296.93L316.08 82.72zM497.94 59.32l-45.26-45.25a48 48 0 0 0-67.94 0l-46 46 113.2 113.2 46-46a48 48 0 0 0 0-67.95z" class="fa-primary">
-						</path>
-						</g>
-						</svg>
-					</div>
-				</a>
-			</li>
+  <!-- Banner 3: Digital Foundations -->
+  <div class="about-banner">
+    <img
+      src="media/index_images/comp.jpg"
+      alt="Home server rack"
+      class="banner-image">
+    <div class="banner-text">
+      <h3>From Minecraft to Servers</h3>
+      <p>
+        I started by hosting Minecraft realms for friends—then built custom gaming PCs, NAS boxes and Linux clusters to keep them online.
+      </p>
+    </div>
+  </div>
 
-				 <li class="card">
-					 <a class="card-link" href="controler-protector.html">
-					 <div class="card-header">
-						 <p class="card-header">Gimbal Protector</p>
-					 </div>
-					 <div class="graphic-svg">
-							<svg aria-hidden="true" focusable="false" data-prefix="fad" data-icon="drone-alt" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" class="svg-inline--fa fa-drone-alt fa-w-20 fa-3x"><g class="fa-group"><path fill="currentColor" d="M264 112H24a24 24 0 0 0 0 48h240a24 24 0 0 0 0-48zm352 0H376a24 24 0 0 0 0 48h240a24 24 0 0 0 0-48z" class="fa-secondary"></path><path fill="currentColor" d="M472 192v45.65l-96.83-29.05a191.93 191.93 0 0 0-110.34 0L168 237.65V192h-48v64.05a32 32 0 0 0 32 32h45.41a179 179 0 0 0-53.33 110.24 16.14 16.14 0 0 0 16 17.71h16.26c8.33 0 14.75-6.58 15.68-14.87a130 130 0 0 1 53.66-91.38l32.93 32.93a32 32 0 0 0 22.62 9.37h37.49a32 32 0 0 0 22.63-9.37l32.93-32.93A130 130 0 0 1 448 401.13c.93 8.29 7.35 14.85 15.68 14.87h16.22a16.13 16.13 0 0 0 16-17.71 178.94 178.94 0 0 0-53.32-110.24H488a32 32 0 0 0 32-32V192zM144 96a23.68 23.68 0 0 0-22.23 16h44.5A23.72 23.72 0 0 0 144 96zm352 0a23.68 23.68 0 0 0-22.23 16h44.5A23.72 23.72 0 0 0 496 96z" class="fa-primary">
-							</path>
-							</g>
-							</svg>
-					</div>
-					</a>
-				</li>
+  <!-- Banner 4: Science Olympiad & Engineering -->
+  <div class="about-banner">
+    <div class="banner-text">
+      <h3>Science Olympiad Winner</h3>
+      <p>
+        In high school, I led my team in seven build events—gliders, hovercraft, electric cars, wind turbines—and won regionals, plus three medals at Illinois invitational.
+      </p>
+    </div>
+    <img
+      src="media/index_images/champ.jpg"
+      alt="Science Olympiad regional champion"
+      class="banner-image">
+  </div>
 
-				<li class="card">
-					<a class="card-link" href="electronics.html">
-						<p class="card-header">Electronics</p>
-					<div class="graphic-svg">
-						<svg aria-hidden="true" focusable="false" data-prefix="fad" data-icon="microchip" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="svg-inline--fa fa-microchip fa-w-16 fa-3x"><g class="fa-group"><path fill="currentColor" d="M24 190v6H6a6 6 0 0 0-6 6v12a6 6 0 0 0 6 6h18v6a6 6 0 0 0 6 6h42v-48H30a6 6 0 0 0-6 6zm0-96v6H6a6 6 0 0 0-6 6v12a6 6 0 0 0 6 6h18v6a6 6 0 0 0 6 6h42V88H30a6 6 0 0 0-6 6zm482 6h-18v-6a6 6 0 0 0-6-6h-42v48h42a6 6 0 0 0 6-6v-6h18a6 6 0 0 0 6-6v-12a6 6 0 0 0-6-6zm0 192h-18v-6a6 6 0 0 0-6-6h-42v48h42a6 6 0 0 0 6-6v-6h18a6 6 0 0 0 6-6v-12a6 6 0 0 0-6-6zm0-96h-18v-6a6 6 0 0 0-6-6h-42v48h42a6 6 0 0 0 6-6v-6h18a6 6 0 0 0 6-6v-12a6 6 0 0 0-6-6zm0 192h-18v-6a6 6 0 0 0-6-6h-42v48h42a6 6 0 0 0 6-6v-6h18a6 6 0 0 0 6-6v-12a6 6 0 0 0-6-6zm-482-6v6H6a6 6 0 0 0-6 6v12a6 6 0 0 0 6 6h18v6a6 6 0 0 0 6 6h42v-48H30a6 6 0 0 0-6 6zm0-96v6H6a6 6 0 0 0-6 6v12a6 6 0 0 0 6 6h18v6a6 6 0 0 0 6 6h42v-48H30a6 6 0 0 0-6 6z" class="fa-secondary"></path><path fill="currentColor" d="M144 512a48 48 0 0 1-48-48V48a48 48 0 0 1 48-48h224a48 48 0 0 1 48 48v416a48 48 0 0 1-48 48z" class="fa-primary">
-					 </path>
-					 </g>
-					 </svg>
-				 </div>
-			 </a>
-		 </li>
+  <!-- Banner 5: Ongoing Education -->
+  <div class="about-banner">
+    <img
+      src="media/index_images/sedona.jpg"
+      alt="ASU Online logo"
+      class="banner-image">
+    <div class="banner-text">
+      <h3>Curriculum & Beyond</h3>
+      <p>
+        I earned an A.A. in engineering & electronics, and now I’m completing my B.S. in full-stack web dev & graphic design at ASU Online.
+      </p>
+    </div>
+  </div>
+</section>
 
-				 <li class="card">
-					 <a class="card-link" href="phone_holder.html">
-						 <p class="card-header">Phone Holder</p>
-					 <div class="graphic-svg">
-						 <svg aria-hidden="true" focusable="false" data-prefix="fad" data-icon="phone-rotary" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="svg-inline--fa fa-phone-rotary fa-w-16 fa-3x"><g class="fa-group"><path fill="currentColor" d="M256 240a72 72 0 1 0 72 72 72 72 0 0 0-72-72zm250.18-117C436.76 65 347.38 32 256 32S75.24 65 5.82 123A16.45 16.45 0 0 0 0 135.64V192a16 16 0 0 0 16 16h70.11a16 16 0 0 0 14.31-8.85L128 128c39.9-17.28 83.2-24 128-24 44.77 0 88.07 6.72 128 24l27.58 71.15a16 16 0 0 0 14.31 8.85H496a16 16 0 0 0 16-16v-56.36a16.45 16.45 0 0 0-5.82-12.64z" class="fa-secondary"></path><path fill="currentColor" d="M475.78 376.62L370.43 192.25A64 64 0 0 0 314.86 160H197.14a64 64 0 0 0-55.57 32.25L36.22 376.62A32 32 0 0 0 32 392.5V448a32 32 0 0 0 32 32h384a32 32 0 0 0 32-32v-55.5a32 32 0 0 0-4.22-15.88zM256 384a72 72 0 1 1 72-72 72 72 0 0 1-72 72z" class="fa-primary">
-						 	</path>
-							</g>
-						</svg>
-					</div>
-				</a>
-			</li>
+<hr class="dotted-line">
 
-				 <li class="card">
-					 <a class="card-link" href="catapults.html">
-						 <p class="card-header">Catapults</p>
-					 <div class="graphic-svg">
-						 <svg aria-hidden="true" focusable="false" data-prefix="fad" data-icon="chess-rook" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" class="svg-inline--fa fa-chess-rook fa-w-12 fa-3x"><g class="fa-group"><path fill="currentColor" d="M368 448H16a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h352a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16z" class="fa-secondary"></path><path fill="currentColor" d="M384 48a16 16 0 0 0-16-16h-56a16 16 0 0 0-16 16v48h-48V48a16 16 0 0 0-16-16h-80a16 16 0 0 0-16 16v48H88.1V48a16 16 0 0 0-16-16H16A16 16 0 0 0 0 48v176l64 32c0 48.33-1.54 95-13.21 160h282.42C321.54 351 320 303.72 320 256l64-32zM224 320h-64v-64a32 32 0 0 1 64 0z" class="fa-primary">
-						 </path>
-					 		</g>
-							</svg>
-					</div>
-				</a>
-			</li>
+<!-- ==================================================
+     COMPONENT: Skills
+================================================== -->
+<section id="skills" class="skills-section">
+  <h2 class="section-heading">Skills &amp; Tools</h2>
+  <div class="skills-grid">
+    <div class="skill"><strong>Problem Solving &amp; Systems Thinking</strong></div>
+    <div class="skill"><strong>Electronics Prototyping &amp; Soldering</strong></div>
+    <div class="skill"><strong>PCB Layout &amp; Circuit Design</strong></div>
+    <div class="skill"><strong>HTML, CSS &amp; JavaScript Programming</strong></div>
+    <div class="skill"><strong>Solidworks &amp; Printing (CAD)</strong></div>
+    <div class="skill"><strong>Mechanical Fabrication &amp; Woodworking</strong></div>
+    <div class="skill"><strong>Linux &amp; Server Administration</strong></div>
+    <div class="skill"><strong>Full-Stack Web Development</strong></div>
+    <div class="skill"><strong>Graphic Design &amp; Adobe Illustrator</strong></div>
+    <div class="skill"><strong>Project Documentation &amp; Testing</strong></div>
+    <div class="skill"><strong>3D Printing &amp; G-Code</strong></div>
+    <div class="skill"><strong>Video Editing &amp; Production</strong>
+    </div>
+  </div>
 
-			<li class="card">
-				<a class="card-link" href="photography.html">
-					<p class="card-header">Photography</p>
-				<div class="graphic-svg">
-						<svg aria-hidden="true" focusable="false" data-prefix="fad" data-icon="camera-retro" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="svg-inline--fa fa-camera-retro fa-w-16 fa-3x"><g class="fa-group">
-							<path fill="currentColor" d="M256 232a88 88 0 1 0 88 88 88 88 0 0 0-88-88zm0 56a32.09 32.09 0 0 0-32 32 16 16 0 0 1-32 0 64.06 64.06 0 0 1 64-64 16 16 0 0 1 0 32zM480 32H256l-64 48H16A16 16 0 0 0 0 96v64h512V64a32.09 32.09 0 0 0-32-32z" class="fa-secondary">
-							</path>
-							<path fill="currentColor" d="M176 48a16 16 0 0 0-16-16H64a16 16 0 0 0-16 16v32h128zM0 160v272a48 48 0 0 0 48 48h416a48 48 0 0 0 48-48V160zm256 280a120 120 0 1 1 120-120 120 120 0 0 1-120 120z" class="fa-primary">
-								</path>
-							</g>
-						</svg>
-		 </div>
-		 </a>
-	 </li>
+        <h3>More to come!<h3>
+    <p>I'm always learning new skills and tools to enhance my capabilities.</p>
+  </div>
 
-	 <li class="card">
-		 <a class="card-link" href="about-me.html">
-			 <p class="card-header">About Me</p>
-		 <div class="graphic-svg">
-			 <svg aria-hidden="true" focusable="false" data-prefix="fad" data-icon="user-tie" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="svg-inline--fa fa-user-tie fa-w-14 fa-3x"><g class="fa-group"><path fill="currentColor" d="M191.35 414.77L208 344l-32-56h96l-32 56 16.65 70.77L224 480zM224 256A128 128 0 1 0 96 128a128 128 0 0 0 128 128z" class="fa-secondary"></path><path fill="currentColor" d="M319.8 288.6L224 480l-95.8-191.4C56.9 292 0 350.3 0 422.4V464a48 48 0 0 0 48 48h352a48 48 0 0 0 48-48v-41.6c0-72.1-56.9-130.4-128.2-133.8z" class="fa-primary">
-				 </path>
-				 </g>
-				 </svg>
-	</div>
-	</a>
-</li>
 
-		</ul>
+</section>
 
-		<hr class="dotted-line">
+<hr class="dotted-line">
 
-	<footer>
 
-	  <p>
-	    Website designed By Luke Morrison. The purpose of this site it to showcase some of the projects I have worked on. Contact me at: <strong>koly1999@gmail.com</strong>
-	  </p>
 
-	</footer>
+<!-- ==================================================
+     COMPONENT: Projects Grid (Cards)
+================================================== -->
+<section id="projects" class="projects-section">
+  <h2 class="section-heading">Projects</h2>
+  <p class="projects-intro">
+    Here are some of my favorite projects, showcasing my skills in electronics, design, and coding.
+  </p>
+</section>
 
-</main>
+<section class="projects-grid">
+
+  <!-- Card: Electric Car -->
+  <div class="card" tabindex="0">
+    <div class="card-icon emoji-icon">🚗</div>
+    <h3 class="card-title">Electric Car</h3>
+    <div class="card-details">
+      <p>Battery operated and self stopping!</p>
+      <a href="electric_car.html" class="card-btn">Learn More →</a>
+    </div>
+  </div>
+
+  <!-- Card: Gimbal Protector -->
+  <div class="card" tabindex="0">
+    <div class="card-icon emoji-icon">🛡️</div>
+    <h3 class="card-title">Gimbal Protector</h3>
+    <div class="card-details">
+      <p>3D-printed protectors.</p>
+      <a href="controler-protector.html" class="card-btn">Learn More →</a>
+    </div>
+  </div>
+
+  <!-- Card: Electronics -->
+  <div class="card" tabindex="0">
+    <div class="card-icon emoji-icon">🔌</div>
+    <h3 class="card-title">Electronics</h3>
+    <div class="card-details">
+      <p>PCB design, circuit prototyping, and power delivery!</p>
+      <a href="electronics.html" class="card-btn">Learn More →</a>
+    </div>
+  </div>
+
+  <!-- Card: Phone Holder -->
+  <div class="card" tabindex="0">
+    <div class="card-icon emoji-icon">📱</div>
+    <h3 class="card-title">Phone Holder</h3>
+    <div class="card-details">
+      <p>Redesigned adjustable phone holder.</p>
+      <a href="phone_holder.html" class="card-btn">Learn More →</a>
+    </div>
+  </div>
+
+  <!-- Card: Catapults -->
+  <div class="card" tabindex="0">
+    <div class="card-icon emoji-icon">🏹</div>
+    <h3 class="card-title">Catapults</h3>
+    <div class="card-details">
+      <p>Going medieval in a big way!</p>
+      <a href="catapults.html" class="card-btn">Learn More →</a>
+    </div>
+  </div>
+
+  <!-- Card: Graphic Design -->
+  <div class="card" tabindex="0">
+    <div class="card-icon emoji-icon">🎨</div>
+    <h3 class="card-title">Graphic Design</h3>
+    <div class="card-details">
+      <p>Posters and booklet layouts.</p>
+      <a href="graphic-design.html" class="card-btn">Learn More →</a>
+    </div>
+  </div>
+
+  <!-- Card: Celsius Advertisement -->
+  <div class="card" tabindex="0">
+    <div class="card-icon emoji-icon">🔥</div>
+    <h3 class="card-title">Celsius Advertisement</h3>
+    <div class="card-details">
+      <p>Promotional material for Celsius Energy!</p>
+      <a href="celsius.html" class="card-btn">Learn More →</a>
+    </div>
+  </div>
+
+  <!-- Card: Hydrogen Experiments -->
+  <div class="card" tabindex="0">
+    <div class="card-icon emoji-icon">⚗️</div>
+    <h3 class="card-title">Hydrogen Experiments</h3>
+    <div class="card-details">
+      <p>‘Pop’ tests and safety-first detonation demos that taught me why rigorous lab protocols matter.</p>
+      <a href="hydrogen.html" class="card-btn">Learn More →</a>
+    </div>
+  </div>
+
+</section>
+
+
+<!-- ==================================================
+     COMPONENT: Footer & Contact
+================================================== -->
+<footer>
+  <hr class="dotted-line">
+  <section id="contact" class="contact-footer">
+    <h2>Get in Touch</h2>
+    <p>Email me at <a href="mailto:koly1999@gmail.com">koly1999@gmail.
+  </section>
+</footer>
 
 </body>
-
 </html>
