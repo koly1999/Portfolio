@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PCB Model Lab · Luke Morrison</title>
+  <meta name="description" content="A small archive of PCB designs viewable as full-detail interactive 3D models: thermocouple interface, motion control, dual DC motor driver, and a machine controller.">
+  <meta name="theme-color" content="#010502">
+  <link rel="canonical" href="https://koly1999.github.io/Portfolio/pcb-lab.html">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='8' y='8' width='16' height='16' rx='2' fill='none' stroke='%2300ff66' stroke-width='2'/%3E%3Crect x='13' y='13' width='6' height='6' fill='%23b6ff45'/%3E%3Cpath d='M12 8V3M16 8V3M20 8V3M12 29v-5M16 29v-5M20 29v-5M8 12H3M8 16H3M8 20H3M29 12h-5M29 16h-5M29 20h-5' stroke='%2300ff66' stroke-width='1.5'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="bg-grid" aria-hidden="true"></div>
+<canvas id="bg-canvas" aria-hidden="true"></canvas>
+
+<header class="navbar" id="navbar">
+  <nav class="nav-inner" aria-label="Primary">
+    <a class="brand" href="index.html">
+      <svg class="brand-chip" viewBox="0 0 32 32" aria-hidden="true">
+        <rect x="8" y="8" width="16" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="2"/>
+        <rect x="13" y="13" width="6" height="6" class="brand-die"/>
+        <path d="M12 8V3M16 8V3M20 8V3M12 29v-5M16 29v-5M20 29v-5M8 12H3M8 16H3M8 20H3M29 12h-5M29 16h-5M29 20h-5" stroke="currentColor" stroke-width="1.5"/>
+      </svg>
+      <span class="brand-text mono">LM<span class="brand-cursor">_</span></span>
+    </a>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-links">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="index.html#about" class="nav-link"><span class="mono nav-num">01</span> About</a></li>
+      <li><a href="index.html#skills" class="nav-link"><span class="mono nav-num">02</span> Skills</a></li>
+      <li><a href="index.html#projects" class="nav-link"><span class="mono nav-num">03</span> Projects</a></li>
+      <li><a href="index.html#resume" class="nav-link"><span class="mono nav-num">04</span> Resume</a></li>
+      <li><a href="index.html#contact" class="nav-link"><span class="mono nav-num">05</span> Contact</a></li>
+      <li><a href="media/Luke_Morrison_Resume_Formatted.docx.pdf" class="btn btn-ghost btn-nav" download="Luke_Morrison_Resume.pdf">Resume ↓</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="main">
+
+  <header class="case-hero">
+    <a href="index.html#projects" class="crumb mono">← ALL PROJECTS</a>
+    <p class="case-tags mono">PCB DESIGN · INTERACTIVE 3D MODELS</p>
+    <h1>PCB Model Lab</h1>
+    <p class="case-intro">
+      A small archive of PCB designs, viewable as full-detail interactive 3D models exported from
+      CAD. Each board loads on demand as a compressed glTF file. Drag to orbit, scroll to zoom.
+      If a model cannot load, a static render takes its place. The same boards, converted to
+      point clouds, appear on the home page project card.
+    </p>
+  </header>
+
+  <dl class="case-meta">
+    <div class="reveal"><dt>Role</dt><dd>Schematic design · PCB layout · firmware planning · bring-up</dd></div>
+    <div class="reveal"><dt>Boards</dt><dd>Thermocouple interface · motion-control board · dual DC motor driver · machine controller</dd></div>
+    <div class="reveal"><dt>Rendering</dt><dd>CAD export · glTF conversion · model-viewer · static fallback render</dd></div>
+  </dl>
+
+  <section class="case-gallery case-gallery--wide">
+
+    <figure class="case-item reveal">
+      <div class="case-media model-stage">
+        <model-viewer class="pcb-model" src="media/models/thermocouple4ch.glb" poster="media/models/thermocouple4ch_render.png" alt="Interactive 3D model of the 4-channel thermocouple board" camera-controls auto-rotate rotation-per-second="16deg" shadow-intensity="0.4" exposure="1.1" interaction-prompt="none" loading="lazy"></model-viewer>
+        <p class="model-hint mono"><b>DRAG TO ORBIT · SCROLL TO ZOOM</b> · FULL CAD MODEL</p>
+      </div>
+      <figcaption>
+        <p class="case-step mono">01 / 06 · TEMPERATURE MEASUREMENT</p>
+        <h3>4-Channel Thermocouple Interface</h3>
+        <p>A four-channel thermocouple board for reading multiple temperature points during bench testing and machine experiments.</p>
+      </figcaption>
+    </figure>
+
+    <figure class="case-item reveal">
+      <div class="case-media model-stage">
+        <model-viewer class="pcb-model" src="media/models/microstepper.glb" poster="media/models/microstepper_render.png" alt="Interactive 3D model of the microstepper driver board" camera-controls auto-rotate rotation-per-second="16deg" shadow-intensity="0.4" exposure="1.1" interaction-prompt="none" loading="lazy"></model-viewer>
+        <p class="model-hint mono"><b>DRAG TO ORBIT · SCROLL TO ZOOM</b> · FULL CAD MODEL</p>
+      </div>
+      <figcaption>
+        <p class="case-step mono">02 / 06 · MOTION CONTROL</p>
+        <h3>Microstepper Driver</h3>
+        <p>A stepper motor control board for smoother motion in small automation projects.</p>
+      </figcaption>
+    </figure>
+
+    <figure class="case-item reveal">
+      <div class="case-media model-stage">
+        <model-viewer class="pcb-model" src="media/models/dcmotor2ch.glb" poster="media/models/dcmotor2ch_render.png" alt="Interactive 3D model of the dual DC motor driver board" camera-controls auto-rotate rotation-per-second="16deg" shadow-intensity="0.4" exposure="1.1" interaction-prompt="none" loading="lazy"></model-viewer>
+        <p class="model-hint mono"><b>DRAG TO ORBIT · SCROLL TO ZOOM</b> · FULL CAD MODEL</p>
+      </div>
+      <figcaption>
+        <p class="case-step mono">03 / 06 · MOTOR CONTROL</p>
+        <h3>Dual DC Motor Driver</h3>
+        <p>A two-channel motor driver board for small carts, rigs, and motion-control prototypes.</p>
+      </figcaption>
+    </figure>
+
+    <figure class="case-item reveal">
+      <div class="case-media model-stage">
+        <model-viewer class="pcb-model" src="media/models/pastercontrol.glb" poster="media/models/pastercontrol_render.png" alt="Interactive 3D model of the paster control board" camera-controls auto-rotate rotation-per-second="16deg" shadow-intensity="0.4" exposure="1.1" interaction-prompt="none" loading="lazy"></model-viewer>
+        <p class="model-hint mono"><b>DRAG TO ORBIT · SCROLL TO ZOOM</b> · FULL CAD MODEL</p>
+      </div>
+      <figcaption>
+        <p class="case-step mono">04 / 06 · MACHINE CONTROL</p>
+        <h3>Paster Control Board</h3>
+        <p>A machine controller for speed control, heater control, timing, and operator input on one board.</p>
+      </figcaption>
+    </figure>
+
+    <figure class="case-item reveal">
+      <div class="case-media">
+        <video src="media/bench/dual_oled.mp4" poster="media/bench/dual_oled_poster.jpg" controls muted loop playsinline preload="none" aria-label="Video of two OLED displays running graphics over SPI"></video>
+      </div>
+      <figcaption>
+        <p class="case-step mono">05 / 06 · DISPLAY PROTOTYPE</p>
+        <h3>Dual OLED SPI Displays</h3>
+        <p>Two OLED panels driven over SPI from one microcontroller. This was the display prototype for the paster control board's menu UI.</p>
+      </figcaption>
+    </figure>
+
+    <figure class="case-item case-item--stack reveal">
+      <div class="case-media">
+        <img src="media/pcb_lab/paster_proto1.jpg" alt="Breadboard prototype of the paster controller with an OLED menu showing speed, temperature, dry timer, and cal speed settings" loading="lazy" decoding="async">
+      </div>
+      <figcaption>
+        <p class="case-step mono">06 / 06 · BREADBOARD PROTOTYPE</p>
+        <h3>Paster Controller Prototype</h3>
+        <p>The controller before PCB layout: OLED menu, rotary input, speed setting, temperature setting, dry timer, and driver modules tested on the bench.</p>
+      </figcaption>
+    </figure>
+
+    <figure class="case-item case-item--stack reveal">
+      <div class="case-media">
+        <img src="media/pcb_lab/paster_proto2.jpg" alt="Second view of the paster controller breadboard prototype wiring" loading="lazy" decoding="async">
+      </div>
+      <figcaption>
+        <p class="case-step mono">APPENDIX · WIRING</p>
+        <h3>The Honest Version</h3>
+        <p>The breadboard stage was messy, but it proved the control logic before the design was committed to copper.</p>
+      </figcaption>
+    </figure>
+
+  </section>
+
+  <nav class="case-pager" aria-label="More projects">
+    <a class="pager-link prev" href="electronics.html">
+      <span class="pager-dir mono">← PREVIOUS</span>
+      <span class="pager-title">From Breadboards to PCBs</span>
+    </a>
+    <a class="pager-link next" href="electric_car.html">
+      <span class="pager-dir mono">NEXT →</span>
+      <span class="pager-title">Electric Car</span>
+    </a>
+  </nav>
+
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <p class="mono footer-line">© 2026 LUKE MORRISON · DESIGNED &amp; HAND-CODED · VANILLA HTML/CSS/JS</p>
+    <a href="index.html" class="mono footer-top">BACK TO HOME ↑</a>
+  </div>
+</footer>
+
+<script src="js/main.js" defer></script>
+</body>
+</html>

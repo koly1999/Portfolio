@@ -3,17 +3,17 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Electric Car · Luke Morrison</title>
-  <meta name="description" content="A Science Olympiad vehicle built to drive a set distance and stop on a target. Four prototypes of traction, gearing, and braking work; 1st at regionals and 2nd at state.">
-  <meta name="theme-color" content="#010502">
-  <link rel="canonical" href="https://koly1999.github.io/Portfolio/electric_car.html">
+  <title>Scratch-Built Theremin · Luke Morrison</title>
+  <meta name="description" content="A playable theremin built from salvaged radio electronics, demonstrated on video.">
+  <meta name="theme-color" content="#050208">
+  <link rel="canonical" href="https://koly1999.github.io/Portfolio/theremin.html">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='8' y='8' width='16' height='16' rx='2' fill='none' stroke='%2300ff66' stroke-width='2'/%3E%3Crect x='13' y='13' width='6' height='6' fill='%23b6ff45'/%3E%3Cpath d='M12 8V3M16 8V3M20 8V3M12 29v-5M16 29v-5M20 29v-5M8 12H3M8 16H3M8 20H3M29 12h-5M29 16h-5M29 20h-5' stroke='%2300ff66' stroke-width='1.5'/%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body class="theme-violet">
 
 <a class="skip-link" href="#main">Skip to content</a>
 <div class="bg-grid" aria-hidden="true"></div>
@@ -47,78 +47,54 @@
 
   <header class="case-hero">
     <a href="index.html#projects" class="crumb mono">← ALL PROJECTS</a>
-    <p class="case-tags mono">SCIENCE OLYMPIAD · MOTOR CONTROL · MECHANICAL DESIGN</p>
-    <h1>Electric Car</h1>
+    <p class="case-tags mono">ANALOG · MUSIC · SALVAGE</p>
+    <h1>Scratch-Built Theremin</h1>
     <p class="case-intro">
-      A Science Olympiad build. The car is set to drive a fixed distance, and the goal is to stop
-      on a target as quickly and precisely as possible. It is an interesting engineering problem
-      that pulls together traction, gearing, distance measurement, and braking. The design went
-      through four prototypes.
+      An instrument played without touching it. This one is built from salvaged radio electronics,
+      speakers, and a telescoping antenna mounted on a wooden plank, and it plays.
     </p>
   </header>
 
   <dl class="case-meta">
-    <div class="reveal"><dt>Role</dt><dd>Design · build · field testing &amp; iteration</dd></div>
-    <div class="reveal"><dt>Systems</dt><dd>DC drive · threaded distance encoder · disk brakes · 3D-printed chassis</dd></div>
-    <div class="reveal"><dt>Result</dt><dd>1st place at regionals and 2nd at state with the final versions</dd></div>
+    <div class="reveal"><dt>Role</dt><dd>Salvage · circuit hacking · tuning</dd></div>
+    <div class="reveal"><dt>Ingredients</dt><dd>Salvaged radio boards · speakers · telescoping antenna · one wooden plank</dd></div>
+    <div class="reveal"><dt>Outcome</dt><dd>A playable instrument, demonstrated in the video below</dd></div>
   </dl>
 
   <section class="case-gallery">
 
     <figure class="case-item reveal">
       <div class="case-media">
-        <img src="media/electric_car/second_prototype.jpg" alt="First prototype of the electric car, which had traction issues" loading="lazy" decoding="async">
+        <img src="media/theremin/theremin.jpg" alt="Scratch-built theremin on a wooden plank in a display case: salvaged radio boards, two speakers, and a telescoping antenna" loading="lazy" decoding="async">
       </div>
       <figcaption>
-        <p class="case-step mono">01 / 04 · PROTOTYPE A</p>
-        <h3>First Build: Traction Problems</h3>
-        <p>The first prototype had poor grip and wandered off course. It set the next two requirements: better traction and repeatable distance measurement.</p>
+        <p class="case-step mono">01 / 02 · THE BUILD</p>
+        <h3>The Build</h3>
+        <p>Salvaged radio electronics, two speakers, and a telescoping antenna mounted on a plank. It was displayed in the school display case.</p>
       </figcaption>
     </figure>
 
     <figure class="case-item reveal">
       <div class="case-media">
-        <img src="media/electric_car/gearing.jpg" alt="Geared timing counter mechanism for distance measurement" loading="lazy" decoding="async">
+        <video src="media/theremin/theremin_playing.mp4" poster="media/theremin/theremin_video_poster.jpg" controls playsinline preload="none" aria-label="Video of the theremin being played, with sound"></video>
       </div>
       <figcaption>
-        <p class="case-step mono">02 / 04 · MEASUREMENT V1</p>
-        <h3>Gearing &amp; Timing Counter</h3>
-        <p>A geared timing counter measured distance traveled. It worked on the bench but was unreliable in field tests, so it was replaced.</p>
-      </figcaption>
-    </figure>
-
-    <figure class="case-item reveal">
-      <div class="case-media">
-        <img src="media/electric_car/first_prototype.jpg" alt="Second prototype with foam wheels and threaded distance encoder" loading="lazy" decoding="async">
-      </div>
-      <figcaption>
-        <p class="case-step mono">03 / 04 · MEASUREMENT V2</p>
-        <h3>Foam Wheels + Threaded Encoder</h3>
-        <p>Foam wheels improved grip, and a threaded distance encoder replaced the timing counter. Readings became consistent from run to run.</p>
-      </figcaption>
-    </figure>
-
-    <figure class="case-item reveal">
-      <div class="case-media">
-        <img src="media/electric_car/finished_car.jpg" alt="Final electric car with custom 3D-printed chassis and disk brakes" loading="lazy" decoding="async">
-      </div>
-      <figcaption>
-        <p class="case-step mono">04 / 04 · FINAL VERSION</p>
-        <h3>Disk Brakes &amp; Printed Chassis</h3>
-        <p>Upgraded electronics, disk brakes, and a custom 3D-printed chassis. This version drove straight, stopped on target, and took 1st at regionals and 2nd at state.</p>
+        <p class="case-step mono">02 / 02 · PERFORMANCE</p>
+        <h3>Playing It (Sound On)</h3>
+        <p>Pitch changes with hand distance from the antenna. Turn the sound on for this one.</p>
       </figcaption>
     </figure>
 
   </section>
 
   <nav class="case-pager" aria-label="More projects">
-    <a class="pager-link prev" href="pcb-lab.html">
+    <a class="pager-link prev" href="high-voltage.html">
       <span class="pager-dir mono">← PREVIOUS</span>
-      <span class="pager-title">PCB Model Lab</span>
+      <span class="pager-title">Microwave Transformer Arc</span>
     </a>
-    <a class="pager-link next" href="controler-protector.html">
+    <a class="pager-link next" href="graphic-design.html">
       <span class="pager-dir mono">NEXT →</span>
-      <span class="pager-title">Gimbal Protectors</span>
+      <span class="pager-title">Design Manifesto &amp; Posters</span>
     </a>
   </nav>
 

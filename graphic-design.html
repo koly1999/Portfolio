@@ -3,249 +3,236 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Graphic Design · Luke Morrison’s Portfolio</title>
+  <title>Design Manifesto &amp; Posters · Luke Morrison</title>
+  <meta name="description" content="A designed manifesto with covers, center spreads, and an eight-page pamphlet system, plus poster work.">
+  <meta name="theme-color" content="#f3ecdd">
+  <link rel="canonical" href="https://koly1999.github.io/Portfolio/graphic-design.html">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='8' y='8' width='16' height='16' rx='2' fill='none' stroke='%2300ff66' stroke-width='2'/%3E%3Crect x='13' y='13' width='6' height='6' fill='%23b6ff45'/%3E%3Cpath d='M12 8V3M16 8V3M20 8V3M12 29v-5M16 29v-5M20 29v-5M8 12H3M8 16H3M8 20H3M29 12h-5M29 16h-5M29 20h-5' stroke='%2300ff66' stroke-width='1.5'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
-  <script>
-    // Dark mode toggle (and persistence)
-    function toggleTheme() {
-      document.documentElement.classList.toggle('dark');
-      localStorage.theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
-    }
-    document.addEventListener('DOMContentLoaded', () => {
-      if (localStorage.theme === 'dark') {
-        document.documentElement.classList.add('dark');
-      }
-    });
-  </script>
 </head>
-<body>
+<body class="brand-editorial">
 
-  <!-- ==================================================
-       NAVIGATION BAR
-  ================================================== -->
-  <nav class="navbar">
-    <ul class="navbar-nav">
-      <li class="logo">
-        <a href="index.html" class="nav-link">
-          <span class="logo-icon">
-            <!-- fighter-jet icon -->
-            <svg aria-hidden="true" focusable="false" data-prefix="fad" data-icon="fighter-jet" role="img"
-                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
-              <g class="fa-group">
-                <path fill="currentColor" class="fa-secondary"
-                      d="M168 192h176L227.16 44h39.51c11.66 0 21.33-2.62 21.33-6s-9.67-6-21.33-6H152v12h16zm0 128v148h-16v12h114.67c11.66 0 21.33-2.62 21.33-6s-9.67-6-21.33-6h-39.51L344 320z"/>
-                <path fill="currentColor" class="fa-primary"
-                      d="M640 256c0 5.42 0 10.67-96 32l-128 16-48 16H106.67l-53.34 64H18.67L8 373.33V304h8v-16h48v-2.67l-64-8v-42.66l64-8V224H16v-16H8v-69.33L18.67 128h34.66l53.34 64H368l48 16 128 16c96 21.33 96 26.58 96 32z"/>
-              </g>
-            </svg>
-          </span>
-          <span class="link-text logo-text">Portfolio</span>
-        </a>
-      </li>
-      <li class="nav-item"><a href="index.html#about"   class="nav-link"><span class="link-text">About</span></a></li>
-      <li class="nav-item"><a href="index.html#skills"  class="nav-link"><span class="link-text">Skills</span></a></li>
-      <li class="nav-item"><a href="index.html#projects" class="nav-link"><span class="link-text">Projects</span></a></li>
-      <li class="nav-item"><a href="index.html#contact" class="nav-link"><span class="link-text">Contact</span></a></li>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="bg-grid" aria-hidden="true"></div>
+<canvas id="bg-canvas" aria-hidden="true"></canvas>
+
+<header class="navbar" id="navbar">
+  <nav class="nav-inner" aria-label="Primary">
+    <a class="brand" href="index.html">
+      <svg class="brand-chip" viewBox="0 0 32 32" aria-hidden="true">
+        <rect x="8" y="8" width="16" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="2"/>
+        <rect x="13" y="13" width="6" height="6" class="brand-die"/>
+        <path d="M12 8V3M16 8V3M20 8V3M12 29v-5M16 29v-5M20 29v-5M8 12H3M8 16H3M8 20H3M29 12h-5M29 16h-5M29 20h-5" stroke="currentColor" stroke-width="1.5"/>
+      </svg>
+      <span class="brand-text mono">LM<span class="brand-cursor">_</span></span>
+    </a>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-links">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="index.html#about" class="nav-link"><span class="mono nav-num">01</span> About</a></li>
+      <li><a href="index.html#skills" class="nav-link"><span class="mono nav-num">02</span> Skills</a></li>
+      <li><a href="index.html#projects" class="nav-link"><span class="mono nav-num">03</span> Projects</a></li>
+      <li><a href="index.html#resume" class="nav-link"><span class="mono nav-num">04</span> Resume</a></li>
+      <li><a href="index.html#contact" class="nav-link"><span class="mono nav-num">05</span> Contact</a></li>
+      <li><a href="media/Luke_Morrison_Resume_Formatted.docx.pdf" class="btn btn-ghost btn-nav" download="Luke_Morrison_Resume.pdf">Resume ↓</a></li>
     </ul>
   </nav>
+</header>
 
-  <!-- ==================================================
-       THEME SWITCHER (fixed top-right)
-  ================================================== -->
-  <div class="theme-switcher">
-    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"></button>
+<main id="main">
+
+  <header class="case-hero">
+    <a href="index.html#projects" class="crumb mono">← ALL PROJECTS</a>
+    <p class="case-tags mono">GRAPHIC DESIGN · LAYOUT · TYPOGRAPHY</p>
+    <h1 class="wna-title">
+      <span class="wna-w1">Design</span>
+      <span class="wna-row"><span class="wna-w2">Manifesto</span> <span class="wna-w3" aria-hidden="true">&amp;</span></span>
+      <span class="wna-w4"><span class="visually-hidden">&amp; </span>Posters</span>
+    </h1>
+    <p class="case-intro">
+      Posters, booklet layouts, branding, and class design work: a designed manifesto with front
+      and back covers, center spreads, and an eight-page pamphlet system, plus two posters.
+      Click any image to view it up close.
+    </p>
+  </header>
+
+  <dl class="case-meta">
+    <div class="reveal"><dt>Role</dt><dd>Design · layout · production mockups</dd></div>
+    <div class="reveal"><dt>Toolkit</dt><dd>Adobe Illustrator · grid systems · type hierarchy</dd></div>
+    <div class="reveal"><dt>Outcome</dt><dd>A complete cover-to-cover pamphlet system and poster series</dd></div>
+  </dl>
+
+  <section class="case-gallery case-gallery--wide">
+
+    <figure class="case-item case-item--stack reveal">
+      <div class="case-media">
+        <img src="media/graphic_design/Luke_Morrison_dmb-frontcover.png" alt="Front cover mockup of the design manifesto" loading="lazy" decoding="async">
+      </div>
+      <figcaption>
+        <p class="case-step mono">01 / 13 · COVERS</p>
+        <h3>Front Cover</h3>
+        <p>Mockup of the manifesto's front cover.</p>
+      </figcaption>
+    </figure>
+
+    <figure class="case-item case-item--stack reveal">
+      <div class="case-media">
+        <img src="media/graphic_design/Luke_Morrison_dmb-center.png" alt="Center pages mockup of the design manifesto" loading="lazy" decoding="async">
+      </div>
+      <figcaption>
+        <p class="case-step mono">02 / 13 · COVERS</p>
+        <h3>Center Spread</h3>
+        <p>The center pages, where the layout opens up across the full spread.</p>
+      </figcaption>
+    </figure>
+
+    <figure class="case-item case-item--stack reveal">
+      <div class="case-media">
+        <img src="media/graphic_design/Luke_Morrison_dmb-backcover.png" alt="Back cover mockup of the design manifesto" loading="lazy" decoding="async">
+      </div>
+      <figcaption>
+        <p class="case-step mono">03 / 13 · COVERS</p>
+        <h3>Back Cover</h3>
+        <p>Mockup of the manifesto's back cover.</p>
+      </figcaption>
+    </figure>
+
+    <figure class="case-item case-item--stack reveal">
+      <div class="case-media">
+        <img src="media/graphic_design/DMB–RefinementGRID.jpg" alt="Pamphlet page 1, cover spread" loading="lazy" decoding="async">
+      </div>
+      <figcaption>
+        <p class="case-step mono">04 / 13 · PAMPHLET</p>
+        <h3>Page 1: Opening Spread</h3>
+        <p>The cover spread that introduces the pamphlet's theme and branding.</p>
+      </figcaption>
+    </figure>
+
+    <figure class="case-item case-item--stack reveal">
+      <div class="case-media">
+        <img src="media/graphic_design/DMB–RefinementGRID2.jpg" alt="Pamphlet page 2, introduction" loading="lazy" decoding="async">
+      </div>
+      <figcaption>
+        <p class="case-step mono">05 / 13 · PAMPHLET</p>
+        <h3>Page 2: Introduction</h3>
+        <p>Introduces the topics and establishes the visual style.</p>
+      </figcaption>
+    </figure>
+
+    <figure class="case-item case-item--stack reveal">
+      <div class="case-media">
+        <img src="media/graphic_design/DMB–RefinementGRID3.jpg" alt="Pamphlet page 3" loading="lazy" decoding="async">
+      </div>
+      <figcaption>
+        <p class="case-step mono">06 / 13 · PAMPHLET</p>
+        <h3>Page 3: Theming</h3>
+        <p>Continuing the theme on the same grid.</p>
+      </figcaption>
+    </figure>
+
+    <figure class="case-item case-item--stack reveal">
+      <div class="case-media">
+        <img src="media/graphic_design/DMB–RefinementGRID4.jpg" alt="Pamphlet page 4" loading="lazy" decoding="async">
+      </div>
+      <figcaption>
+        <p class="case-step mono">07 / 13 · PAMPHLET</p>
+        <h3>Page 4: Alignment &amp; Color</h3>
+        <p>More work with alignment and color inside the same grid system.</p>
+      </figcaption>
+    </figure>
+
+    <figure class="case-item case-item--stack reveal">
+      <div class="case-media">
+        <img src="media/graphic_design/DMB–RefinementGRID5.jpg" alt="Pamphlet page 5" loading="lazy" decoding="async">
+      </div>
+      <figcaption>
+        <p class="case-step mono">08 / 13 · PAMPHLET</p>
+        <h3>Page 5: Call to Action</h3>
+        <p>A spread built around a call to action.</p>
+      </figcaption>
+    </figure>
+
+    <figure class="case-item case-item--stack reveal">
+      <div class="case-media">
+        <img src="media/graphic_design/DMB–RefinementGRID6.jpg" alt="Pamphlet page 6" loading="lazy" decoding="async">
+      </div>
+      <figcaption>
+        <p class="case-step mono">09 / 13 · PAMPHLET</p>
+        <h3>Page 6: Negative Space</h3>
+        <p>Color and negative space carry this composition.</p>
+      </figcaption>
+    </figure>
+
+    <figure class="case-item case-item--stack reveal">
+      <div class="case-media">
+        <img src="media/graphic_design/DMB–RefinementGRID7.jpg" alt="Pamphlet page 7" loading="lazy" decoding="async">
+      </div>
+      <figcaption>
+        <p class="case-step mono">10 / 13 · PAMPHLET</p>
+        <h3>Page 7: Refinement</h3>
+        <p>Refined spreads leading into the close of the pamphlet.</p>
+      </figcaption>
+    </figure>
+
+    <figure class="case-item case-item--stack reveal">
+      <div class="case-media">
+        <img src="media/graphic_design/DMB–RefinementGRID8.jpg" alt="Pamphlet page 8, closing spread" loading="lazy" decoding="async">
+      </div>
+      <figcaption>
+        <p class="case-step mono">11 / 13 · PAMPHLET</p>
+        <h3>Page 8: Closing Spread</h3>
+        <p>The final page of the pamphlet.</p>
+      </figcaption>
+    </figure>
+
+    <figure class="case-item case-item--stack reveal">
+      <div class="case-media">
+        <img src="media/graphic_design/Poster1.jpg" alt="Poster design one" loading="lazy" decoding="async">
+      </div>
+      <figcaption>
+        <p class="case-step mono">12 / 13 · POSTERS</p>
+        <h3>Poster I</h3>
+        <p>Poster work at a larger scale, designed to read clearly at a distance.</p>
+      </figcaption>
+    </figure>
+
+    <figure class="case-item case-item--stack reveal">
+      <div class="case-media">
+        <img src="media/graphic_design/Poster2-longer.png" alt="Poster design two, long format" loading="lazy" decoding="async">
+      </div>
+      <figcaption>
+        <p class="case-step mono">13 / 13 · POSTERS</p>
+        <h3>Poster II</h3>
+        <p>A long-format piece in a different aspect ratio.</p>
+      </figcaption>
+    </figure>
+
+  </section>
+
+  <nav class="case-pager" aria-label="More projects">
+    <a class="pager-link prev" href="theremin.html">
+      <span class="pager-dir mono">← PREVIOUS</span>
+      <span class="pager-title">Scratch-Built Theremin</span>
+    </a>
+    <a class="pager-link next" href="celsius.html">
+      <span class="pager-dir mono">NEXT →</span>
+      <span class="pager-title">Celsius Motion Ad</span>
+    </a>
+  </nav>
+
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <p class="mono footer-line">© 2026 LUKE MORRISON · DESIGNED &amp; HAND-CODED · VANILLA HTML/CSS/JS</p>
+    <a href="index.html" class="mono footer-top">BACK TO HOME ↑</a>
   </div>
+</footer>
 
-  <main>
-    <!-- ==================================================
-         PROJECT HEADER
-    ================================================== -->
-    <section class="project-hero">
-      <h1 class="section-heading">Graphic Design</h1>
-      <p class="project-intro">
-        A curated selection of pamphlet spreads, posters, logos, and illustrations—bringing concepts to life with clean, bold visuals.
-      </p>
-    </section>
-
-    <hr class="dotted-line">
-
-    <!-- ==================================================
-         PROJECT GALLERY (Banner Style)
-    ================================================== -->
-    <section class="project-gallery">
-
-      <div class="project-banner">
-        <img src="media/graphic_design/Luke_Morrison_dmb-frontcover.png"
-             alt="Book cover illustration"
-             class="banner-image">
-        <div class="banner-text">
-          <h3>Pamphlet Cover</h3>
-          <p>
-            Mockup of the front cover of the manifesto I designed. 
-          </p>
-        </div>
-      </div>
-
-            <div class="project-banner">
-        <img src="media/graphic_design/Luke_Morrison_dmb-center.png"
-             alt="Informational infographic"
-             class="banner-image">
-        <div class="banner-text">
-          <h3>Center Pages</h3>
-          <p>
-            Mockup of the center pages of the manifesto I designed.
-          </p>
-        </div>
-      </div>
-
-            <div class="project-banner">
-        <img src="media/graphic_design/Luke_Morrison_dmb-backcover.png"
-             alt="Brand identity logo"
-             class="banner-image">
-        <div class="banner-text">
-          <h3>Back Cover</h3>
-          <p>
-            Mockup of the back cover of the manifesto I designed.
-          </p>
-        </div>
-      </div>
-
-      <!-- Pamphlet pages (1–8) -->
-      <div class="project-banner">
-        <img src="media/graphic_design/DMB–RefinementGRID.jpg"
-             alt="Pamphlet – Page 1"
-             class="banner-image">
-        <div class="banner-text">
-          <h3>Pamphlet – Page 1</h3>
-          <p>Cover spread introducing the pamphlet’s theme and branding.</p>
-        </div>
-      </div>
-
-      <div class="project-banner">
-        <div class="banner-text">
-          <h3>Pamphlet – Page 2</h3>
-          <p>Introduction to the topics and style.</p>
-        </div>
-        <img src="media/graphic_design/DMB–RefinementGRID2.jpg"
-             alt="Pamphlet – Page 2"
-             class="banner-image">
-      </div>
-
-      <div class="project-banner">
-        <img src="media/graphic_design/DMB–RefinementGRID3.jpg"
-             alt="Pamphlet – Page 3"
-             class="banner-image">
-        <div class="banner-text">
-          <h3>Pamphlet – Page 3</h3>
-          <p>Continuation of themeing and topics.</p>
-        </div>
-      </div>
-
-      <div class="project-banner">
-        <div class="banner-text">
-          <h3>Pamphlet – Page 4</h3>
-          <p>Playing with alignment and colors more.</p>
-        </div>
-        <img src="media/graphic_design/DMB–RefinementGRID4.jpg"
-             alt="Pamphlet – Page 4"
-             class="banner-image">
-      </div>
-
-      <div class="project-banner">
-        <img src="media/graphic_design/DMB–RefinementGRID5.jpg"
-             alt="Pamphlet – Page 5"
-             class="banner-image">
-        <div class="banner-text">
-          <h3>Pamphlet – Page 5</h3>
-          <p>Continuing, this time with more call to action.</p>
-        </div>
-      </div>
-
-      <div class="project-banner">
-        <div class="banner-text">
-          <h3>Pamphlet – Page 6</h3>
-          <p>Having fun with color and negative space.</p>
-        </div>
-        <img src="media/graphic_design/DMB–RefinementGRID6.jpg"
-             alt="Pamphlet – Page 6"
-             class="banner-image">
-      </div>
-
-      <div class="project-banner">
-        <img src="media/graphic_design/DMB–RefinementGRID7.jpg"
-             alt="Pamphlet – Page 7"
-             class="banner-image">
-        <div class="banner-text">
-          <h3>Pamphlet – Page 7</h3>
-          <p>Wrapping up with final call to action and expressing the themeing.</p>
-        </div>
-      </div>
-
-      <div class="project-banner">
-        <div class="banner-text">
-          <h3>Pamphlet – Page 8</h3>
-          <p>Back cover with final call-to-action and Abe Lincoln quote.</p>
-        </div>
-        <img src="media/graphic_design/DMB–RefinementGRID8.jpg"
-             alt="Pamphlet – Page 8"
-             class="banner-image">
-      </div>
-
-
-      <!-- Curated Pieces (from original snippet) -->
-
-      <div class="project-banner">
-        <img src="media/graphic_design/Mockup.png"
-             alt="Event poster design"
-             class="banner-image">
-        <div class="banner-text">
-          <h3>Money Poster Mockup</h3>
-          <p>
-            A Mockup of a poster in the style of the Why Not Assocates? with a focus on the theme of money.
-          </p>
-        </div>
-      </div>
-
-
-      <div class="project-banner">
-        <img src="media/graphic_design/Poster2-longer.png"
-             alt="Social media graphic"
-             class="banner-image">
-        <div class="banner-text">
-          <h3>Money Poster</h3>
-          <p>
-            Engaging square graphic optimized for Instagram—combines bold type and layered imagery.
-          </p>
-        </div>
-      </div>
-
-      <div class="project-banner">
-        <img src="media/graphic_design/poster1.jpg"
-             alt="Digital illustration sample"
-             class="banner-image">
-        <div class="banner-text">
-          <h3>Movie Quote Poster</h3>
-          <p>
-            A poster incorporating movie quotes from LaLa Land and Whiplash. 
-          </p>
-        </div>
-      </div>
-
-    </section>
-
-    <hr class="dotted-line">
-
-    <!-- ==================================================
-         FOOTER & CONTACT
-    ================================================== -->
-    <footer>
-      <section id="contact" class="contact-footer">
-        <h2>Get in Touch</h2>
-        <p>Email me at <a href="mailto:koly1999@gmail.com">koly1999@gmail.com</a></p>
-      </section>
-    </footer>
-
-  </main>
+<script src="js/main.js" defer></script>
 </body>
 </html>

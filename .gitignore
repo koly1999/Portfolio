@@ -1,0 +1,9 @@
+# Local tooling
+.claude/
+
+# Raw source media (site uses processed copies in media/models, media/bench, etc.)
+media/unsorted_media/
+
+# OS junk
+.DS_Store
+Thumbs.db

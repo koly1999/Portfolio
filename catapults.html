@@ -3,156 +3,142 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Catapults · Luke Morrison’s Portfolio</title>
+  <title>Catapults · Luke Morrison</title>
+  <meta name="description" content="Competition catapults: a torsion catapult and a counterweight trebuchet that launched a 5-pound rock up to 190 feet.">
+  <meta name="theme-color" content="#171007">
+  <link rel="canonical" href="https://koly1999.github.io/Portfolio/catapults.html">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='8' y='8' width='16' height='16' rx='2' fill='none' stroke='%2300ff66' stroke-width='2'/%3E%3Crect x='13' y='13' width='6' height='6' fill='%23b6ff45'/%3E%3Cpath d='M12 8V3M16 8V3M20 8V3M12 29v-5M16 29v-5M20 29v-5M8 12H3M8 16H3M8 20H3M29 12h-5M29 16h-5M29 20h-5' stroke='%2300ff66' stroke-width='1.5'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
-  <script>
-    // Dark mode toggle (and persistence)
-    function toggleTheme() {
-      document.documentElement.classList.toggle('dark');
-      localStorage.theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
-    }
-    document.addEventListener('DOMContentLoaded', () => {
-      if (localStorage.theme === 'dark') {
-        document.documentElement.classList.add('dark');
-      }
-    });
-  </script>
 </head>
-<body>
+<body class="brand-medieval">
 
-  <!-- ==================================================
-       COMPONENT: Navigation Bar
-  ================================================== -->
-  <nav class="navbar">
-    <ul class="navbar-nav">
-      <li class="logo">
-        <a href="index.html" class="nav-link">
-          <span class="logo-icon">
-            <!-- fighter-jet icon -->
-            <svg aria-hidden="true" focusable="false" data-prefix="fad" data-icon="fighter-jet" role="img"
-                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
-              <g class="fa-group">
-                <path fill="currentColor" class="fa-secondary"
-                      d="M168 192h176L227.16 44h39.51c11.66 0 21.33-2.62 21.33-6s-9.67-6-21.33-6H152v12h16zm0 128v148h-16v12h114.67c11.66 0 21.33-2.62 21.33-6s-9.67-6-21.33-6h-39.51L344 320z"/>
-                <path fill="currentColor" class="fa-primary"
-                      d="M640 256c0 5.42 0 10.67-96 32l-128 16-48 16H106.67l-53.34 64H18.67L8 373.33V304h8v-16h48v-2.67l-64-8v-42.66l64-8V224H16v-16H8v-69.33L18.67 128h34.66l53.34 64H368l48 16 128 16c96 21.33 96 26.58 96 32z"/>
-              </g>
-            </svg>
-          </span>
-          <span class="link-text logo-text">Portfolio</span>
-        </a>
-      </li>
-      <li class="nav-item"><a href="index.html#about" class="nav-link"><span class="link-text">About</span></a></li>
-      <li class="nav-item"><a href="index.html#skills" class="nav-link"><span class="link-text">Skills</span></a></li>
-      <li class="nav-item"><a href="index.html#projects" class="nav-link"><span class="link-text">Projects</span></a></li>
-      <li class="nav-item"><a href="index.html#contact" class="nav-link"><span class="link-text">Contact</span></a></li>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="bg-grid" aria-hidden="true"></div>
+<canvas id="bg-canvas" aria-hidden="true"></canvas>
+
+<header class="navbar" id="navbar">
+  <nav class="nav-inner" aria-label="Primary">
+    <a class="brand" href="index.html">
+      <svg class="brand-chip" viewBox="0 0 32 32" aria-hidden="true">
+        <rect x="8" y="8" width="16" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="2"/>
+        <rect x="13" y="13" width="6" height="6" class="brand-die"/>
+        <path d="M12 8V3M16 8V3M20 8V3M12 29v-5M16 29v-5M20 29v-5M8 12H3M8 16H3M8 20H3M29 12h-5M29 16h-5M29 20h-5" stroke="currentColor" stroke-width="1.5"/>
+      </svg>
+      <span class="brand-text mono">LM<span class="brand-cursor">_</span></span>
+    </a>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-links">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="index.html#about" class="nav-link"><span class="mono nav-num">01</span> About</a></li>
+      <li><a href="index.html#skills" class="nav-link"><span class="mono nav-num">02</span> Skills</a></li>
+      <li><a href="index.html#projects" class="nav-link"><span class="mono nav-num">03</span> Projects</a></li>
+      <li><a href="index.html#resume" class="nav-link"><span class="mono nav-num">04</span> Resume</a></li>
+      <li><a href="index.html#contact" class="nav-link"><span class="mono nav-num">05</span> Contact</a></li>
+      <li><a href="media/Luke_Morrison_Resume_Formatted.docx.pdf" class="btn btn-ghost btn-nav" download="Luke_Morrison_Resume.pdf">Resume ↓</a></li>
     </ul>
   </nav>
+</header>
 
-  <!-- ==================================================
-       COMPONENT: Theme Switcher (fixed top-right)
-  ================================================== -->
-  <div class="theme-switcher">
-    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"></button>
-  </div>
+<main id="main">
 
-  <main>
-    <!-- ==================================================
-         COMPONENT: Project Header
-    ================================================== -->
-    <section class="project-hero">
-      <h1 class="section-heading">Catapults</h1>
-      <p class="project-intro">
-        Two full-size mechanical launchers I engineered—from first prototype to firing trebuchet.
-      </p>
-    </section>
+  <header class="case-hero">
+    <a href="index.html#projects" class="crumb mono">← ALL PROJECTS</a>
+    <p class="case-tags mono">MECHANICAL ENGINEERING · STRUCTURES · FABRICATION</p>
+    <h1>Catapults</h1>
+    <p class="case-intro">
+      Two competition launchers: a torsion catapult, then a counterweight trebuchet. Best throw: a 5-pound rock launched up to 190 feet.
+    </p>
+  </header>
 
-    <hr class="dotted-line">
+  <dl class="case-meta">
+    <div class="reveal"><dt>Role</dt><dd>Design · fabrication · launch testing</dd></div>
+    <div class="reveal"><dt>Mechanics</dt><dd>Torsion and counterweight power · timber structures · release hardware</dd></div>
+    <div class="reveal"><dt>Result</dt><dd>Consistent reload and fire; best throw around 190 ft with a 5 lb rock</dd></div>
+  </dl>
 
-    <!-- ==================================================
-         COMPONENT: Project Gallery (Banner Style)
-    ================================================== -->
-    <section class="project-gallery">
+  <section class="case-gallery">
 
-      <div class="project-banner">
-        <img
-          src="media/catapult/prototype11.jpg"
-          alt="First working prototype of full sized catapult"
-          class="banner-image">
-        <div class="banner-text">
-          <h3>First Prototype</h3>
-          <p>
-            Scale model of a torsion-powered catapult—first working prototype.
-          </p>
-        </div>
+    <figure class="case-item reveal">
+      <div class="case-media">
+        <img src="media/catapult/prototype11.jpg" alt="First working prototype of the torsion catapult" loading="lazy" decoding="async">
       </div>
+      <figcaption>
+        <p class="case-step mono">01 / 05 · PROOF OF CONCEPT</p>
+        <h3>Torsion Catapult Prototype</h3>
+        <p>A scale model of a torsion-powered catapult, the first working version of the design.</p>
+      </figcaption>
+    </figure>
 
-      <div class="project-banner">
-        <div class="banner-text">
-          <h3>Scaled-Up Prototype</h3>
-          <p>
-            Built to true full-size—limited by vehicle transport, but performed reliably.
-          </p>
-        </div>
-        <img
-          src="media/catapult/final11.jpg"
-          alt="Scaled-up catapult fitting into a car"
-          class="banner-image">
+    <figure class="case-item reveal">
+      <div class="case-media">
+        <img src="media/catapult/final11.jpg" alt="Scaled-up catapult sized to fit in a car" loading="lazy" decoding="async">
       </div>
+      <figcaption>
+        <p class="case-step mono">02 / 05 · SCALE UP</p>
+        <h3>Full-Size Build</h3>
+        <p>Scaled to full size. The main constraint was fitting it in a vehicle for transport.</p>
+      </figcaption>
+    </figure>
 
-      <div class="project-banner">
-        <img
-          src="media/catapult/prototype2.jpg"
-          alt="Trebuchet being scaled up"
-          class="banner-image">
-        <div class="banner-text">
-          <h3>Trebuchet Model</h3>
-          <p>
-            Transitioned from torsion-powered to counterweight trebuchet for more power and range!
-          </p>
-        </div>
+    <figure class="case-item reveal">
+      <div class="case-media">
+        <img src="media/catapult/prototype2.jpg" alt="Trebuchet design being scaled up" loading="lazy" decoding="async">
       </div>
+      <figcaption>
+        <p class="case-step mono">03 / 05 · REDESIGN</p>
+        <h3>Switching to Counterweight</h3>
+        <p>Switched from torsion power to a counterweight trebuchet for more stored energy and range.</p>
+      </figcaption>
+    </figure>
 
-      <div class="project-banner">
-        <div class="banner-text">
-          <h3>Fully Assembled</h3>
-          <p>
-            Final assembly with all hardware—ready to reload and fire consistently.
-          </p>
-        </div>
-        <img
-          src="media/catapult/final2.jpg"
-          alt="Fully assembled trebuchet"
-          class="banner-image">
+    <figure class="case-item reveal">
+      <div class="case-media">
+        <img src="media/catapult/final2.jpg" alt="Fully assembled counterweight trebuchet" loading="lazy" decoding="async">
       </div>
+      <figcaption>
+        <p class="case-step mono">04 / 05 · ASSEMBLY</p>
+        <h3>Fully Assembled</h3>
+        <p>Final assembly with all hardware in place, built to reload and fire consistently.</p>
+      </figcaption>
+    </figure>
 
-      <div class="project-banner">
-        <img
-          src="media/catapult/catapult.gif"
-          alt="GIF of trebuchet firing"
-          class="banner-image">
-        <div class="banner-text">
-          <h3>In-Action GIF</h3>
-          <p>
-            A quick clip capturing the trebuchet launching its projectile.
-          </p>
-        </div>
+    <figure class="case-item reveal">
+      <div class="case-media">
+        <img src="media/catapult/catapult.gif" alt="Animation of the trebuchet launching a projectile" loading="lazy" decoding="async">
       </div>
+      <figcaption>
+        <p class="case-step mono">05 / 05 · FIRE</p>
+        <h3>Launch Footage</h3>
+        <p>The trebuchet firing.</p>
+      </figcaption>
+    </figure>
 
-    </section>
-
-
-<!-- ==================================================
-     COMPONENT: Footer & Contact
-================================================== -->
-<footer>
-  <hr class="dotted-line">
-  <section id="contact" class="contact-footer">
-    <h2>Get in Touch</h2>
-    <p>Email me at <a href="mailto:koly1999@gmail.com">koly1999@gmail.
   </section>
+
+  <nav class="case-pager" aria-label="More projects">
+    <a class="pager-link prev" href="phone_holder.html">
+      <span class="pager-dir mono">← PREVIOUS</span>
+      <span class="pager-title">Adjustable Phone Holder</span>
+    </a>
+    <a class="pager-link next" href="hydrogen.html">
+      <span class="pager-dir mono">NEXT →</span>
+      <span class="pager-title">Hydrogen Electrolysis Rig</span>
+    </a>
+  </nav>
+
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <p class="mono footer-line">© 2026 LUKE MORRISON · DESIGNED &amp; HAND-CODED · VANILLA HTML/CSS/JS</p>
+    <a href="index.html" class="mono footer-top">BACK TO HOME ↑</a>
+  </div>
 </footer>
 
+<script src="js/main.js" defer></script>
 </body>
 </html>
