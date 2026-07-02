@@ -3,168 +3,185 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Electronics · Luke Morrison’s Portfolio</title>
+  <title>From Breadboards to PCBs · Luke Morrison</title>
+  <meta name="description" content="Early hardware projects from high school: a first fabricated PCB, a USB-C-powered high-voltage inverter for a paintable electroluminescent lighting panel, and an Arduino Nano LED pattern controller for a prop build.">
+  <meta name="theme-color" content="#010502">
+  <link rel="canonical" href="https://koly1999.github.io/Portfolio/electronics.html">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='8' y='8' width='16' height='16' rx='2' fill='none' stroke='%2300ff66' stroke-width='2'/%3E%3Crect x='13' y='13' width='6' height='6' fill='%23b6ff45'/%3E%3Cpath d='M12 8V3M16 8V3M20 8V3M12 29v-5M16 29v-5M20 29v-5M8 12H3M8 16H3M8 20H3M29 12h-5M29 16h-5M29 20h-5' stroke='%2300ff66' stroke-width='1.5'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
-  <script>
-    // Dark mode toggle (and persistence)
-    function toggleTheme() {
-      document.documentElement.classList.toggle('dark');
-      localStorage.theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
-    }
-    document.addEventListener('DOMContentLoaded', () => {
-      if (localStorage.theme === 'dark') {
-        document.documentElement.classList.add('dark');
-      }
-    });
-  </script>
 </head>
 <body>
 
-  <!-- ==================================================
-       COMPONENT: Navigation Bar
-  ================================================== -->
-  <nav class="navbar">
-    <ul class="navbar-nav">
-      <li class="logo">
-        <a href="index.html" class="nav-link">
-          <span class="logo-icon">
-            <!-- fighter-jet icon -->
-            <svg aria-hidden="true" focusable="false" data-prefix="fad" data-icon="fighter-jet" role="img"
-                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
-              <g class="fa-group">
-                <path fill="currentColor" class="fa-secondary"
-                      d="M168 192h176L227.16 44h39.51c11.66 0 21.33-2.62 21.33-6s-9.67-6-21.33-6H152v12h16zm0 128v148h-16v12h114.67c11.66 0 21.33-2.62 21.33-6s-9.67-6-21.33-6h-39.51L344 320z"/>
-                <path fill="currentColor" class="fa-primary"
-                      d="M640 256c0 5.42 0 10.67-96 32l-128 16-48 16H106.67l-53.34 64H18.67L8 373.33V304h8v-16h48v-2.67l-64-8v-42.66l64-8V224H16v-16H8v-69.33L18.67 128h34.66l53.34 64H368l48 16 128 16c96 21.33 96 26.58 96 32z"/>
-              </g>
-            </svg>
-          </span>
-          <span class="link-text logo-text">Portfolio</span>
-        </a>
-      </li>
-      <li class="nav-item"><a href="index.html#about"   class="nav-link"><span class="link-text">About</span></a></li>
-      <li class="nav-item"><a href="index.html#skills"  class="nav-link"><span class="link-text">Skills</span></a></li>
-      <li class="nav-item"><a href="index.html#projects" class="nav-link"><span class="link-text">Projects</span></a></li>
-      <li class="nav-item"><a href="index.html#contact" class="nav-link"><span class="link-text">Contact</span></a></li>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="bg-grid" aria-hidden="true"></div>
+<canvas id="bg-canvas" aria-hidden="true"></canvas>
+
+<header class="navbar" id="navbar">
+  <nav class="nav-inner" aria-label="Primary">
+    <a class="brand" href="index.html">
+      <svg class="brand-chip" viewBox="0 0 32 32" aria-hidden="true">
+        <rect x="8" y="8" width="16" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="2"/>
+        <rect x="13" y="13" width="6" height="6" class="brand-die"/>
+        <path d="M12 8V3M16 8V3M20 8V3M12 29v-5M16 29v-5M20 29v-5M8 12H3M8 16H3M8 20H3M29 12h-5M29 16h-5M29 20h-5" stroke="currentColor" stroke-width="1.5"/>
+      </svg>
+      <span class="brand-text mono">LM<span class="brand-cursor">_</span></span>
+    </a>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-links">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="index.html#about" class="nav-link"><span class="mono nav-num">01</span> About</a></li>
+      <li><a href="index.html#skills" class="nav-link"><span class="mono nav-num">02</span> Skills</a></li>
+      <li><a href="index.html#projects" class="nav-link"><span class="mono nav-num">03</span> Projects</a></li>
+      <li><a href="index.html#resume" class="nav-link"><span class="mono nav-num">04</span> Resume</a></li>
+      <li><a href="index.html#contact" class="nav-link"><span class="mono nav-num">05</span> Contact</a></li>
+      <li><a href="media/Luke_Morrison_Resume_Formatted.docx.pdf" class="btn btn-ghost btn-nav" download="Luke_Morrison_Resume.pdf">Resume ↓</a></li>
     </ul>
   </nav>
+</header>
 
-  <!-- ==================================================
-       COMPONENT: Theme Switcher (fixed top-right)
-  ================================================== -->
-  <div class="theme-switcher">
-    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode"></button>
+<main id="main">
+
+  <header class="case-hero">
+    <a href="index.html#projects" class="crumb mono">← ALL PROJECTS</a>
+    <p class="case-tags mono">EARLY HARDWARE · FIRST PCB · HIGH-SCHOOL ARCHIVE</p>
+    <h1>From Breadboards to PCBs</h1>
+    <p class="case-intro">
+      Early hardware projects from high school, including my first fabricated PCB: a USB-C-powered
+      high-voltage inverter built to test a paintable electroluminescent lighting panel. The board
+      was crude and only partially successful, but it marked the point where my electronics projects
+      moved from loose wiring and breadboards into schematic capture, PCB layout, fabrication, and
+      hand assembly.
+    </p>
+    <p class="case-intro">
+      The second project was an LED pattern controller for a Warhammer 40K plasma-rifle prop. It
+      used an Arduino Nano as the control board and rows of 2N2222 transistors to switch LED groups
+      on and off for animated lighting effects. A 555-timer PWM LED driver from the same era
+      rounds out the set.
+    </p>
+  </header>
+
+  <dl class="case-meta">
+    <div class="reveal"><dt>Role</dt><dd>Schematic design · PCB layout · hand assembly · bring-up · LED animation</dd></div>
+    <div class="reveal"><dt>Hardware</dt><dd>USB-C power input · high-voltage inverter · Arduino Nano · 2N2222 transistor switching · NE555 PWM</dd></div>
+    <div class="reveal"><dt>Result</dt><dd>First fabricated PCB, hand-soldered prototypes, and working animated lighting tests</dd></div>
+  </dl>
+
+  <section class="case-gallery case-gallery--wide">
+
+    <figure class="case-item case-item--stack reveal">
+      <div class="case-media">
+        <img src="media/electronics/luminol_circuit.png" alt="Schematic of the USB-C powered high-voltage inverter" loading="lazy" decoding="async">
+      </div>
+      <figcaption>
+        <p class="case-step mono">01 / 08 · SCHEMATIC</p>
+        <h3>USB-C High-Voltage EL Inverter</h3>
+        <p>First PCB schematic: a USB-C-powered inverter built to test a paintable electroluminescent lighting panel.</p>
+      </figcaption>
+    </figure>
+
+    <figure class="case-item case-item--stack reveal">
+      <div class="case-media">
+        <img src="media/electronics/luminol_pcb.jpg" alt="Top and bottom copper layers of the inverter PCB layout" loading="lazy" decoding="async">
+      </div>
+      <figcaption>
+        <p class="case-step mono">02 / 08 · LAYOUT</p>
+        <h3>Two-Layer PCB Layout</h3>
+        <p>Top and bottom copper layers for the inverter board, routed as a compact two-layer PCB.</p>
+      </figcaption>
+    </figure>
+
+    <figure class="case-item reveal">
+      <div class="case-media">
+        <img src="media/electronics/luminol_pcb2.jpg" alt="Unpopulated inverter PCBs after fabrication" loading="lazy" decoding="async">
+      </div>
+      <figcaption>
+        <p class="case-step mono">03 / 08 · FABRICATION</p>
+        <h3>First Boards from Fab</h3>
+        <p>The first version of the inverter PCB after fabrication, before components were installed.</p>
+      </figcaption>
+    </figure>
+
+    <figure class="case-item case-item--stack reveal">
+      <div class="case-media">
+        <img src="media/electronics/PCB-that-I-designed.jpg" alt="Physical inverter boards compared against the PCB layout" loading="lazy" decoding="async">
+      </div>
+      <figcaption>
+        <p class="case-step mono">04 / 08 · VERIFICATION</p>
+        <h3>Board vs. Layout Check</h3>
+        <p>Physical boards compared against the PCB layout to check the fab result before assembly.</p>
+      </figcaption>
+    </figure>
+
+    <figure class="case-item case-item--stack reveal">
+      <div class="case-media">
+        <img src="media/electronics/plasma_pistol.png" alt="Schematic of the Arduino Nano LED pattern controller with 2N2222 transistor switching" loading="lazy" decoding="async">
+      </div>
+      <figcaption>
+        <p class="case-step mono">05 / 08 · LED CONTROLLER</p>
+        <h3>Arduino LED Pattern Driver</h3>
+        <p>A separate lighting controller for a Warhammer 40K plasma-rifle prop, using an Arduino Nano and 2N2222 transistors to switch LED rows.</p>
+      </figcaption>
+    </figure>
+
+    <figure class="case-item reveal">
+      <div class="case-media">
+        <img src="media/electronics/lights.gif" alt="Hand-soldered LED sequencer running animated light patterns" loading="lazy" decoding="async">
+      </div>
+      <figcaption>
+        <p class="case-step mono">06 / 08 · PROTOTYPE</p>
+        <h3>Hand-Soldered LED Sequencer</h3>
+        <p>The LED controller running animated light patterns after hand assembly and testing.</p>
+      </figcaption>
+    </figure>
+
+    <figure class="case-item reveal">
+      <div class="case-media">
+        <video src="media/bench/ne555_pwm.mp4" poster="media/bench/ne555_poster.jpg" controls muted loop playsinline preload="none" aria-label="Video of the NE555 PWM LED driver dimming an LED"></video>
+      </div>
+      <figcaption>
+        <p class="case-step mono">07 / 08 · ANALOG</p>
+        <h3>NE555 PWM LED Driver</h3>
+        <p>The 555 timer wired as a PWM generator to drive an LED through its full brightness range with a potentiometer.</p>
+      </figcaption>
+    </figure>
+
+    <figure class="case-item reveal">
+      <div class="case-media">
+        <img src="media/electronics/lots.jpg" alt="Assortment of early electronics projects on the bench" loading="lazy" decoding="async">
+      </div>
+      <figcaption>
+        <p class="case-step mono">08 / 08 · BENCH ARCHIVE</p>
+        <h3>Other Early Builds</h3>
+        <p>A snapshot of other early electronics projects from the bench.</p>
+      </figcaption>
+    </figure>
+
+  </section>
+
+  <nav class="case-pager" aria-label="More projects">
+    <a class="pager-link prev" href="celsius.html">
+      <span class="pager-dir mono">← PREVIOUS</span>
+      <span class="pager-title">Celsius Motion Ad</span>
+    </a>
+    <a class="pager-link next" href="pcb-lab.html">
+      <span class="pager-dir mono">NEXT →</span>
+      <span class="pager-title">PCB Model Lab</span>
+    </a>
+  </nav>
+
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <p class="mono footer-line">© 2026 LUKE MORRISON · DESIGNED &amp; HAND-CODED · VANILLA HTML/CSS/JS</p>
+    <a href="index.html" class="mono footer-top">BACK TO HOME ↑</a>
   </div>
-
-  <main>
-    <!-- ==================================================
-         COMPONENT: Project Header
-    ================================================== -->
-    <section class="project-hero">
-      <h1 class="section-heading">Electronics</h1>
-      <p class="project-intro">
-        A showcase of my custom electronic designs—from USB-C powered inverters to LED controllers and motor controller boards.
-      </p>
-    </section>
-
-    <hr class="dotted-line">
-
-    <!-- ==================================================
-     COMPONENT: Project Gallery (Banner Style)
-================================================== -->
-<section class="project-gallery">
-
-	<div class="project-banner">
-	  <img
-		src="media/electronics/luminol_circuit.png"
-		alt="Circuit diagram for USB-C powered inverter"
-		class="banner-image">
-	  <div class="banner-text">
-		<h3>USB-C Power Inverter Diagram</h3>
-		<p>This is the circuit diagram for a power inverter powered by a USB-C phone charger driving a light panel.</p>
-	  </div>
-	</div>
-  
-	<div class="project-banner">
-	  <img
-		src="media/electronics/luminol_pcb.jpg"
-		alt="PCB board diagram top and bottom"
-		class="banner-image">
-	  <div class="banner-text">
-		<h3>PCB Diagrams (Top &amp; Bottom)</h3>
-		<p>Top and bottom circuit board diagrams for the inverter design.</p>
-	  </div>
-	</div>
-  
-	<div class="project-banner">
-	  <img
-		src="media/electronics/luminol_pcb2.jpg"
-		alt="Unpopulated PCB boards"
-		class="banner-image">
-	  <div class="banner-text">
-		<h3>Unpopulated PCBs</h3>
-		<p>Unpopulated PCB boards for the power inverter I designed.</p>
-	  </div>
-	</div>
-  
-	<div class="project-banner">
-	  <img
-		src="media/electronics/PCB-that-I-designed.jpg"
-		alt="Boards next to diagrams"
-		class="banner-image">
-	  <div class="banner-text">
-		<h3>Boards Next to Diagrams</h3>
-		<p>Composite photo of the board diagrams next to the physical PCBs.</p>
-	  </div>
-	</div>
-  
-	<div class="project-banner">
-	  <img
-		src="media/electronics/plasma_pistol.png"
-		alt="Circuit diagram for LED patterns"
-		class="banner-image">
-	  <div class="banner-text">
-		<h3>LED-Pattern Controller</h3>
-		<p>LED-pattern controller circuit diagram powered by USB-C.</p>
-	  </div>
-	</div>
-  
-	<div class="project-banner">
-	  <img
-		src="media/electronics/lights.gif"
-		alt="Working prototype in action"
-		class="banner-image">
-	  <div class="banner-text">
-		<h3>Hand-Soldered Prototype</h3>
-		<p>Hand-soldered prototype of the above LED controller in action.</p>
-	  </div>
-	</div>
-  
-	<div class="project-banner">
-	  <img
-		src="media/electronics/lots.jpg"
-		alt="Assortment of electronics projects"
-		class="banner-image">
-	  <div class="banner-text">
-		<h3>Assortment of Projects</h3>
-		<p>An assortment of various electronics projects I’ve built.</p>
-	  </div>
-	</div>
-  
-  </section>
-  
-
-<!-- ==================================================
-     COMPONENT: Footer & Contact
-================================================== -->
-<footer>
-  <hr class="dotted-line">
-  <section id="contact" class="contact-footer">
-    <h2>Get in Touch</h2>
-    <p>Email me at <a href="mailto:koly1999@gmail.com">koly1999@gmail.
-  </section>
 </footer>
 
+<script src="js/main.js" defer></script>
 </body>
 </html>

@@ -2,298 +2,642 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Luke Morrison · Electrical Engineering · Embedded Systems · PCB Design · Full-Stack</title>
+  <meta name="description" content="Portfolio of Luke Morrison, electrical engineer and full-stack developer. PCB design, embedded systems, motor control, 3D printing, and web development.">
+  <meta name="theme-color" content="#010502">
+  <meta property="og:title" content="Luke Morrison · Engineering Portfolio">
+  <meta property="og:description" content="PCB design · Embedded systems · 3D printing · Full-stack development. An interactive engineering showcase.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://koly1999.github.io/Portfolio/">
+  <meta property="og:image" content="https://koly1999.github.io/Portfolio/media/thumbs/electronics.jpg">
+  <link rel="canonical" href="https://koly1999.github.io/Portfolio/">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='8' y='8' width='16' height='16' rx='2' fill='none' stroke='%2300ff66' stroke-width='2'/%3E%3Crect x='13' y='13' width='6' height='6' fill='%23b6ff45'/%3E%3Cpath d='M12 8V3M16 8V3M20 8V3M12 29v-5M16 29v-5M20 29v-5M8 12H3M8 16H3M8 20H3M29 12h-5M29 16h-5M29 20h-5' stroke='%2300ff66' stroke-width='1.5'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
-  <title>Luke Morrison's Portfolio</title>
-  <script>
-    // Dark mode toggle
-    function toggleTheme() {
-      document.documentElement.classList.toggle('dark');
-      localStorage.theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
-    }
-    document.addEventListener('DOMContentLoaded', () => {
-      if (localStorage.theme === 'dark') document.documentElement.classList.add('dark');
-    });
-  </script>
 </head>
-<body>
+<body id="top">
 
-<!-- ==================================================
-     COMPONENT: Navigation Bar
-================================================== -->
-<nav class="navbar">
-  <ul class="navbar-nav">
-    <li class="logo">
-      <a href="index.html" class="nav-link">
-        <!-- The fighter jet icon -->
-        <span class="logo-icon">
-          <svg aria-hidden="true" focusable="false" data-prefix="fad" data-icon="fighter-jet" role="img"
-               xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" class="svg-inline--fa fa-fighter-jet fa-w-20 fa-3x">
-            <g class="fa-group">
-              <path fill="currentColor"
-                    d="M168 192h176L227.16 44h39.51c11.66 0 21.33-2.62 21.33-6s-9.67-6-21.33-6H152v12h16zm0 128v148h-16v12h114.67c11.66 0 21.33-2.62 21.33-6s-9.67-6-21.33-6h-39.51L344 320z"
-                    class="fa-secondary"></path>
-              <path fill="currentColor"
-                    d="M640 256c0 5.42 0 10.67-96 32l-128 16-48 16H106.67l-53.34 64H18.67L8 373.33V304h8v-16h48v-2.67l-64-8v-42.66l64-8V224H16v-16H8v-69.33L18.67 128h34.66l53.34 64H368l48 16 128 16c96 21.33 96 26.58 96 32z"
-                    class="fa-primary"></path>
-            </g>
-          </svg>
-        </span>
-        <!-- The title text that slides in on hover -->
-        <span class="link-text logo-text">Portfolio</span>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- Ambient background: grid + drifting signal pulses -->
+<div class="bg-grid" aria-hidden="true"></div>
+<canvas id="bg-canvas" aria-hidden="true"></canvas>
+
+<!-- ============ NAV ============ -->
+<header class="navbar" id="navbar">
+  <nav class="nav-inner" aria-label="Primary">
+    <a class="brand" href="#top">
+      <svg class="brand-chip" viewBox="0 0 32 32" aria-hidden="true">
+        <rect x="8" y="8" width="16" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="2"/>
+        <rect x="13" y="13" width="6" height="6" class="brand-die"/>
+        <path d="M12 8V3M16 8V3M20 8V3M12 29v-5M16 29v-5M20 29v-5M8 12H3M8 16H3M8 20H3M29 12h-5M29 16h-5M29 20h-5" stroke="currentColor" stroke-width="1.5"/>
+      </svg>
+      <span class="brand-text mono">LM<span class="brand-cursor">_</span></span>
+    </a>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-links">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#about" class="nav-link" data-spy="about"><span class="mono nav-num">01</span> About</a></li>
+      <li><a href="#skills" class="nav-link" data-spy="skills"><span class="mono nav-num">02</span> Skills</a></li>
+      <li><a href="#projects" class="nav-link" data-spy="projects"><span class="mono nav-num">03</span> Projects</a></li>
+      <li><a href="#resume" class="nav-link" data-spy="resume"><span class="mono nav-num">04</span> Resume</a></li>
+      <li><a href="#contact" class="nav-link" data-spy="contact"><span class="mono nav-num">05</span> Contact</a></li>
+      <li><a href="media/Luke_Morrison_Resume_Formatted.docx.pdf" class="btn btn-ghost btn-nav" download="Luke_Morrison_Resume.pdf">Resume ↓</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="main">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="hero">
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <p class="hero-kicker mono"><span class="prompt">&gt;</span> <span id="typed" data-text="boot portfolio --mode=engineer ... OK"></span><span class="cursor" aria-hidden="true">▊</span></p>
+        <h1 class="hero-title">Luke<br>Morrison</h1>
+        <p class="hero-role mono">ELECTRICAL ENGINEERING <span class="sep">•</span> EMBEDDED SYSTEMS <span class="sep">•</span> PCB DESIGN <span class="sep">•</span> FULL-STACK DEV</p>
+        <p class="hero-sub">
+          I work across schematics and PCB layout, firmware and motor control, 3D-printed
+          mechanics, and the web software that ties it together. This site documents the
+          projects, from first high-school boards to current work.
+        </p>
+        <div class="hero-cta">
+          <a href="#projects" class="btn btn-primary">View Projects</a>
+          <a href="#contact" class="btn btn-ghost">Contact Me</a>
+          <a href="media/Luke_Morrison_Resume_Formatted.docx.pdf" class="btn btn-ghost" download="Luke_Morrison_Resume.pdf">Resume <span aria-hidden="true">↓</span></a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat">
+            <span class="stat-num mono">07</span>
+            <span class="stat-label">Science Olympiad build events led<br>on a regional championship team</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num mono">04</span>
+            <span class="stat-label">PCB designs viewable<br>as interactive 3D models</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num mono">0</span>
+            <span class="stat-label">frameworks used<br>to build this site</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <canvas id="chip-canvas" aria-label="Interactive 3D wireframe microchip" role="img"></canvas>
+        <p class="fig-caption mono">FIG.01 · LM-1999 MCU · WIREFRAME · <span class="hint">drag to rotate</span></p>
+      </div>
+    </div>
+    <div class="scope-strip" aria-hidden="true">
+      <canvas id="scope-canvas"></canvas>
+      <div class="scope-labels mono"><span>CH1 · 2V/div</span><span>SIGNAL: PORTFOLIO.SYS</span><span>TRIG ▲ 1.2V</span></div>
+    </div>
+  </section>
+
+  <!-- ============ ABOUT ============ -->
+  <section class="section" id="about">
+    <div class="section-head reveal">
+      <span class="section-num mono">01</span>
+      <h2 class="section-title">About</h2>
+      <span class="section-rule" aria-hidden="true"></span>
+    </div>
+
+    <div class="about-grid">
+      <div class="about-copy reveal">
+        <blockquote class="lead-quote">
+          “A jack of all trades is a master of none, though oftentimes better than a master of one.”
+        </blockquote>
+        <p>
+          I grew up in a workshop. My dad trained at London's Royal College of Art and taught me to use
+          real tools early: wood, metal, and electronics. Building things has been the default
+          ever since.
+        </p>
+        <p>
+          Since then it has become a career. I repaired computers and built websites at Bisconti
+          Computers, ran the repair department at Arachnid 360, worked as a test engineer at
+          Columbus McKinnon, and most recently designed custom PCBs and electrical test stations
+          for high-temperature electrolysis R&amp;D at Advanced Ionics.
+        </p>
+        <p>
+          Outside of work I keep a home lab of Linux servers running that started as Minecraft
+          hosting for friends, kept an aging Mini Cooper on the road, led my
+          Science Olympiad team to a regional championship across seven build events, and sold a
+          3D-printed product line through a HobbyTown USA. I hold an A.S. from Rock Valley College
+          along with a front-end web development certificate, and I'm finishing a B.S. in Graphic
+          Information Technology (full-stack web development focus) at ASU Online.
+        </p>
+        <p>
+          The common thread: I like making physical things work <em>reliably</em>, and I like the
+          software that runs them.
+        </p>
+        <ul class="about-points">
+          <li class="reveal"><span class="point-icon" aria-hidden="true">⚡</span><div><strong>Hardware first</strong><span>Circuits, boards, and mechanics that survive the real world.</span></div></li>
+          <li class="reveal"><span class="point-icon" aria-hidden="true">↻</span><div><strong>Iterate fast</strong><span>Prototype, test, and revise. Most projects here took several versions.</span></div></li>
+          <li class="reveal"><span class="point-icon" aria-hidden="true">▲</span><div><strong>Measure everything</strong><span>Drop tests, field tests, and measurements guide the decisions.</span></div></li>
+          <li class="reveal"><span class="point-icon" aria-hidden="true">➔</span><div><strong>Ship real things</strong><span>Finished products in real hands, not just demos on a bench.</span></div></li>
+        </ul>
+      </div>
+
+      <aside class="about-side reveal">
+        <div class="terminal-card" aria-label="Terminal snapshot">
+        <div class="terminal-bar">
+          <span class="t-dot"></span><span class="t-dot"></span><span class="t-dot"></span>
+          <span class="terminal-title mono">luke@workshop: ~</span>
+        </div>
+        <pre class="terminal-body mono"><code><span class="t-prompt">$</span> whoami
+<span class="t-out">engineer / builder / problem-solver</span>
+<span class="t-prompt">$</span> cat stack.txt
+<span class="t-out">hw:  pcb layout · smt/bga soldering · test stations
+mech: cad · 3d printing · fabrication
+fw:  arduino · sensors · motor drivers
+sw:  html/css/js · linux · servers</span>
+<span class="t-prompt">$</span> systemctl status luke
+<span class="t-ok">● active (building)</span> since childhood
+<span class="t-out">   memory: workshop-resident
+   tasks:  always ≥ 1 prototype running</span>
+<span class="t-prompt">$</span> <span class="t-blink">▊</span></code></pre>
+        </div>
+        <figure class="lab-card">
+          <img src="media/about/lab_bench.jpg" alt="Electronics lab bench with bench power supplies, a bench multimeter, a trinocular microscope feeding a monitor, and soldering and hot-air rework stations" loading="lazy" decoding="async">
+          <figcaption>THE BENCH · <b>power · measurement · magnification · rework</b></figcaption>
+        </figure>
+      </aside>
+    </div>
+  </section>
+
+  <div class="trace-divider" aria-hidden="true">
+    <svg viewBox="0 0 1200 60" preserveAspectRatio="none">
+      <path class="trace" d="M0,30 H340 L370,10 H520 L550,30 H700 L730,50 H880 L910,30 H1200"/>
+      <circle class="node" cx="370" cy="10" r="4"/>
+      <circle class="node" cx="550" cy="30" r="4"/>
+      <circle class="node" cx="730" cy="50" r="4"/>
+      <circle class="node" cx="910" cy="30" r="4"/>
+    </svg>
+  </div>
+
+  <!-- ============ SKILLS ============ -->
+  <section class="section" id="skills">
+    <div class="section-head reveal">
+      <span class="section-num mono">02</span>
+      <h2 class="section-title">Skills &amp; Systems</h2>
+      <span class="section-rule" aria-hidden="true"></span>
+    </div>
+    <p class="section-intro reveal">The specific tools and techniques, grouped by area.</p>
+
+    <div class="skills-grid">
+      <article class="skill-card reveal">
+        <div class="skill-head">
+          <svg class="skill-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2L4.5 13h5L9 22l8.5-11h-5L13 2z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+          <h3>Electrical Engineering</h3>
+          <span class="skill-id mono">SYS-01</span>
+        </div>
+        <ul class="skill-tags mono">
+          <li>Circuit design</li><li>Power electronics</li><li>Soldering &amp; rework</li><li>Test &amp; measurement</li><li>Debugging</li>
+        </ul>
+      </article>
+
+      <article class="skill-card reveal">
+        <div class="skill-head">
+          <svg class="skill-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="6" width="12" height="12" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.6"/><rect x="10" y="10" width="4" height="4" fill="currentColor"/><path d="M9 6V2.5M12 6V2.5M15 6V2.5M9 21.5V18M12 21.5V18M15 21.5V18M6 9H2.5M6 12H2.5M6 15H2.5M21.5 9H18M21.5 12H18M21.5 15H18" stroke="currentColor" stroke-width="1.3"/></svg>
+          <h3>PCB Design</h3>
+          <span class="skill-id mono">SYS-02</span>
+        </div>
+        <ul class="skill-tags mono">
+          <li>Schematic capture</li><li>Board layout</li><li>Footprints</li><li>SMD assembly</li><li>Bring-up &amp; test</li>
+        </ul>
+      </article>
+
+      <article class="skill-card reveal">
+        <div class="skill-head">
+          <svg class="skill-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4M5 5l2.8 2.8M16.2 16.2L19 19M19 5l-2.8 2.8M7.8 16.2L5 19" stroke="currentColor" stroke-width="1.6"/></svg>
+          <h3>Embedded Systems</h3>
+          <span class="skill-id mono">SYS-03</span>
+        </div>
+        <ul class="skill-tags mono">
+          <li>Microcontrollers</li><li>Sensors &amp; encoders</li><li>Motor control</li><li>Serial protocols</li><li>Rapid prototyping</li>
+        </ul>
+      </article>
+
+      <article class="skill-card reveal">
+        <div class="skill-head">
+          <svg class="skill-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 9l-4 3 4 3M16 9l4 3-4 3M13.5 5l-3 14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <h3>Firmware</h3>
+          <span class="skill-id mono">SYS-04</span>
+        </div>
+        <ul class="skill-tags mono">
+          <li>Arduino (C/C++)</li><li>Sensor &amp; display drivers</li><li>Menu / UI logic</li><li>Motor control</li><li>Hardware debugging</li>
+        </ul>
+      </article>
+
+      <article class="skill-card reveal">
+        <div class="skill-head">
+          <svg class="skill-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="15" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M3 9h18M7 6.5h.01M10 6.5h.01" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          <h3>Web Development</h3>
+          <span class="skill-id mono">SYS-05</span>
+        </div>
+        <ul class="skill-tags mono">
+          <li>HTML / CSS / JS</li><li>Responsive UI</li><li>Accessibility</li><li>SEO &amp; performance</li><li>B.S. @ ASU (in progress)</li>
+        </ul>
+      </article>
+
+      <article class="skill-card reveal">
+        <div class="skill-head">
+          <svg class="skill-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l8 4.5v9L12 20l-8-4.5v-9L12 2z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M12 11L4 6.5M12 11l8-4.5M12 11v9" fill="none" stroke="currentColor" stroke-width="1.3"/></svg>
+          <h3>CAD &amp; Prototyping</h3>
+          <span class="skill-id mono">SYS-06</span>
+        </div>
+        <ul class="skill-tags mono">
+          <li>SolidWorks</li><li>3D printing · PLA/ABS</li><li>G-code</li><li>Tolerances &amp; fit</li><li>Wood &amp; metal fab</li>
+        </ul>
+      </article>
+
+      <article class="skill-card reveal">
+        <div class="skill-head">
+          <svg class="skill-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19a8 8 0 0116 0" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 19l4.5-6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="12" cy="19" r="1.6" fill="currentColor"/></svg>
+          <h3>Automation &amp; Testing</h3>
+          <span class="skill-id mono">SYS-07</span>
+        </div>
+        <ul class="skill-tags mono">
+          <li>Custom test rigs</li><li>Drop &amp; field testing</li><li>Iterative validation</li><li>Linux &amp; servers</li><li>Home lab ops</li>
+        </ul>
+      </article>
+
+      <article class="skill-card reveal">
+        <div class="skill-head">
+          <svg class="skill-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a5 5 0 015 5c0 1.6-.7 2.9-1.8 3.9-.7.6-1.2 1.4-1.2 2.3V15h-4v-.8c0-.9-.5-1.7-1.2-2.3A5.2 5.2 0 017 8a5 5 0 015-5z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M10 18h4M10.5 21h3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          <h3>AI Tools &amp; Local LLMs</h3>
+          <span class="skill-id mono">SYS-08</span>
+        </div>
+        <ul class="skill-tags mono">
+          <li>Local model hosting</li><li>AI-assisted workflows</li><li>Prompt engineering</li><li>Self-hosted stacks</li><li>Experimentation</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <div class="trace-divider flip" aria-hidden="true">
+    <svg viewBox="0 0 1200 60" preserveAspectRatio="none">
+      <path class="trace" d="M0,30 H240 L270,50 H460 L490,30 H660 L690,10 H900 L930,30 H1200"/>
+      <circle class="node" cx="270" cy="50" r="4"/>
+      <circle class="node" cx="490" cy="30" r="4"/>
+      <circle class="node" cx="690" cy="10" r="4"/>
+      <circle class="node" cx="930" cy="30" r="4"/>
+    </svg>
+  </div>
+
+  <!-- ============ PROJECTS ============ -->
+  <section class="section section-wide" id="projects">
+    <div class="section-head reveal">
+      <span class="section-num mono">03</span>
+      <h2 class="section-title">Featured Projects</h2>
+      <span class="section-rule" aria-hidden="true"></span>
+    </div>
+    <p class="section-intro reveal">
+      Each project links to a case study with photos, video, or interactive models.
+    </p>
+
+    <div class="proj-group reveal">
+      <span class="proj-group-tag mono">03.A</span>
+      <h3 class="proj-group-title">Engineering</h3>
+      <span class="section-rule" aria-hidden="true"></span>
+    </div>
+
+    <div class="projects-grid">
+
+      <a class="project-card reveal" href="pcb-lab.html">
+        <div class="card-media model-stage">
+          <canvas class="model-canvas" data-model="media/models/thermocouple4ch.bin" aria-hidden="true"></canvas>
+          <img class="model-fallback" src="media/thumbs/pcb_lab.jpg" alt="Breadboard prototype of the paster control board showing an OLED settings menu" loading="lazy" decoding="async" hidden>
+          <span class="card-badge mono">INTERACTIVE 3D</span>
+        </div>
+        <div class="card-body">
+          <p class="card-cat mono">PCB DESIGN · TEST EQUIPMENT · MOTION</p>
+          <h3 class="card-title">PCB Model Lab</h3>
+          <p class="card-sum">A small archive of PCB designs: thermocouple interface, motion control, dual DC motor driver, and a machine controller. Viewable as interactive 3D models.</p>
+          <ul class="card-tags mono"><li>Interactive 3D</li><li>4 boards</li><li>glTF models</li></ul>
+          <span class="card-link mono">OPEN THE LAB <span class="arrow">→</span></span>
+        </div>
       </a>
-    </li>
-    <li class="nav-item"><a href="#about" class="nav-link"><span class="link-text">About</span></a></li>
-    <li class="nav-item"><a href="#skills" class="nav-link"><span class="link-text">Skills</span></a></li>
-    <li class="nav-item"><a href="#projects" class="nav-link"><span class="link-text">Projects</span></a></li>
-    <li class="nav-item"><a href="#contact" class="nav-link"><span class="link-text">Contact</span></a></li>
-  </ul>
-</nav>
 
-<!-- ==================================================
-     COMPONENT: Theme Switcher (top-right)
-================================================== -->
-<div class="theme-switcher">
-  <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">
-    <span class="icon icon-sun">☀️</span>
-    <span class="icon icon-moon">🌙</span>
-  </button>
-</div>
+      <a class="project-card reveal" href="electronics.html">
+        <div class="card-media">
+          <img src="media/thumbs/electronics.jpg" alt="Custom PCBs next to their board layout diagrams" loading="lazy" decoding="async">
+          <span class="card-badge mono">FEATURED</span>
+        </div>
+        <div class="card-body">
+          <p class="card-cat mono">FIRST PCB · HIGH-SCHOOL ARCHIVE</p>
+          <h3 class="card-title">From Breadboards to PCBs</h3>
+          <p class="card-sum">Early hardware from high school: my first fabricated PCB, a USB-C high-voltage inverter for a paintable electroluminescent panel, plus an Arduino Nano LED controller and a 555-timer PWM driver.</p>
+          <ul class="card-tags mono"><li>First PCB</li><li>EL inverter</li><li>Arduino Nano</li></ul>
+          <span class="card-link mono">OPEN CASE STUDY <span class="arrow">→</span></span>
+        </div>
+      </a>
 
-<main>
- <!-- ==================================================
-       COMPONENT: Hero Banner
-  ================================================== -->
-  <section class="hero">
-    <h1 class="hero-title">Hi, I'm <span class="highlight">Luke Morrison</span></h1>
-    <p class="hero-subtitle">I’m a fast learner who excels in product development—transforming ideas into prototypes, circuits, and designs.</p>
-    <p class="hero-note">(And yes: I hand‑coded this entire site in vanilla HTML &amp; CSS.)</p>
-    <a href="#projects" class="cta-btn">Explore My Work</a>
+      <a class="project-card reveal" href="electric_car.html">
+        <div class="card-media">
+          <img src="media/thumbs/electric_car.jpg" alt="Finished self-stopping electric car with 3D-printed chassis" loading="lazy" decoding="async">
+          <span class="card-badge mono">FEATURED</span>
+        </div>
+        <div class="card-body">
+          <p class="card-cat mono">SCIENCE OLYMPIAD · MOTOR CONTROL</p>
+          <h3 class="card-title">Electric Car</h3>
+          <p class="card-sum">Science Olympiad vehicle built to drive a set distance and stop on a target. The final version took 1st at regionals and 2nd at state.</p>
+          <ul class="card-tags mono"><li>Motor control</li><li>Encoders</li><li>3D printing</li></ul>
+          <span class="card-link mono">OPEN CASE STUDY <span class="arrow">→</span></span>
+        </div>
+      </a>
+
+      <a class="project-card reveal" href="controler-protector.html">
+        <div class="card-media">
+          <img src="media/thumbs/gimbal.jpg" alt="Multi-color batch of 3D-printed gimbal protectors" loading="lazy" decoding="async">
+        </div>
+        <div class="card-body">
+          <p class="card-cat mono">PRODUCT · 3D PRINTING</p>
+          <h3 class="card-title">Gimbal Protector</h3>
+          <p class="card-sum">3D-printed guards that protect RC controller gimbals during transport. Early high-school CAD work, sold through HobbyTown USA.</p>
+          <ul class="card-tags mono"><li>CAD</li><li>ABS printing</li><li>Drop testing</li></ul>
+          <span class="card-link mono">OPEN CASE STUDY <span class="arrow">→</span></span>
+        </div>
+      </a>
+
+      <a class="project-card reveal" href="phone_holder.html">
+        <div class="card-media">
+          <img src="media/thumbs/phone_holder.jpg" alt="CAD parts next to the assembled phone holder" loading="lazy" decoding="async">
+        </div>
+        <div class="card-body">
+          <p class="card-cat mono">CAD · PROTOTYPING</p>
+          <h3 class="card-title">Adjustable Phone Holder</h3>
+          <p class="card-sum">Replacement 3D-printed parts that modified an existing phone holder to fit a Mini Cooper. Designed in the early days of home 3D printing.</p>
+          <ul class="card-tags mono"><li>CAD</li><li>PLA</li><li>Ball joint</li></ul>
+          <span class="card-link mono">OPEN CASE STUDY <span class="arrow">→</span></span>
+        </div>
+      </a>
+
+      <a class="project-card project-card--code reveal" href="https://github.com/koly1999/Portfolio" target="_blank" rel="noopener">
+        <div class="card-media card-media--code" aria-hidden="true">
+          <pre class="mono"><code>&lt;!DOCTYPE html&gt;
+<span class="c-dim">// no frameworks</span>
+<span class="c-dim">// no build step</span>
+const site = new
+  Engine('canvas');
+site.render(<span class="c-green">'3d'</span>);</code></pre>
+        </div>
+        <div class="card-body">
+          <p class="card-cat mono">WEB DEVELOPMENT</p>
+          <h3 class="card-title">This Website</h3>
+          <p class="card-sum">This site, hand-coded in vanilla HTML/CSS/JS with custom canvas 3D rendering. No frameworks or build step; the only dependency is the CAD model viewer.</p>
+          <ul class="card-tags mono"><li>Vanilla JS</li><li>Canvas 3D</li><li>A11y + SEO</li></ul>
+          <span class="card-link mono">VIEW SOURCE ON GITHUB <span class="arrow">→</span></span>
+        </div>
+      </a>
+
+    </div>
+
+    <div class="proj-group reveal">
+      <span class="proj-group-tag mono">03.B</span>
+      <h3 class="proj-group-title">Fun &amp; Experiments</h3>
+      <span class="section-rule" aria-hidden="true"></span>
+    </div>
+
+    <div class="projects-grid">
+
+      <a class="project-card reveal" href="theremin.html">
+        <div class="card-media">
+          <img src="media/thumbs/theremin.jpg" alt="Scratch-built theremin made from salvaged radio electronics" loading="lazy" decoding="async">
+        </div>
+        <div class="card-body">
+          <p class="card-cat mono">ANALOG · MUSIC · SALVAGE</p>
+          <h3 class="card-title">Scratch-Built Theremin</h3>
+          <p class="card-sum">A playable theremin built from salvaged radio electronics on a wooden plank. Pitch changes with hand distance from the antenna.</p>
+          <ul class="card-tags mono"><li>Salvaged parts</li><li>Analog audio</li><li>Playable</li></ul>
+          <span class="card-link mono">OPEN CASE STUDY <span class="arrow">→</span></span>
+        </div>
+      </a>
+
+      <a class="project-card reveal" href="catapults.html">
+        <div class="card-media">
+          <img src="media/thumbs/catapult.jpg" alt="Fully assembled counterweight trebuchet" loading="lazy" decoding="async">
+        </div>
+        <div class="card-body">
+          <p class="card-cat mono">MECHANICAL ENGINEERING</p>
+          <h3 class="card-title">Catapults</h3>
+          <p class="card-sum">Competition catapults, including one that launched a 5-pound rock up to 190 feet. Started as a torsion catapult, finished as a counterweight trebuchet.</p>
+          <ul class="card-tags mono"><li>Structures</li><li>Torsion</li><li>Counterweight</li></ul>
+          <span class="card-link mono">OPEN CASE STUDY <span class="arrow">→</span></span>
+        </div>
+      </a>
+
+      <a class="project-card reveal" href="hydrogen.html">
+        <div class="card-media">
+          <img src="media/thumbs/hydrogen.jpg" alt="Custom hydrogen electrolysis rig" loading="lazy" decoding="async">
+        </div>
+        <div class="card-body">
+          <p class="card-cat mono">TEST EQUIPMENT · CHEMISTRY</p>
+          <h3 class="card-title">Hydrogen Experiments</h3>
+          <p class="card-sum">Lab and prototype work with hydrogen and electrolysis: a rig for producing and capturing gas over water, with check valves, plus an ignition test.</p>
+          <ul class="card-tags mono"><li>Electrolysis</li><li>Gas handling</li><li>Safety protocol</li></ul>
+          <span class="card-link mono">OPEN CASE STUDY <span class="arrow">→</span></span>
+        </div>
+      </a>
+
+      <a class="project-card reveal" href="high-voltage.html">
+        <div class="card-media">
+          <img src="media/thumbs/high_voltage.jpg" alt="Plasma arc from a rewound microwave oven transformer" loading="lazy" decoding="async">
+        </div>
+        <div class="card-body">
+          <p class="card-cat mono">HIGH VOLTAGE · DANGER SCIENCE</p>
+          <h3 class="card-title">Microwave Transformer Arc</h3>
+          <p class="card-sum">A microwave oven transformer repurposed to draw sustained arcs, run at a careful distance with insulated rigging.</p>
+          <ul class="card-tags mono"><li>MOT</li><li>Plasma arc</li><li>High voltage</li></ul>
+          <span class="card-link mono">OPEN CASE STUDY <span class="arrow">→</span></span>
+        </div>
+      </a>
+
+      <a class="project-card reveal" href="graphic-design.html">
+        <div class="card-media">
+          <img src="media/thumbs/graphic_design.jpg" alt="Poster design from the design manifesto series" loading="lazy" decoding="async">
+        </div>
+        <div class="card-body">
+          <p class="card-cat mono">GRAPHIC DESIGN</p>
+          <h3 class="card-title">Graphic Design</h3>
+          <p class="card-sum">Posters, booklet layouts, branding, and class design work, including a complete pamphlet system.</p>
+          <ul class="card-tags mono"><li>Layout</li><li>Typography</li><li>Illustrator</li></ul>
+          <span class="card-link mono">OPEN CASE STUDY <span class="arrow">→</span></span>
+        </div>
+      </a>
+
+      <a class="project-card reveal" href="celsius.html">
+        <div class="card-media">
+          <img src="media/thumbs/celsius.jpg" alt="Studio hero shot of a Celsius can" loading="lazy" decoding="async">
+        </div>
+        <div class="card-body">
+          <p class="card-cat mono">MOTION GRAPHICS · VIDEO</p>
+          <h3 class="card-title">Celsius Motion Ad</h3>
+          <p class="card-sum">Short animated product spot built for a motion graphics assignment, plus a 30-second spot filmed for a cinematography class.</p>
+          <ul class="card-tags mono"><li>Video editing</li><li>Product photo</li><li>Lighting</li></ul>
+          <span class="card-link mono">OPEN CASE STUDY <span class="arrow">→</span></span>
+        </div>
+      </a>
+
+    </div>
   </section>
 
-  <hr class="dotted-line">
+  <div class="trace-divider" aria-hidden="true">
+    <svg viewBox="0 0 1200 60" preserveAspectRatio="none">
+      <path class="trace" d="M0,30 H180 L210,10 H420 L450,30 H620 L650,50 H840 L870,30 H1200"/>
+      <circle class="node" cx="210" cy="10" r="4"/>
+      <circle class="node" cx="450" cy="30" r="4"/>
+      <circle class="node" cx="650" cy="50" r="4"/>
+      <circle class="node" cx="870" cy="30" r="4"/>
+    </svg>
+  </div>
 
-<!-- ==================================================
-     COMPONENT: About Me (Banner Style)
-================================================== -->
-<section id="about" class="about-gallery">
-  <h1 class="section-heading">About Me</h1>
-  <blockquote class="lead-quote">
-    “A jack of all trades is a master of none… often better than a master of one.”
-  </blockquote>
-
-  <!-- Banner 1: Roots & Mentorship -->
-  <div class="about-banner">
-    <img
-      src="media/index_images/dad.jpg"
-      alt="Father teaching design"
-      class="banner-image">
-    <div class="banner-text">
-      <h3>Built to Make</h3>
-      <p>
-        My dad trained at London’s Royal College of Art—and made sure I learned every trade: wood, metal, electronics and more.  
-        From day one, I’ve lived in the workshop.
-      </p>
+  <!-- ============ RESUME ============ -->
+  <section class="section" id="resume">
+    <div class="section-head reveal">
+      <span class="section-num mono">04</span>
+      <h2 class="section-title">Experience &amp; Resume</h2>
+      <span class="section-rule" aria-hidden="true"></span>
     </div>
-  </div>
+    <p class="section-intro reveal">
+      Built from the resume PDF, which you can also download below.
+    </p>
 
-  <!-- Banner 2: Mini Cooper Mechanic -->
-  <div class="about-banner">
-    <div class="banner-text">
-      <h3>Mini Cooper Mechanic</h3>
-      <p>
-        My ’06 Mini was always breaking—so I fixed brakes, wiring, sensors, suspension, engine components, and more, until maintenance costs made me sell it. 
-      </p>
+    <h3 class="resume-sub reveal">RECENT EXPERIENCE</h3>
+    <ol class="timeline">
+      <li class="tl-item reveal">
+        <span class="tl-node tl-node--active" aria-hidden="true"></span>
+        <div class="tl-card tl-card--active">
+          <p class="tl-phase mono">JUN 2025 – APR 2026 · NEW BERLIN, WI</p>
+          <h3>Engineer Technician <span class="tl-co">· Advanced Ionics</span></h3>
+          <ul class="tl-bullets">
+            <li>Designed and implemented custom PCBs and electrical systems for tape-caster equipment.</li>
+            <li>Built and maintained electrical test stations for high-temperature electrolytic cell R&amp;D.</li>
+            <li>Worked cross-functionally with engineering and research teams on new technologies and processes.</li>
+          </ul>
+        </div>
+      </li>
+      <li class="tl-item reveal">
+        <span class="tl-node" aria-hidden="true"></span>
+        <div class="tl-card">
+          <p class="tl-phase mono">OCT 2024 – MAY 2025 · MENOMONEE FALLS, WI</p>
+          <h3>Test Engineer <span class="tl-co">· Columbus McKinnon</span></h3>
+          <ul class="tl-bullets">
+            <li>Tested and validated industrial radio equipment and electrical control panels.</li>
+            <li>Spearheaded process improvements saving $250K annually.</li>
+            <li>Covered varied roles: testing, programming, and repairing industrial radios, laser engravers, and motor drives.</li>
+          </ul>
+        </div>
+      </li>
+      <li class="tl-item reveal">
+        <span class="tl-node" aria-hidden="true"></span>
+        <div class="tl-card">
+          <p class="tl-phase mono">JAN 2021 – FEB 2023 · LOVES PARK, IL</p>
+          <h3>Head of Repair Department <span class="tl-co">· Arachnid 360</span></h3>
+          <ul class="tl-bullets">
+            <li>Diagnosed and repaired customer dart machines and faulty units from the production line.</li>
+            <li>Collaborated with production to resolve product issues, contributing to product improvements.</li>
+            <li>Assisted the electrical engineering team with soldering prototype boards and designing new electronics.</li>
+          </ul>
+        </div>
+      </li>
+      <li class="tl-item reveal">
+        <span class="tl-node" aria-hidden="true"></span>
+        <div class="tl-card">
+          <p class="tl-phase mono">2019 – 2021 · ROCKFORD, IL</p>
+          <h3>Repair Technician &amp; Web Developer <span class="tl-co">· Bisconti Computers</span></h3>
+          <ul class="tl-bullets">
+            <li>Coded websites, provided customer service, and diagnosed and repaired hardware failures.</li>
+            <li>Specialized in Apple devices, gaming PCs, and servers.</li>
+          </ul>
+        </div>
+      </li>
+    </ol>
+
+    <h3 class="resume-sub reveal">EDUCATION</h3>
+    <div class="resume-grid">
+      <div class="resume-card reveal">
+        <p class="rc-meta">GRADUATED MAY 2021 · ROCKFORD, IL</p>
+        <h4>A.S. in Science, Rock Valley College</h4>
+        <p>Plus a Front-End Web Development Certificate (2015).</p>
+      </div>
+      <div class="resume-card reveal">
+        <p class="rc-meta">IN PROGRESS · ONLINE</p>
+        <h4>B.S. in Graphic Information Technology, ASU</h4>
+        <p>Full-stack web development focus.</p>
+      </div>
     </div>
-    <img
-      src="media/index_images/mini.jpg"
-      alt="Mini Cooper dashboard"
-      class="banner-image">
-  </div>
 
-  <!-- Banner 3: Digital Foundations -->
-  <div class="about-banner">
-    <img
-      src="media/index_images/comp.jpg"
-      alt="Home server rack"
-      class="banner-image">
-    <div class="banner-text">
-      <h3>From Minecraft to Servers</h3>
-      <p>
-        I started by hosting Minecraft realms for friends—then built custom gaming PCs, NAS boxes and Linux clusters to keep them online.
-      </p>
+    <h3 class="resume-sub reveal">SKILLS</h3>
+    <div class="resume-grid">
+      <div class="resume-card reveal">
+        <p class="rc-meta">HARDWARE</p>
+        <ul class="skill-tags mono">
+          <li>BGA soldering</li><li>Through-hole</li><li>SMT</li><li>Schematic reading</li><li>Ladder diagrams</li><li>EDA tools</li><li>PCB layout &amp; design</li><li>Simulation</li><li>Oscilloscopes &amp; multimeters</li><li>Rework stations</li><li>Board bring-up &amp; test</li>
+        </ul>
+      </div>
+      <div class="resume-card reveal">
+        <p class="rc-meta">SOFTWARE</p>
+        <ul class="skill-tags mono">
+          <li>HTML / CSS / JavaScript</li><li>Front-end web development</li><li>Equipment programming</li><li>Arduino</li><li>Linux &amp; home servers</li>
+        </ul>
+      </div>
     </div>
-  </div>
 
-  <!-- Banner 4: Science Olympiad & Engineering -->
-  <div class="about-banner">
-    <div class="banner-text">
-      <h3>Science Olympiad Winner</h3>
-      <p>
-        In high school, I led my team in seven build events—gliders, hovercraft, electric cars, wind turbines—and won regionals, plus three medals at Illinois invitational.
-      </p>
+    <h3 class="resume-sub reveal">SELECTED PROJECTS</h3>
+    <div class="resume-projects reveal">
+      <a class="chip-link" href="pcb-lab.html">PCB Model Lab</a>
+      <a class="chip-link" href="electronics.html">From Breadboards to PCBs</a>
+      <a class="chip-link" href="electric_car.html">Electric Car</a>
+      <a class="chip-link" href="controler-protector.html">Gimbal Protector</a>
+      <a class="chip-link" href="catapults.html">Catapults</a>
+      <a class="chip-link" href="hydrogen.html">Hydrogen Experiments</a>
     </div>
-    <img
-      src="media/index_images/champ.jpg"
-      alt="Science Olympiad regional champion"
-      class="banner-image">
-  </div>
 
-  <!-- Banner 5: Ongoing Education -->
-  <div class="about-banner">
-    <img
-      src="media/index_images/sedona.jpg"
-      alt="ASU Online logo"
-      class="banner-image">
-    <div class="banner-text">
-      <h3>Curriculum & Beyond</h3>
-      <p>
-        I earned an A.A. in engineering & electronics, and now I’m completing my B.S. in full-stack web dev & graphic design at ASU Online.
-      </p>
+    <div class="resume-download reveal">
+      <a class="btn btn-primary" href="media/Luke_Morrison_Resume_Formatted.docx.pdf" download="Luke_Morrison_Resume.pdf">Download Resume (PDF)</a>
+      <span class="resume-note">SAME CONTENT · PORTABLE FORMAT</span>
     </div>
-  </div>
-</section>
-
-<hr class="dotted-line">
-
-<!-- ==================================================
-     COMPONENT: Skills
-================================================== -->
-<section id="skills" class="skills-section">
-  <h2 class="section-heading">Skills &amp; Tools</h2>
-  <div class="skills-grid">
-    <div class="skill"><strong>Problem Solving &amp; Systems Thinking</strong></div>
-    <div class="skill"><strong>Electronics Prototyping &amp; Soldering</strong></div>
-    <div class="skill"><strong>PCB Layout &amp; Circuit Design</strong></div>
-    <div class="skill"><strong>HTML, CSS &amp; JavaScript Programming</strong></div>
-    <div class="skill"><strong>Solidworks &amp; Printing (CAD)</strong></div>
-    <div class="skill"><strong>Mechanical Fabrication &amp; Woodworking</strong></div>
-    <div class="skill"><strong>Linux &amp; Server Administration</strong></div>
-    <div class="skill"><strong>Full-Stack Web Development</strong></div>
-    <div class="skill"><strong>Graphic Design &amp; Adobe Illustrator</strong></div>
-    <div class="skill"><strong>Project Documentation &amp; Testing</strong></div>
-    <div class="skill"><strong>3D Printing &amp; G-Code</strong></div>
-    <div class="skill"><strong>Video Editing &amp; Production</strong>
-    </div>
-  </div>
-
-        <h3>More to come!<h3>
-    <p>I'm always learning new skills and tools to enhance my capabilities.</p>
-  </div>
-
-
-</section>
-
-<hr class="dotted-line">
-
-
-
-<!-- ==================================================
-     COMPONENT: Projects Grid (Cards)
-================================================== -->
-<section id="projects" class="projects-section">
-  <h2 class="section-heading">Projects</h2>
-  <p class="projects-intro">
-    Here are some of my favorite projects, showcasing my skills in electronics, design, and coding.
-  </p>
-</section>
-
-<section class="projects-grid">
-
-  <!-- Card: Electric Car -->
-  <div class="card" tabindex="0">
-    <div class="card-icon emoji-icon">🚗</div>
-    <h3 class="card-title">Electric Car</h3>
-    <div class="card-details">
-      <p>Battery operated and self stopping!</p>
-      <a href="electric_car.html" class="card-btn">Learn More →</a>
-    </div>
-  </div>
-
-  <!-- Card: Gimbal Protector -->
-  <div class="card" tabindex="0">
-    <div class="card-icon emoji-icon">🛡️</div>
-    <h3 class="card-title">Gimbal Protector</h3>
-    <div class="card-details">
-      <p>3D-printed protectors.</p>
-      <a href="controler-protector.html" class="card-btn">Learn More →</a>
-    </div>
-  </div>
-
-  <!-- Card: Electronics -->
-  <div class="card" tabindex="0">
-    <div class="card-icon emoji-icon">🔌</div>
-    <h3 class="card-title">Electronics</h3>
-    <div class="card-details">
-      <p>PCB design, circuit prototyping, and power delivery!</p>
-      <a href="electronics.html" class="card-btn">Learn More →</a>
-    </div>
-  </div>
-
-  <!-- Card: Phone Holder -->
-  <div class="card" tabindex="0">
-    <div class="card-icon emoji-icon">📱</div>
-    <h3 class="card-title">Phone Holder</h3>
-    <div class="card-details">
-      <p>Redesigned adjustable phone holder.</p>
-      <a href="phone_holder.html" class="card-btn">Learn More →</a>
-    </div>
-  </div>
-
-  <!-- Card: Catapults -->
-  <div class="card" tabindex="0">
-    <div class="card-icon emoji-icon">🏹</div>
-    <h3 class="card-title">Catapults</h3>
-    <div class="card-details">
-      <p>Going medieval in a big way!</p>
-      <a href="catapults.html" class="card-btn">Learn More →</a>
-    </div>
-  </div>
-
-  <!-- Card: Graphic Design -->
-  <div class="card" tabindex="0">
-    <div class="card-icon emoji-icon">🎨</div>
-    <h3 class="card-title">Graphic Design</h3>
-    <div class="card-details">
-      <p>Posters and booklet layouts.</p>
-      <a href="graphic-design.html" class="card-btn">Learn More →</a>
-    </div>
-  </div>
-
-  <!-- Card: Celsius Advertisement -->
-  <div class="card" tabindex="0">
-    <div class="card-icon emoji-icon">🔥</div>
-    <h3 class="card-title">Celsius Advertisement</h3>
-    <div class="card-details">
-      <p>Promotional material for Celsius Energy!</p>
-      <a href="celsius.html" class="card-btn">Learn More →</a>
-    </div>
-  </div>
-
-  <!-- Card: Hydrogen Experiments -->
-  <div class="card" tabindex="0">
-    <div class="card-icon emoji-icon">⚗️</div>
-    <h3 class="card-title">Hydrogen Experiments</h3>
-    <div class="card-details">
-      <p>‘Pop’ tests and safety-first detonation demos that taught me why rigorous lab protocols matter.</p>
-      <a href="hydrogen.html" class="card-btn">Learn More →</a>
-    </div>
-  </div>
-
-</section>
-
-
-<!-- ==================================================
-     COMPONENT: Footer & Contact
-================================================== -->
-<footer>
-  <hr class="dotted-line">
-  <section id="contact" class="contact-footer">
-    <h2>Get in Touch</h2>
-    <p>Email me at <a href="mailto:koly1999@gmail.com">koly1999@gmail.
   </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section class="section" id="contact">
+    <div class="contact-panel reveal">
+      <p class="contact-kicker mono">05 · CONTACT</p>
+      <h2 class="contact-title">Let's build something.</h2>
+      <p class="contact-sub">
+        Open to engineering roles, freelance builds, and interesting problems in hardware
+        or software.
+      </p>
+      <div class="contact-actions">
+        <a class="btn btn-primary btn-lg" href="mailto:koly1999@gmail.com">koly1999@gmail.com</a>
+        <button class="btn btn-ghost btn-lg" id="copy-email" type="button" aria-label="Copy email address to clipboard">Copy ⧉</button>
+      </div>
+      <ul class="contact-links">
+        <li><a href="https://github.com/koly1999" target="_blank" rel="noopener" class="contact-link">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2A10 10 0 002 12a10 10 0 006.8 9.5c.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.2-3.4-1.2-.4-1.1-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.4 1.1 3 .8.1-.6.4-1.1.6-1.3-2.2-.3-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.2-.4-1.2.1-2.6 0 0 .8-.3 2.7 1a9.4 9.4 0 015 0c1.9-1.3 2.7-1 2.7-1 .5 1.4.2 2.4.1 2.6.6.7 1 1.6 1 2.7 0 3.9-2.4 4.7-4.6 5 .4.3.7.9.7 1.9v2.8c0 .3.2.6.7.5A10 10 0 0022 12 10 10 0 0012 2z"/></svg>
+          <span>GitHub</span><span class="mono contact-handle">github.com/koly1999</span></a></li>
+        <li><a href="https://www.linkedin.com/in/luke-morrison" target="_blank" rel="noopener" class="contact-link">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4.98 3.5A2.5 2.5 0 112.5 6a2.5 2.5 0 012.48-2.5zM3 8.75h4v12.5H3zM9.5 8.75h3.8v1.7h.1a4.2 4.2 0 013.8-2.1c4 0 4.8 2.7 4.8 6.1v6.8h-4v-6c0-1.4 0-3.3-2-3.3s-2.3 1.6-2.3 3.2v6.1h-4z"/></svg>
+          <span>LinkedIn</span><span class="mono contact-handle">connect with me</span></a></li>
+        <li><a href="media/Luke_Morrison_Resume_Formatted.docx.pdf" download="Luke_Morrison_Resume.pdf" class="contact-link">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14"/></svg>
+          <span>Resume</span><span class="mono contact-handle">PDF · download</span></a></li>
+      </ul>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <p class="mono footer-line">© 2026 LUKE MORRISON · DESIGNED &amp; HAND-CODED · VANILLA HTML/CSS/JS</p>
+    <a href="#top" class="mono footer-top">BACK TO TOP ↑</a>
+  </div>
 </footer>
 
+<script src="js/main.js" defer></script>
 </body>
 </html>
