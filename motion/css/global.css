@@ -1,0 +1,759 @@
+/* ==========================================================================
+   Global system — shared across every page.
+   Each page sets a theme class on <body> that remaps the custom properties.
+   ========================================================================== */
+
+/* ---- Self-hosted fonts (SIL Open Font License, downloaded from Google Fonts) */
+@font-face {
+  font-family: "Barlow";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../assets/shared/fonts/barlow-400.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Barlow";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("../assets/shared/fonts/barlow-600.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Barlow Condensed";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("../assets/shared/fonts/barlow-condensed-500.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Barlow Condensed";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("../assets/shared/fonts/barlow-condensed-600.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Barlow Condensed";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("../assets/shared/fonts/barlow-condensed-700.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Baloo 2";
+  font-style: normal;
+  font-weight: 400 800;
+  font-display: swap;
+  src: url("../assets/shared/fonts/baloo-2-variable.woff2") format("woff2");
+}
+@font-face {
+  font-family: "VT323";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../assets/shared/fonts/vt323-400.woff2") format("woff2");
+}
+
+/* ---- Tokens ---------------------------------------------------------- */
+:root {
+  --page-max: 72rem;
+  --wide-max: 88rem;
+  --gutter: clamp(1.25rem, 4vw, 3rem);
+
+  --s-1: 0.25rem;
+  --s-2: 0.5rem;
+  --s-3: 0.75rem;
+  --s-4: 1rem;
+  --s-5: 1.5rem;
+  --s-6: 2rem;
+  --s-7: 3rem;
+  --s-8: 4.5rem;
+  --s-9: 7rem;
+
+  --font-body: "Barlow", "Helvetica Neue", Arial, sans-serif;
+  --font-display: "Barlow Condensed", "Arial Narrow", Arial, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  --dur-1: 160ms;
+  --dur-2: 320ms;
+  --dur-3: 640ms;
+  --ease-out: cubic-bezier(0.22, 0.61, 0.36, 1);
+
+  /* Default (dark editorial) theme; pages override on <body>. */
+  --bg: #0d0d0f;
+  --surface: #17171b;
+  --ink: #f2f2ef;
+  --ink-soft: #a7a7ad;
+  --line: #2c2c33;
+  --accent: #39ff6b;
+  --accent-ink: #0d0d0f;
+  --nav-bg: rgba(13, 13, 15, 0.88);
+  --nav-ink: #f2f2ef;
+  --focus-ring: #7ab8ff;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+}
+
+/* ---- Focus & selection ------------------------------------------------ */
+:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  z-index: 200;
+  padding: 0.6rem 1rem;
+  background: var(--ink);
+  color: var(--bg);
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 0 0 6px 6px;
+}
+.skip-link:focus {
+  top: 0;
+}
+
+/* ---- Layout helpers ---------------------------------------------------- */
+.wrap {
+  width: min(var(--page-max), 100% - 2 * var(--gutter));
+  margin-inline: auto;
+}
+.wrap-wide {
+  width: min(var(--wide-max), 100% - 2 * var(--gutter));
+  margin-inline: auto;
+}
+
+.section {
+  padding-block: clamp(3rem, 8vw, 6rem);
+}
+
+.section-head {
+  margin-bottom: var(--s-6);
+}
+
+.kicker {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: var(--s-3);
+}
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  line-height: 1.05;
+  text-wrap: balance;
+}
+
+h2 {
+  font-size: clamp(1.9rem, 4.5vw, 3rem);
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+}
+
+h3 {
+  font-size: clamp(1.2rem, 2.4vw, 1.5rem);
+  margin-bottom: var(--s-3);
+}
+
+.prose {
+  max-width: 46rem;
+}
+.prose p,
+.prose ul,
+.prose ol {
+  margin-bottom: var(--s-4);
+  color: var(--ink-soft);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+}
+.prose strong {
+  color: var(--ink);
+}
+.prose ul,
+.prose ol {
+  padding-left: 1.4rem;
+}
+.prose li {
+  margin-bottom: var(--s-2);
+}
+.prose h3 {
+  margin-top: var(--s-6);
+  color: var(--ink);
+}
+.prose h3:first-child {
+  margin-top: 0;
+}
+.prose a {
+  color: var(--ink);
+  text-decoration-color: var(--accent);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+.prose a:hover {
+  color: var(--accent);
+}
+
+/* ---- Buttons ----------------------------------------------------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.7rem 1.4rem;
+  border: 2px solid currentColor;
+  border-radius: 999px;
+  background: none;
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background var(--dur-1) var(--ease-out), color var(--dur-1) var(--ease-out), transform var(--dur-1) var(--ease-out);
+}
+.btn:hover {
+  background: var(--ink);
+  color: var(--bg);
+  transform: translateY(-2px);
+}
+.btn-accent {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.btn-accent:hover {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+
+/* ---- Navigation --------------------------------------------------------- */
+.site-nav {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 100;
+  background: var(--nav-bg);
+  color: var(--nav-ink);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid color-mix(in srgb, var(--nav-ink) 14%, transparent);
+}
+.site-nav .nav-inner {
+  width: min(var(--wide-max), 100% - 2 * var(--gutter));
+  margin-inline: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-4);
+  min-height: 3.5rem;
+  flex-wrap: wrap;
+  padding-block: 0.4rem;
+}
+.brand {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.15rem;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.brand:hover {
+  color: var(--accent);
+}
+.nav-list {
+  display: flex;
+  align-items: center;
+  gap: clamp(0.75rem, 2vw, 1.75rem);
+  flex-wrap: wrap;
+}
+.nav-list a {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 0.35rem 0.15rem;
+  border-bottom: 2px solid transparent;
+  transition: color var(--dur-1), border-color var(--dur-1);
+}
+.nav-list a:hover {
+  color: var(--accent);
+}
+.nav-list a[aria-current="page"] {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+  padding: 10px;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+.nav-toggle .bar {
+  display: block;
+  height: 2px;
+  width: 100%;
+  background: var(--nav-ink);
+  transition: transform var(--dur-2) var(--ease-out), opacity var(--dur-2);
+}
+
+@media (max-width: 47.9rem) {
+  /* JS-enhanced collapse; without JS the list simply wraps and stays usable */
+  .js .nav-toggle {
+    display: flex;
+  }
+  .js .nav-list {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    background: var(--nav-bg);
+    border-bottom: 1px solid color-mix(in srgb, var(--nav-ink) 14%, transparent);
+    padding: 0.5rem var(--gutter) 1rem;
+    display: none;
+  }
+  .js .nav-list.is-open {
+    display: flex;
+  }
+  .js .nav-list a {
+    padding: 0.8rem 0.25rem;
+    font-size: 1.1rem;
+    border-bottom: 1px solid color-mix(in srgb, var(--nav-ink) 10%, transparent);
+  }
+  .js .nav-list a[aria-current="page"] {
+    border-bottom-color: var(--accent);
+  }
+  .js .nav-toggle[aria-expanded="true"] .bar:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+  .js .nav-toggle[aria-expanded="true"] .bar:nth-child(2) {
+    opacity: 0;
+  }
+  .js .nav-toggle[aria-expanded="true"] .bar:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+}
+
+main {
+  padding-top: 4.5rem;
+}
+
+/* ---- Project metadata -------------------------------------------------- */
+.meta-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(9.5rem, 1fr));
+  gap: var(--s-5) var(--s-6);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding-block: var(--s-5);
+}
+.meta-grid div {
+  min-width: 0;
+}
+.meta-grid dt {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: var(--s-1);
+}
+.meta-grid dd {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+/* ---- Video figure ------------------------------------------------------- */
+.video-figure video {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
+  background: #000;
+}
+.video-figure figcaption {
+  margin-top: var(--s-3);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  color: var(--ink-soft);
+}
+
+/* ---- Storyboard cards ---------------------------------------------------- */
+.board-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(21rem, 100%), 1fr));
+  gap: var(--s-6) var(--s-5);
+  counter-reset: frame;
+}
+.board-card {
+  position: relative;
+}
+.board-card .frame-media {
+  display: block;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  text-decoration: none;
+}
+.board-card img {
+  width: 100%;
+  height: auto;
+}
+.board-card .frame-tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: var(--s-3) 0 var(--s-1);
+}
+.board-card h3 {
+  font-size: 1.15rem;
+  margin-bottom: var(--s-2);
+}
+.board-card figcaption p,
+.board-card .frame-notes {
+  color: var(--ink-soft);
+  font-size: 0.98rem;
+  line-height: 1.55;
+}
+.frame-notes {
+  margin-top: var(--s-2);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+}
+.frame-notes span {
+  display: block;
+}
+
+/* ---- Carousel ------------------------------------------------------------ */
+/* Baseline (no JS): a horizontally scrollable snap row. JS adds buttons + counter. */
+.carousel {
+  position: relative;
+}
+.carousel-track {
+  display: flex;
+  gap: var(--s-5);
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
+  padding-bottom: var(--s-4);
+  scrollbar-color: var(--accent) transparent;
+}
+.carousel-track:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 4px;
+}
+.carousel-item {
+  flex: 0 0 min(24rem, 82vw);
+  scroll-snap-align: start;
+}
+.carousel-item figure {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.carousel-item .item-media {
+  border: 1px solid var(--line);
+  background: var(--surface);
+  aspect-ratio: 4 / 3;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  padding: var(--s-4);
+}
+.carousel-item .item-media.is-cover {
+  padding: 0;
+}
+.carousel-item img {
+  max-height: 100%;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+}
+.carousel-item .item-media.is-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.carousel-item figcaption {
+  margin-top: var(--s-3);
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+  line-height: 1.5;
+}
+.carousel-item figcaption strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  color: var(--ink);
+  letter-spacing: 0.03em;
+}
+.carousel-controls {
+  display: none;
+  align-items: center;
+  gap: var(--s-4);
+  margin-top: var(--s-3);
+}
+.js .carousel-controls {
+  display: flex;
+}
+.carousel-btn {
+  width: 44px;
+  height: 44px;
+  border: 2px solid currentColor;
+  border-radius: 50%;
+  background: none;
+  color: var(--ink);
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition: background var(--dur-1), color var(--dur-1);
+}
+.carousel-btn:hover {
+  background: var(--ink);
+  color: var(--bg);
+}
+.carousel-btn[disabled] {
+  opacity: 0.35;
+  cursor: default;
+}
+.carousel-btn[disabled]:hover {
+  background: none;
+  color: var(--ink);
+}
+.carousel-btn svg {
+  width: 18px;
+  height: 18px;
+}
+.carousel-count {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  color: var(--ink-soft);
+}
+
+/* ---- Planning / gallery grid + lightbox ---------------------------------- */
+.plan-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(17rem, 100%), 1fr));
+  gap: var(--s-5);
+}
+.plan-grid .frame-media {
+  border: 1px solid var(--line);
+  display: block;
+  background: var(--surface);
+}
+
+.lightbox {
+  border: 0;
+  padding: 0;
+  background: transparent;
+  max-width: min(64rem, 94vw);
+  width: 100%;
+}
+.lightbox::backdrop {
+  background: rgba(5, 5, 8, 0.9);
+}
+.lightbox figure {
+  background: #101014;
+  border: 1px solid #2c2c33;
+  padding: var(--s-4);
+}
+.lightbox img {
+  width: 100%;
+  max-height: 76vh;
+  object-fit: contain;
+  background: #000;
+}
+.lightbox figcaption {
+  color: #d7d7dc;
+  padding-top: var(--s-3);
+  font-size: 0.95rem;
+}
+.lightbox .lightbox-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--s-4);
+  padding-top: var(--s-3);
+}
+.lightbox .lightbox-nav {
+  display: flex;
+  gap: var(--s-3);
+}
+.lightbox button {
+  border: 1px solid #4a4a52;
+  background: #1b1b21;
+  color: #f2f2ef;
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+.lightbox button:hover {
+  background: #2c2c33;
+}
+
+/* ---- Previous / next project navigation ----------------------------------- */
+.project-nav {
+  border-top: 1px solid var(--line);
+}
+.project-nav ul {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: var(--s-4);
+  align-items: center;
+  padding-block: var(--s-6);
+}
+.project-nav a {
+  text-decoration: none;
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  display: inline-flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+.project-nav a:hover .project-nav-title {
+  color: var(--accent);
+}
+.project-nav .dir {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  color: var(--ink-soft);
+}
+.project-nav-title {
+  font-size: clamp(1.05rem, 2.4vw, 1.5rem);
+  transition: color var(--dur-1);
+}
+.project-nav li:nth-child(2) {
+  text-align: center;
+}
+.project-nav li:nth-child(3) {
+  text-align: right;
+}
+.project-nav li:nth-child(3) a {
+  align-items: flex-end;
+}
+@media (max-width: 40rem) {
+  .project-nav ul {
+    grid-template-columns: 1fr 1fr;
+  }
+  .project-nav li:nth-child(2) {
+    order: 3;
+    grid-column: 1 / -1;
+    text-align: left;
+  }
+}
+
+/* ---- Footer ---------------------------------------------------------------- */
+.site-footer {
+  border-top: 1px solid var(--line);
+  padding-block: var(--s-6);
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+}
+.site-footer .footer-inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-4) var(--s-6);
+  align-items: center;
+  justify-content: space-between;
+}
+.site-footer .footer-id {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ink);
+  font-weight: 600;
+}
+.site-footer .footer-id small {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  color: var(--ink-soft);
+  margin-top: 0.2rem;
+}
+.to-top {
+  text-decoration: none;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  border: 1px solid var(--line);
+  padding: 0.55rem 1rem;
+  border-radius: 999px;
+  transition: color var(--dur-1), border-color var(--dur-1);
+}
+.to-top:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+/* ---- Scroll reveals ---------------------------------------------------------- */
+/* Content is fully visible without JS; .js + IO adds the entrance. */
+@media (prefers-reduced-motion: no-preference) {
+  .js .reveal {
+    opacity: 0;
+    transform: translateY(26px);
+    transition: opacity var(--dur-3) var(--ease-out), transform var(--dur-3) var(--ease-out);
+  }
+  .js .reveal.is-in {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ---- Reduced motion globals ---------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ---- Utility ---------------------------------------------------------------------- */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.doc-link {
+  font-size: 0.95rem;
+}
