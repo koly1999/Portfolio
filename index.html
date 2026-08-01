@@ -323,7 +323,7 @@ sw:  html/css/js · linux · servers</span>
 
       <a class="project-card reveal" href="electronics.html">
         <div class="card-media">
-          <img src="media/thumbs/electronics.jpg" alt="Custom PCBs next to their board layout diagrams" loading="lazy" decoding="async">
+          <canvas class="card-model" data-shape="board" aria-hidden="true"></canvas>
           <span class="card-badge mono">FEATURED</span>
         </div>
         <div class="card-body">
@@ -337,7 +337,7 @@ sw:  html/css/js · linux · servers</span>
 
       <a class="project-card reveal" href="electric_car.html">
         <div class="card-media">
-          <img src="media/thumbs/electric_car.jpg" alt="Finished self-stopping electric car with 3D-printed chassis" loading="lazy" decoding="async">
+          <canvas class="card-model" data-shape="car" aria-hidden="true"></canvas>
           <span class="card-badge mono">FEATURED</span>
         </div>
         <div class="card-body">
@@ -351,7 +351,7 @@ sw:  html/css/js · linux · servers</span>
 
       <a class="project-card reveal" href="controler-protector.html">
         <div class="card-media">
-          <img src="media/thumbs/gimbal.jpg" alt="Multi-color batch of 3D-printed gimbal protectors" loading="lazy" decoding="async">
+          <canvas class="card-model" data-shape="guard" aria-hidden="true"></canvas>
         </div>
         <div class="card-body">
           <p class="card-cat mono">PRODUCT · 3D PRINTING</p>
@@ -364,7 +364,7 @@ sw:  html/css/js · linux · servers</span>
 
       <a class="project-card reveal" href="phone_holder.html">
         <div class="card-media">
-          <img src="media/thumbs/phone_holder.jpg" alt="CAD parts next to the assembled phone holder" loading="lazy" decoding="async">
+          <canvas class="card-model" data-shape="phone" aria-hidden="true"></canvas>
         </div>
         <div class="card-body">
           <p class="card-cat mono">CAD · PROTOTYPING</p>
@@ -376,13 +376,8 @@ sw:  html/css/js · linux · servers</span>
       </a>
 
       <a class="project-card project-card--code reveal" href="https://github.com/koly1999/Portfolio" target="_blank" rel="noopener">
-        <div class="card-media card-media--code" aria-hidden="true">
-          <pre class="mono"><code>&lt;!DOCTYPE html&gt;
-<span class="c-dim">// no frameworks</span>
-<span class="c-dim">// no build step</span>
-const site = new
-  Engine('canvas');
-site.render(<span class="c-green">'3d'</span>);</code></pre>
+        <div class="card-media">
+          <canvas class="card-model" data-shape="web" aria-hidden="true"></canvas>
         </div>
         <div class="card-body">
           <p class="card-cat mono">WEB DEVELOPMENT</p>
@@ -397,80 +392,41 @@ site.render(<span class="c-green">'3d'</span>);</code></pre>
 
     <div class="proj-group reveal">
       <span class="proj-group-tag mono">03.B</span>
-      <h3 class="proj-group-title">Fun &amp; Experiments</h3>
+      <h3 class="proj-group-title">Design &amp; Media</h3>
       <span class="section-rule" aria-hidden="true"></span>
     </div>
 
     <div class="projects-grid">
 
-      <a class="project-card reveal" href="theremin.html">
-        <div class="card-media">
-          <img src="media/thumbs/theremin.jpg" alt="Scratch-built theremin made from salvaged radio electronics" loading="lazy" decoding="async">
-        </div>
-        <div class="card-body">
-          <p class="card-cat mono">ANALOG · MUSIC · SALVAGE</p>
-          <h3 class="card-title">Scratch-Built Theremin</h3>
-          <p class="card-sum">A playable theremin built from salvaged radio electronics on a wooden plank. Pitch changes with hand distance from the antenna.</p>
-          <ul class="card-tags mono"><li>Salvaged parts</li><li>Analog audio</li><li>Playable</li></ul>
-          <span class="card-link mono">OPEN CASE STUDY <span class="arrow">→</span></span>
-        </div>
-      </a>
-
-      <a class="project-card reveal" href="catapults.html">
-        <div class="card-media">
-          <img src="media/thumbs/catapult.jpg" alt="Fully assembled counterweight trebuchet" loading="lazy" decoding="async">
-        </div>
-        <div class="card-body">
-          <p class="card-cat mono">MECHANICAL ENGINEERING</p>
-          <h3 class="card-title">Catapults</h3>
-          <p class="card-sum">Competition catapults, including one that launched a 5-pound rock up to 190 feet. Started as a torsion catapult, finished as a counterweight trebuchet.</p>
-          <ul class="card-tags mono"><li>Structures</li><li>Torsion</li><li>Counterweight</li></ul>
-          <span class="card-link mono">OPEN CASE STUDY <span class="arrow">→</span></span>
-        </div>
-      </a>
-
-      <a class="project-card reveal" href="hydrogen.html">
-        <div class="card-media">
-          <img src="media/thumbs/hydrogen.jpg" alt="Custom hydrogen electrolysis rig" loading="lazy" decoding="async">
-        </div>
-        <div class="card-body">
-          <p class="card-cat mono">TEST EQUIPMENT · CHEMISTRY</p>
-          <h3 class="card-title">Hydrogen Experiments</h3>
-          <p class="card-sum">Lab and prototype work with hydrogen and electrolysis: a rig for producing and capturing gas over water, with check valves, plus an ignition test.</p>
-          <ul class="card-tags mono"><li>Electrolysis</li><li>Gas handling</li><li>Safety protocol</li></ul>
-          <span class="card-link mono">OPEN CASE STUDY <span class="arrow">→</span></span>
-        </div>
-      </a>
-
-      <a class="project-card reveal" href="high-voltage.html">
-        <div class="card-media">
-          <img src="media/thumbs/high_voltage.jpg" alt="Plasma arc from a rewound microwave oven transformer" loading="lazy" decoding="async">
-        </div>
-        <div class="card-body">
-          <p class="card-cat mono">HIGH VOLTAGE · DANGER SCIENCE</p>
-          <h3 class="card-title">Microwave Transformer Arc</h3>
-          <p class="card-sum">A microwave oven transformer repurposed to draw sustained arcs, run at a careful distance with insulated rigging.</p>
-          <ul class="card-tags mono"><li>MOT</li><li>Plasma arc</li><li>High voltage</li></ul>
-          <span class="card-link mono">OPEN CASE STUDY <span class="arrow">→</span></span>
-        </div>
-      </a>
-
       <a class="project-card reveal" href="graphic-design.html">
         <div class="card-media">
-          <img src="media/thumbs/graphic_design.jpg" alt="Poster design from the design manifesto series" loading="lazy" decoding="async">
+          <canvas class="card-model" data-shape="book" aria-hidden="true"></canvas>
         </div>
         <div class="card-body">
-          <p class="card-cat mono">GRAPHIC DESIGN</p>
-          <h3 class="card-title">Graphic Design</h3>
-          <p class="card-sum">Posters, booklet layouts, branding, and class design work, including a complete pamphlet system.</p>
+          <p class="card-cat mono">GRAPHIC DESIGN · EDITORIAL</p>
+          <h3 class="card-title">Design Manifesto</h3>
+          <p class="card-sum">A manifesto booklet designed cover to cover: front and back covers, center spreads, and an eight-page pamphlet system on one grid.</p>
           <ul class="card-tags mono"><li>Layout</li><li>Typography</li><li>Illustrator</li></ul>
+          <span class="card-link mono">OPEN CASE STUDY <span class="arrow">→</span></span>
+        </div>
+      </a>
+
+      <a class="project-card reveal" href="posters.html">
+        <div class="card-media">
+          <canvas class="card-model" data-shape="poster" aria-hidden="true"></canvas>
+        </div>
+        <div class="card-body">
+          <p class="card-cat mono">GRAPHIC DESIGN · PRINT</p>
+          <h3 class="card-title">Posters</h3>
+          <p class="card-sum">Three typographic posters, including a framed "Money and anti-capitalism" piece built on the Trainspotting monologue.</p>
+          <ul class="card-tags mono"><li>Typography</li><li>Print</li><li>3 posters</li></ul>
           <span class="card-link mono">OPEN CASE STUDY <span class="arrow">→</span></span>
         </div>
       </a>
 
       <a class="project-card reveal" href="motion/index.html">
         <div class="card-media">
-          <img src="motion/assets/digital-glitch/video/poster.webp" alt="CRT terminal frame from the Digital Glitch animation reading System Online" loading="lazy" decoding="async">
+          <canvas class="card-model" data-shape="film" aria-hidden="true"></canvas>
         </div>
         <div class="card-body">
           <p class="card-cat mono">AFTER EFFECTS · GIT 314</p>
@@ -483,13 +439,75 @@ site.render(<span class="c-green">'3d'</span>);</code></pre>
 
       <a class="project-card reveal" href="celsius.html">
         <div class="card-media">
-          <img src="motion/assets/celsius/video/poster.webp" alt="Final frame of the Celsius animation: the can, tagline, and rolling orange" loading="lazy" decoding="async">
+          <canvas class="card-model" data-shape="can" aria-hidden="true"></canvas>
         </div>
         <div class="card-body">
           <p class="card-cat mono">MOTION GRAPHICS · VIDEO</p>
           <h3 class="card-title">Celsius Ad</h3>
           <p class="card-sum">A three-second After Effects product ad, documented from creative brief and storyboards to the final spot, plus a 30-second filmed version and product stills.</p>
           <ul class="card-tags mono"><li>After Effects</li><li>Storyboards</li><li>Filmed spot</li></ul>
+          <span class="card-link mono">OPEN CASE STUDY <span class="arrow">→</span></span>
+        </div>
+      </a>
+
+    </div>
+
+    <div class="proj-group reveal">
+      <span class="proj-group-tag mono">03.C</span>
+      <h3 class="proj-group-title">Fun &amp; Experiments</h3>
+      <span class="section-rule" aria-hidden="true"></span>
+    </div>
+
+    <div class="projects-grid">
+
+      <a class="project-card reveal" href="theremin.html">
+        <div class="card-media">
+          <canvas class="card-model" data-shape="theremin" aria-hidden="true"></canvas>
+        </div>
+        <div class="card-body">
+          <p class="card-cat mono">ANALOG · MUSIC · SALVAGE</p>
+          <h3 class="card-title">Scratch-Built Theremin</h3>
+          <p class="card-sum">A playable theremin built from salvaged radio electronics on a wooden plank. Pitch changes with hand distance from the antenna.</p>
+          <ul class="card-tags mono"><li>Salvaged parts</li><li>Analog audio</li><li>Playable</li></ul>
+          <span class="card-link mono">OPEN CASE STUDY <span class="arrow">→</span></span>
+        </div>
+      </a>
+
+      <a class="project-card reveal" href="catapults.html">
+        <div class="card-media">
+          <canvas class="card-model" data-shape="treb" aria-hidden="true"></canvas>
+        </div>
+        <div class="card-body">
+          <p class="card-cat mono">MECHANICAL ENGINEERING</p>
+          <h3 class="card-title">Catapults</h3>
+          <p class="card-sum">Competition catapults, including one that launched a 5-pound rock up to 190 feet. Started as a torsion catapult, finished as a counterweight trebuchet.</p>
+          <ul class="card-tags mono"><li>Structures</li><li>Torsion</li><li>Counterweight</li></ul>
+          <span class="card-link mono">OPEN CASE STUDY <span class="arrow">→</span></span>
+        </div>
+      </a>
+
+      <a class="project-card reveal" href="hydrogen.html">
+        <div class="card-media">
+          <canvas class="card-model" data-shape="flask" aria-hidden="true"></canvas>
+        </div>
+        <div class="card-body">
+          <p class="card-cat mono">TEST EQUIPMENT · CHEMISTRY</p>
+          <h3 class="card-title">Hydrogen Experiments</h3>
+          <p class="card-sum">Lab and prototype work with hydrogen and electrolysis: a rig for producing and capturing gas over water, with check valves, plus an ignition test.</p>
+          <ul class="card-tags mono"><li>Electrolysis</li><li>Gas handling</li><li>Safety protocol</li></ul>
+          <span class="card-link mono">OPEN CASE STUDY <span class="arrow">→</span></span>
+        </div>
+      </a>
+
+      <a class="project-card reveal" href="high-voltage.html">
+        <div class="card-media">
+          <canvas class="card-model" data-shape="mot" aria-hidden="true"></canvas>
+        </div>
+        <div class="card-body">
+          <p class="card-cat mono">HIGH VOLTAGE · DANGER SCIENCE</p>
+          <h3 class="card-title">Microwave Transformer Arc</h3>
+          <p class="card-sum">A microwave oven transformer repurposed to draw sustained arcs, run at a careful distance with insulated rigging.</p>
+          <ul class="card-tags mono"><li>MOT</li><li>Plasma arc</li><li>High voltage</li></ul>
           <span class="card-link mono">OPEN CASE STUDY <span class="arrow">→</span></span>
         </div>
       </a>
