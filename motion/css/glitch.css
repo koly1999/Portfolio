@@ -1,0 +1,831 @@
+/* ==========================================================================
+   Digital Glitch — retro-future terminal theme.
+   Bright green is reserved for accents; body copy stays pale for readability.
+   ========================================================================== */
+
+.theme-glitch {
+  --bg: #030704;
+  --surface: #08110a;
+  --ink: #e4ede2;
+  --ink-soft: #afc3b2;
+  --line: rgba(106, 255, 141, 0.28);
+  --accent: #6aff8d;
+  --accent-ink: #030704;
+  --nav-bg: rgba(3, 7, 4, 0.94);
+  --nav-ink: #e4ede2;
+  --focus-ring: #a7ffbb;
+  --crt-plastic: #d2c9a8;
+  --crt-plastic-light: #e3dbbd;
+  --crt-plastic-dark: #8f886f;
+  --font-display: "VT323", var(--font-mono);
+  position: relative;
+  isolation: isolate;
+}
+
+.theme-glitch h2 {
+  font-size: clamp(2.1rem, 5vw, 3.4rem);
+  letter-spacing: 0.04em;
+  color: #effff1;
+  text-shadow: 0 0 18px rgba(106, 255, 141, 0.08);
+}
+.theme-glitch h3 {
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #a7f3b8;
+}
+
+/* Dim terminal grid and scan texture, kept behind all readable content. */
+.theme-glitch::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 50% 8%, rgba(74, 255, 116, 0.085), transparent 35rem),
+    repeating-linear-gradient(to bottom, rgba(106, 255, 141, 0.018) 0 1px, transparent 1px 5px),
+    linear-gradient(rgba(106, 255, 141, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(106, 255, 141, 0.025) 1px, transparent 1px);
+  background-size: auto, auto, 56px 56px, 56px 56px;
+}
+
+.theme-glitch section[data-section-label] {
+  position: relative;
+  border-top: 1px solid rgba(106, 255, 141, 0.1);
+}
+
+@media (min-width: 76rem) {
+  .theme-glitch section[data-section-label]::before {
+    content: attr(data-section-label);
+    position: absolute;
+    top: 1.2rem;
+    right: max(1.5rem, calc((100vw - var(--wide-max)) / 2));
+    color: rgba(106, 255, 141, 0.2);
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    pointer-events: none;
+  }
+}
+
+/* ---- Terminal labels ------------------------------------------------------ */
+.term-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  text-shadow: 0 0 9px rgba(106, 255, 141, 0.42);
+}
+.caret {
+  display: inline-block;
+  width: 0.55em;
+  height: 1em;
+  vertical-align: text-bottom;
+  background: var(--accent);
+  margin-left: 0.25em;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .caret {
+    animation: caret-blink 1.1s steps(1, end) infinite;
+  }
+  @keyframes caret-blink {
+    50% { opacity: 0; }
+  }
+}
+
+/* ---- Hero ------------------------------------------------------------------ */
+.glitch-hero {
+  padding-top: clamp(2.5rem, 5vw, 4.5rem);
+  overflow: hidden;
+}
+.glitch-title {
+  font-size: clamp(3.2rem, 11vw, 8rem);
+  text-transform: uppercase;
+  color: #effff1;
+  line-height: 0.95;
+  letter-spacing: 0.025em;
+  text-shadow: 0 0 28px rgba(106, 255, 141, 0.12);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .js .glitch-title.is-glitching {
+    animation: title-split 0.5s steps(2, end) 2;
+  }
+  @keyframes title-split {
+    0%, 100% { text-shadow: none; transform: none; }
+    25% { text-shadow: -4px 0 #ff2954, 4px 0 #21d4fd; transform: skewX(-1.5deg); }
+    60% { text-shadow: 4px 0 #ff2954, -4px 0 #21d4fd; transform: skewX(1deg); }
+  }
+}
+.glitch-sub {
+  font-family: var(--font-mono);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  color: #bbceb9;
+  margin: var(--s-3) 0 var(--s-7);
+}
+
+/* ---- Molded 1990s / early-2000s CRT monitor -------------------------------- */
+.monitor {
+  max-width: 68rem;
+  margin-inline: auto;
+}
+.monitor-shell {
+  position: relative;
+  background:
+    linear-gradient(145deg, var(--crt-plastic-light) 0%, var(--crt-plastic) 48%, #b8b092 100%);
+  border: 3px solid #77715d;
+  border-radius: clamp(1.4rem, 4vw, 2.8rem) clamp(1.4rem, 4vw, 2.8rem) clamp(0.9rem, 2vw, 1.5rem) clamp(0.9rem, 2vw, 1.5rem);
+  padding: clamp(1rem, 2.6vw, 2rem) clamp(1rem, 3.4vw, 2.7rem) clamp(0.8rem, 2vw, 1.45rem);
+  box-shadow:
+    inset 3px 3px 0 rgba(255, 255, 255, 0.32),
+    inset -5px -6px 0 rgba(83, 78, 62, 0.14),
+    0 1px 0 #dcd4b4,
+    0 32px 70px rgba(0, 0, 0, 0.62);
+}
+.monitor-shell::before,
+.monitor-shell::after {
+  content: "";
+  position: absolute;
+  top: 0.78rem;
+  width: 0.42rem;
+  height: 0.42rem;
+  border-radius: 50%;
+  background: #85806b;
+  box-shadow: inset 1px 1px 2px rgba(34, 32, 26, 0.75), 0 1px rgba(255, 255, 255, 0.35);
+}
+.monitor-shell::before {
+  left: 0.9rem;
+}
+.monitor-shell::after {
+  right: 0.9rem;
+}
+.monitor-cabinet-mark {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 0 0 0.55rem;
+  padding-inline: 0.25rem;
+  color: #5b5a4c;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: clamp(0.5rem, 1.25vw, 0.68rem);
+  font-weight: 700;
+  letter-spacing: 0.13em;
+}
+.monitor-bezel {
+  padding: clamp(0.55rem, 1.7vw, 1.1rem);
+  background: #292b27;
+  border: 3px solid #6e6957;
+  border-radius: clamp(1rem, 3.4vw, 2.2rem);
+  box-shadow:
+    inset 0 0 0 2px #171916,
+    inset 0 0 18px rgba(0, 0, 0, 0.92),
+    0 2px 0 rgba(255, 255, 255, 0.24);
+}
+.monitor-screen {
+  position: relative;
+  background: #000;
+  border-radius: clamp(0.8rem, 2.7vw, 1.8rem);
+  overflow: hidden;
+  border: 2px solid #080a08;
+  box-shadow: inset 0 0 0 3px #050705, inset 0 0 42px rgba(0, 0, 0, 0.95);
+}
+.monitor-screen video {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
+  background: #000;
+}
+/* CRT effect layer: scanlines + curved-corner vignette + faint reflection.
+   Kept light so the animation itself is still easy to evaluate, and the whole
+   layer can be switched off with the toggle button. */
+.crt-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity var(--dur-2);
+  background:
+    linear-gradient(116deg, rgba(255, 255, 255, 0.075) 0%, transparent 22%),
+    repeating-linear-gradient(to bottom, rgba(0, 0, 0, 0.19) 0 1px, transparent 1px 3px),
+    radial-gradient(ellipse at center, transparent 58%, rgba(0, 0, 0, 0.52) 100%);
+}
+.monitor-screen.crt-on .crt-overlay {
+  opacity: 1;
+}
+.monitor-screen.crt-on {
+  box-shadow:
+    inset 0 0 0 3px #050705,
+    inset 0 0 42px rgba(0, 0, 0, 0.95),
+    0 0 34px rgba(106, 255, 141, 0.16);
+}
+.monitor-chin {
+  display: grid;
+  grid-template-columns: auto minmax(8rem, 1fr) auto auto auto;
+  align-items: center;
+  gap: clamp(0.55rem, 1.8vw, 1.25rem);
+  min-height: clamp(3.5rem, 7vw, 4.7rem);
+  padding: clamp(0.65rem, 1.7vw, 1.1rem) 0.35rem 0;
+  color: #3b3b32;
+}
+.monitor-badge {
+  display: grid;
+  place-items: center;
+  width: clamp(2.3rem, 5vw, 3.2rem);
+  aspect-ratio: 1;
+  border: 2px solid #555447;
+  color: #45453b;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: clamp(0.75rem, 2vw, 1rem);
+  font-weight: 800;
+  letter-spacing: -0.05em;
+  box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.24);
+}
+.monitor-label {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: clamp(0.48rem, 1.2vw, 0.62rem);
+  line-height: 1.45;
+  letter-spacing: 0.12em;
+  color: #666354;
+}
+.monitor-label b {
+  color: #36362f;
+  font-size: 1.08em;
+}
+.monitor-vents {
+  display: grid;
+  grid-template-columns: repeat(3, 1.1rem);
+  gap: 0.24rem 0.3rem;
+}
+.monitor-vents i {
+  height: 0.2rem;
+  border-radius: 999px;
+  background: #716b58;
+  box-shadow: inset 0 1px 1px rgba(41, 38, 31, 0.85);
+}
+.monitor-dials {
+  display: flex;
+  gap: 0.45rem;
+}
+.monitor-dials i {
+  position: relative;
+  width: clamp(1rem, 2.5vw, 1.35rem);
+  aspect-ratio: 1;
+  border: 1px solid #625e4e;
+  border-radius: 50%;
+  background: #aaa287;
+  box-shadow: inset -2px -2px 2px rgba(70, 66, 53, 0.28), 0 1px 1px rgba(255, 255, 255, 0.4);
+}
+.monitor-dials i::after {
+  content: "";
+  position: absolute;
+  width: 1px;
+  height: 38%;
+  top: 12%;
+  left: 50%;
+  background: #3f3d34;
+  transform: rotate(25deg);
+  transform-origin: 50% 100%;
+}
+.monitor-power {
+  display: grid;
+  grid-template-columns: auto;
+  place-items: center;
+  gap: 0.18rem;
+  min-width: 2.1rem;
+}
+.monitor-power small {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.42rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #5a574a;
+}
+.monitor-led {
+  display: block;
+  width: 0.62rem;
+  height: 0.62rem;
+  border-radius: 50%;
+  background: #39f66a;
+  border: 1px solid #416747;
+  box-shadow: 0 0 8px rgba(61, 255, 112, 0.8), inset 0 0 2px #eaffee;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .monitor-led {
+    animation: led-breathe 3.2s ease-in-out infinite;
+  }
+  @keyframes led-breathe {
+    50% { box-shadow: 0 0 3px rgba(61, 255, 112, 0.45); }
+  }
+}
+.monitor-stand {
+  width: 48%;
+  height: clamp(1.4rem, 3.5vw, 2.2rem);
+  margin-inline: auto;
+  background: linear-gradient(to bottom, #c5bd9e, #8d866d);
+  clip-path: polygon(16% 0, 84% 0, 96% 100%, 4% 100%);
+  box-shadow: inset 0 2px rgba(255, 255, 255, 0.2);
+}
+.monitor-stand span {
+  display: block;
+  width: 122%;
+  height: 0.55rem;
+  position: relative;
+  left: -11%;
+  top: calc(100% - 0.18rem);
+  border-radius: 999px 999px 0.35rem 0.35rem;
+  background: #aaa286;
+  border: 1px solid #6f6956;
+  box-shadow: 0 10px 18px rgba(0, 0, 0, 0.3);
+}
+.monitor.video-figure figcaption {
+  margin-top: 1.5rem;
+  text-align: center;
+}
+.crt-toggle {
+  display: none;
+  margin: var(--s-4) auto 0;
+  background: rgba(5, 16, 8, 0.72);
+  border: 1px solid var(--line);
+  color: var(--ink-soft);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  padding: 0.55rem 0.85rem;
+}
+.js .crt-toggle {
+  display: block;
+}
+.crt-toggle:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+/* ---- Content styling ------------------------------------------------------- */
+.theme-glitch .meta-grid {
+  position: relative;
+  border: 1px solid rgba(106, 255, 141, 0.42);
+  background:
+    repeating-linear-gradient(to bottom, rgba(106, 255, 141, 0.025) 0 1px, transparent 1px 4px),
+    rgba(6, 18, 9, 0.86);
+  padding: var(--s-5);
+  box-shadow: inset 0 0 26px rgba(106, 255, 141, 0.035);
+}
+.theme-glitch .meta-grid::before {
+  content: "PROJECT DATA // VERIFIED";
+  position: absolute;
+  top: -0.62rem;
+  left: 0.8rem;
+  padding-inline: 0.4rem;
+  background: var(--bg);
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.13em;
+}
+.theme-glitch .meta-grid dd {
+  color: #effff1;
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  font-weight: 400;
+}
+.theme-glitch .prose h3::before {
+  content: "> ";
+  color: var(--accent);
+}
+.lead-quote {
+  margin-top: var(--s-4);
+  font-family: var(--font-mono);
+  color: #c0d1c0;
+  font-size: 1rem;
+  max-width: 44rem;
+  border-left: 2px solid var(--accent);
+  padding: 0.8rem 0 0.8rem var(--s-4);
+  background: linear-gradient(90deg, rgba(106, 255, 141, 0.055), transparent 70%);
+}
+.site-note {
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--accent);
+  padding: var(--s-4);
+  background: rgba(6, 18, 9, 0.68);
+  font-size: 0.95rem;
+}
+ol.seq-list {
+  list-style: decimal;
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  color: var(--ink);
+  border: 1px solid rgba(106, 255, 141, 0.4);
+  background:
+    repeating-linear-gradient(to bottom, rgba(106, 255, 141, 0.025) 0 1px, transparent 1px 4px),
+    var(--surface);
+  padding: var(--s-5) var(--s-5) var(--s-5) 3rem;
+  max-width: 34rem;
+  box-shadow: inset 0 0 24px rgba(106, 255, 141, 0.025);
+}
+.seq-list li {
+  padding-block: 0.3rem;
+}
+.seq-list li::marker {
+  color: var(--accent);
+}
+.build-note {
+  position: relative;
+  max-width: 54rem;
+  margin-bottom: var(--s-7);
+  padding: clamp(1.2rem, 3vw, 1.8rem);
+  border: 1px solid rgba(106, 255, 141, 0.4);
+  border-left: 4px solid var(--accent);
+  background:
+    repeating-linear-gradient(to bottom, rgba(106, 255, 141, 0.025) 0 1px, transparent 1px 4px),
+    rgba(7, 18, 9, 0.9);
+}
+.build-note::before {
+  content: "BUILD LOG // SOURCE CHECK";
+  display: block;
+  margin-bottom: var(--s-3);
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.15em;
+}
+.build-note p:last-child {
+  margin-bottom: 0;
+  padding-top: var(--s-3);
+  border-top: 1px dashed rgba(106, 255, 141, 0.22);
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+}
+.archive-title {
+  margin-bottom: var(--s-4);
+}
+.final-note {
+  max-width: 48rem;
+  border: 1px solid rgba(106, 255, 141, 0.4);
+  border-left: 4px solid var(--accent);
+  background: rgba(7, 18, 9, 0.88);
+  padding: clamp(1.25rem, 3vw, 2rem);
+  box-shadow: inset 0 0 30px rgba(106, 255, 141, 0.025);
+}
+.final-note::before {
+  content: "FINAL_EXPORT.MP4 // COMPLETE";
+  display: block;
+  margin-bottom: var(--s-3);
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.15em;
+}
+.final-note p {
+  margin: 0;
+  color: #e4ede2;
+  font-family: var(--font-mono);
+  font-size: clamp(1.05rem, 2vw, 1.3rem);
+}
+
+/* section frame that draws in */
+.theme-glitch .section-head h2 {
+  position: relative;
+  padding-bottom: var(--s-3);
+}
+.theme-glitch .section-head h2::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 1px;
+  width: 100%;
+  background: var(--line);
+  transform-origin: left;
+}
+
+.theme-glitch .section-head h2::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  z-index: 1;
+  width: 4.5rem;
+  height: 5px;
+  background: var(--accent);
+  box-shadow: 0 0 10px rgba(106, 255, 141, 0.4);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .js .theme-glitch .section-head.reveal h2::after {
+    transform: scaleX(0);
+    transition: transform 0.9s var(--ease-out) 0.15s;
+  }
+  .js .theme-glitch .section-head.reveal.is-in h2::after {
+    transform: scaleX(1);
+  }
+}
+
+/* image channel-offset on hover (kept subtle; keyboard gets the same via focus) */
+.theme-glitch .board-card .frame-media {
+  transition: box-shadow var(--dur-1), transform var(--dur-1);
+}
+.theme-glitch .board-card .frame-media:hover,
+.theme-glitch .board-card .frame-media:focus-visible {
+  box-shadow: -3px 0 0 rgba(255, 41, 84, 0.55), 3px 0 0 rgba(33, 212, 253, 0.55);
+  transform: translateY(-2px);
+}
+
+.theme-glitch .board-card .frame-media {
+  border-color: rgba(106, 255, 141, 0.38);
+  background: #010302;
+  box-shadow: inset 0 0 18px rgba(106, 255, 141, 0.035);
+}
+.theme-glitch .board-card figcaption {
+  padding-inline: 0.15rem;
+}
+
+.theme-glitch .carousel-track {
+  gap: var(--s-6);
+}
+.theme-glitch .carousel-item .item-media {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  border: 1px solid rgba(106, 255, 141, 0.42);
+  background: #000;
+  box-shadow: inset 0 0 24px rgba(106, 255, 141, 0.06);
+}
+.theme-glitch .carousel-item .item-media::after {
+  content: "FINAL VIDEO STILL";
+  position: absolute;
+  left: 0.55rem;
+  bottom: 0.45rem;
+  padding: 0.18rem 0.35rem;
+  background: rgba(0, 0, 0, 0.78);
+  color: rgba(199, 255, 210, 0.8);
+  font-family: var(--font-mono);
+  font-size: 0.52rem;
+  letter-spacing: 0.12em;
+}
+.theme-glitch .carousel-item figcaption {
+  padding-top: var(--s-3);
+  border-top: 1px solid rgba(106, 255, 141, 0.18);
+  font-family: var(--font-mono);
+  font-size: 0.86rem;
+}
+.theme-glitch .carousel-item figcaption strong {
+  margin-bottom: 0.2rem;
+  color: #effff1;
+  font-family: var(--font-mono);
+  font-size: 0.94rem;
+}
+.theme-glitch .carousel-btn {
+  border-radius: 0;
+  border-width: 1px;
+  color: var(--accent);
+}
+.theme-glitch .carousel-btn:hover {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+
+/* ---- Status readout ---------------------------------------------------------- */
+.sys-readout {
+  position: fixed;
+  left: 1rem;
+  bottom: 0.85rem;
+  z-index: 60;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.16em;
+  color: rgba(188, 211, 190, 0.9);
+  background: rgba(3, 9, 5, 0.9);
+  border: 1px solid var(--line);
+  padding: 0.42rem 0.7rem;
+  box-shadow: inset 0 0 14px rgba(106, 255, 141, 0.035);
+  pointer-events: none;
+}
+.sys-readout [data-readout] {
+  color: var(--accent);
+}
+@media (max-width: 56rem) {
+  .sys-readout {
+    display: none;
+  }
+}
+
+/* ==========================================================================
+   Boot loader — a small CRT that powers on over the page.
+   Rendered only when JS is running; page content stays intact underneath.
+   ========================================================================== */
+.boot-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  background:
+    repeating-linear-gradient(to bottom, rgba(106, 255, 141, 0.018) 0 1px, transparent 1px 5px),
+    #020503;
+  display: grid;
+  place-items: center;
+  transition: opacity 0.45s ease;
+}
+.boot-loader[hidden] {
+  display: none;
+}
+.boot-loader.is-done {
+  opacity: 0;
+  pointer-events: none;
+}
+.boot-monitor {
+  position: relative;
+  width: min(34rem, 86vw);
+  background: linear-gradient(145deg, var(--crt-plastic-light), var(--crt-plastic) 55%, #aea68a);
+  border: 3px solid #77715d;
+  border-radius: 1.8rem 1.8rem 1rem 1rem;
+  padding: 1.5rem 1.5rem 2.7rem;
+  box-shadow:
+    inset 3px 3px rgba(255, 255, 255, 0.25),
+    inset -4px -4px rgba(76, 71, 56, 0.13),
+    0 24px 60px rgba(0, 0, 0, 0.7);
+}
+.boot-screen {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  background: #000;
+  border: 0.7rem solid #292b27;
+  border-radius: 1.25rem;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  box-shadow: inset 0 0 28px rgba(0, 0, 0, 0.95), 0 0 0 2px #696451;
+}
+.boot-screen::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    repeating-linear-gradient(to bottom, rgba(0, 0, 0, 0.22) 0 1px, transparent 1px 3px),
+    radial-gradient(ellipse at center, transparent 58%, rgba(0, 0, 0, 0.5) 100%);
+}
+.boot-led {
+  position: absolute;
+  right: 1.5rem;
+  bottom: 0.95rem;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #3dff70;
+  border: 1px solid #416747;
+  box-shadow: 0 0 8px rgba(61, 255, 112, 0.9);
+}
+
+/* beam: flicker -> thin line -> screen expands */
+.boot-beam {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 100%;
+  height: 100%;
+  background: #b8ffcf;
+  opacity: 0;
+  transform: scaleY(0.004) scaleX(0.001);
+}
+.boot-loader.step-flicker .boot-beam {
+  opacity: 0.9;
+  transform: scaleY(0.004) scaleX(0.001);
+}
+.boot-loader.step-line .boot-beam {
+  opacity: 1;
+  transform: scaleY(0.004) scaleX(1);
+  transition: transform 0.22s var(--ease-out), opacity 0.1s;
+}
+.boot-loader.step-open .boot-beam {
+  opacity: 0.14;
+  transform: scale(1);
+  transition: transform 0.3s var(--ease-out), opacity 0.3s;
+}
+.boot-loader.step-text .boot-beam,
+.boot-loader.step-title .boot-beam {
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+
+.boot-text {
+  position: absolute;
+  inset: 1.2rem;
+  font-family: var(--font-mono);
+  font-size: clamp(0.7rem, 2.4vw, 0.85rem);
+  letter-spacing: 0.12em;
+  color: #6aff8d;
+  text-shadow: 0 0 6px rgba(61, 255, 112, 0.55);
+}
+.boot-text p {
+  opacity: 0;
+  margin-bottom: 0.35rem;
+}
+.boot-loader.step-text .boot-text p,
+.boot-loader.step-title .boot-text p {
+  opacity: 1;
+}
+.boot-loader.step-text .boot-text p:nth-child(1) { transition: opacity 60ms 0ms; }
+.boot-loader.step-text .boot-text p:nth-child(2) { transition: opacity 60ms 160ms; }
+.boot-loader.step-text .boot-text p:nth-child(3) { transition: opacity 60ms 320ms; }
+.boot-loader.step-text .boot-text p:nth-child(4) { transition: opacity 60ms 520ms; }
+
+.boot-title {
+  position: absolute;
+  inset: auto 0 18%;
+  text-align: center;
+  font-family: "VT323", var(--font-mono);
+  font-size: clamp(1.8rem, 7vw, 3rem);
+  color: #effff1;
+  letter-spacing: 0.1em;
+  opacity: 0;
+}
+.boot-loader.step-title .boot-title {
+  opacity: 1;
+  animation: boot-title-glitch 0.4s steps(2, end) 1;
+}
+@keyframes boot-title-glitch {
+  0% { transform: translateX(0); text-shadow: none; }
+  35% { transform: translateX(-3px); text-shadow: -3px 0 #ff2954, 3px 0 #21d4fd; }
+  70% { transform: translateX(3px); text-shadow: 3px 0 #ff2954, -3px 0 #21d4fd; }
+  100% { transform: none; text-shadow: 0 0 10px rgba(61, 255, 112, 0.5); }
+}
+
+.boot-skip {
+  position: absolute;
+  right: clamp(1rem, 4vw, 2.5rem);
+  bottom: clamp(1rem, 4vw, 2.5rem);
+  background: none;
+  border: 1px solid rgba(175, 195, 178, 0.6);
+  color: #afc3b2;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.14em;
+  padding: 0.55rem 1rem;
+  cursor: pointer;
+}
+.boot-skip:hover {
+  color: #6aff8d;
+  border-color: #6aff8d;
+}
+
+@media (max-width: 46rem) {
+  .monitor-shell {
+    padding: 0.8rem 0.75rem 0.65rem;
+    border-width: 2px;
+  }
+  .monitor-cabinet-mark {
+    margin-bottom: 0.35rem;
+  }
+  .monitor-bezel {
+    padding: 0.4rem;
+    border-width: 2px;
+  }
+  .monitor-chin {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    min-height: 3.2rem;
+    padding-top: 0.55rem;
+  }
+  .monitor-vents,
+  .monitor-dials {
+    display: none;
+  }
+  .monitor-label {
+    letter-spacing: 0.08em;
+  }
+  .monitor-stand {
+    width: 58%;
+  }
+  .monitor.video-figure figcaption {
+    margin-top: 1.25rem;
+    text-align: left;
+    letter-spacing: 0.04em;
+  }
+  .theme-glitch .meta-grid {
+    padding: var(--s-5) var(--s-4);
+  }
+}
+
+@media (max-width: 25rem) {
+  .monitor-badge,
+  .monitor-power {
+    display: none;
+  }
+  .monitor-chin {
+    grid-template-columns: 1fr;
+  }
+  .monitor-label {
+    padding-left: 0.2rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .boot-loader {
+    display: none !important;
+  }
+}
