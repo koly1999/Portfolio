@@ -424,16 +424,6 @@ h1, h2, h3 { font-family: var(--font-display); color: var(--txt-1); line-height:
   box-shadow: 0 0 16px -4px var(--acc2);
 }
 
-.card-media--code {
-  display: grid; place-items: center;
-  background:
-    radial-gradient(ellipse at 30% 20%, rgba(var(--acc1-rgb), 0.08), transparent 60%),
-    var(--bg-1);
-}
-.card-media--code pre { font-size: 0.78rem; line-height: 1.7; color: var(--acc1); }
-.card-media--code .c-dim { color: var(--txt-3); }
-.card-media--code .c-green { color: var(--acc2); }
-
 .card-body { display: flex; flex-direction: column; gap: 10px; padding: 20px 20px 22px; flex: 1; }
 .card-cat { font-size: 0.68rem; letter-spacing: 0.14em; color: var(--acc1); }
 .card-title { font-size: 1.22rem; }
@@ -673,15 +663,6 @@ h1, h2, h3 { font-family: var(--font-display); color: var(--txt-1); line-height:
    PER-PROJECT THEMES (body classes set per page)
    ========================================================================== */
 
-/* Danger / high-energy pages: hydrogen, microwave transformer arc */
-body.theme-danger {
-  --bg-0: #070401; --bg-1: #0d0803; --bg-2: #150d04;
-  --acc1: #ffb03a; --acc1-rgb: 255, 176, 58;
-  --acc2: #ff5c5c; --acc2-rgb: 255, 92, 92;
-  --glass-rgb: 255, 200, 120; --edge-rgb: 255, 190, 100; --grid-rgb: 240, 170, 60;
-  --txt-1: #fdf3e7; --txt-2: #cbb59e; --txt-3: #8a7360;
-}
-
 /* ==========================================================================
    FULL BRAND THEMES — standalone identities, not just accent swaps
    ========================================================================== */
@@ -784,15 +765,6 @@ body.brand-medieval .case-hero h1 {
   text-shadow: 0 0 34px rgba(226, 169, 79, 0.35);
 }
 body.brand-medieval .case-tags { color: var(--acc2); }
-
-/* Electro-eerie: theremin */
-body.theme-violet {
-  --bg-0: #050208; --bg-1: #0a0510; --bg-2: #120a1c;
-  --acc1: #c77bff; --acc1-rgb: 199, 123, 255;
-  --acc2: #ff7bd5; --acc2-rgb: 255, 123, 213;
-  --glass-rgb: 210, 160, 255; --edge-rgb: 200, 150, 255; --grid-rgb: 170, 120, 240;
-  --txt-1: #f6edff; --txt-2: #beafd0; --txt-3: #7c6d90;
-}
 
 /* ==========================================================================
    PROJECTS — group headers (Engineering / Fun & Experiments)
@@ -989,4 +961,319 @@ model-viewer.pcb-model {
 
 @media (max-width: 720px) {
   .model-stage { min-height: 300px; }
+}
+
+
+/* ==========================================================================
+   PER-PROJECT IDENTITIES
+   Every case page gets its own topical design language.
+   ========================================================================== */
+
+/* ---- FROM BREADBOARDS TO PCBS: schematic sheet ---- */
+body.pg-electronics {
+  --bg-0: #f7f4ec; --bg-1: #f0ecdf; --bg-2: #e9e4d2;
+  --acc1: #b3261e; --acc1-rgb: 179, 38, 30;
+  --acc2: #1f6f43; --acc2-rgb: 31, 111, 67;
+  --glass-rgb: 90, 75, 55; --edge-rgb: 90, 75, 55; --grid-rgb: 120, 105, 80;
+  --txt-1: #241f16; --txt-2: #4c4435; --txt-3: #7a6f5a;
+  --radius: 4px; --radius-sm: 4px;
+  --nav-bg: rgba(247, 244, 236, 0.85); --nav-solid: rgba(247, 244, 236, 0.98);
+  --footer-bg: #f0ecdf;
+}
+body.pg-electronics .bg-grid {
+  background-size: 14px 14px; /* graph paper */
+  mask-image: none; -webkit-mask-image: none;
+  opacity: 0.55;
+}
+body.pg-electronics .bg-grid::after,
+body.pg-electronics #bg-canvas { display: none; }
+body.pg-electronics .case-hero h1,
+body.pg-electronics .case-item h3,
+body.pg-electronics .pager-title {
+  font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.02em;
+}
+body.pg-electronics .case-hero h1 { font-size: clamp(1.9rem, 5.2vw, 3.2rem); }
+body.pg-electronics .case-item,
+body.pg-electronics .case-meta > div,
+body.pg-electronics .pager-link {
+  background: #fffdf7; border: 1px solid #8f8265; box-shadow: none;
+}
+body.pg-electronics .case-step { color: var(--acc1); }
+body.pg-electronics .case-tags { color: var(--acc1); }
+/* engineering-drawing title block */
+.sheet-block {
+  display: inline-grid; grid-template-columns: auto auto;
+  margin-top: 26px; border: 1.5px solid #241f16; background: #fffdf7;
+  font-size: 0.72rem; letter-spacing: 0.06em; color: #241f16;
+}
+.sheet-block > div { padding: 7px 14px; border: 0.5px solid #8f8265; }
+.sheet-block span { color: #b3261e; margin-right: 6px; }
+
+/* ---- PCB MODEL LAB: CAD viewport, copper and ENIG gold ---- */
+body.pg-pcblab {
+  --bg-0: #14161a; --bg-1: #1a1d23; --bg-2: #22262e;
+  --acc1: #e0a35c; --acc1-rgb: 224, 163, 92;
+  --acc2: #ffd97a; --acc2-rgb: 255, 217, 122;
+  --glass-rgb: 224, 180, 120; --edge-rgb: 200, 165, 110; --grid-rgb: 130, 125, 115;
+  --txt-1: #f2ede4; --txt-2: #b8b0a2; --txt-3: #7d766a;
+  --nav-bg: rgba(20, 22, 26, 0.8); --nav-solid: rgba(20, 22, 26, 0.97);
+  --footer-bg: rgba(20, 22, 26, 0.85);
+}
+body.pg-pcblab .bg-grid { background-size: 40px 40px; }
+/* viewport corner brackets on model stages */
+body.pg-pcblab .model-stage::before,
+body.pg-pcblab .model-stage::after {
+  content: ""; position: absolute; width: 26px; height: 26px; z-index: 2;
+  border: 2px solid rgba(224, 163, 92, 0.55); pointer-events: none;
+}
+body.pg-pcblab .model-stage::before { top: 10px; left: 10px; border-right: none; border-bottom: none; }
+body.pg-pcblab .model-stage::after { bottom: 10px; right: 10px; border-left: none; border-top: none; }
+.axis-gizmo { width: 66px; height: 66px; margin-top: 18px; }
+.axis-gizmo text { font-family: var(--font-mono); font-size: 11px; }
+
+/* ---- ELECTRIC CAR: race telemetry ---- */
+body.pg-car {
+  --bg-0: #101114; --bg-1: #16181c; --bg-2: #1e2126;
+  --acc1: #ffd400; --acc1-rgb: 255, 212, 0;
+  --acc2: #ffffff; --acc2-rgb: 255, 255, 255;
+  --glass-rgb: 255, 220, 90; --edge-rgb: 220, 195, 90; --grid-rgb: 140, 135, 110;
+  --txt-1: #f4f3ee; --txt-2: #b9b6ab; --txt-3: #7e7b6e;
+  --nav-bg: rgba(16, 17, 20, 0.8); --nav-solid: rgba(16, 17, 20, 0.97);
+  --footer-bg: rgba(16, 17, 20, 0.85);
+}
+body.pg-car .case-hero h1,
+body.pg-car .pager-title {
+  font-family: "Russo One", var(--font-display); font-weight: 400;
+  text-transform: uppercase; letter-spacing: 0.02em;
+}
+body.pg-car .case-hero h1 { font-style: italic; }
+/* checkered ribbon under the hero */
+body.pg-car .case-hero::after {
+  content: ""; display: block; height: 18px; margin-top: 34px;
+  background:
+    repeating-conic-gradient(#f4f3ee 0% 25%, #101114 0% 50%);
+  background-size: 18px 18px;
+  border-top: 2px solid #f4f3ee; border-bottom: 2px solid #f4f3ee;
+}
+/* race-plate step labels */
+body.pg-car .case-step {
+  display: inline-block; background: #f4f3ee; color: #101114;
+  font-weight: 600; font-style: italic;
+  padding: 3px 12px; border-radius: 4px; letter-spacing: 0.1em;
+}
+.podium { display: flex; gap: 12px; margin-top: 24px; }
+.medal {
+  padding: 8px 16px; border-radius: 5px; font-size: 0.78rem; letter-spacing: 0.12em;
+  border: 1px solid transparent;
+}
+.medal.gold { background: #ffd400; color: #101114; }
+.medal.silver { background: #c9ccd4; color: #101114; }
+
+/* ---- GIMBAL PROTECTORS: hobby-shop packaging ---- */
+body.pg-gimbal {
+  --bg-0: #e9f0f7; --bg-1: #dfe8f2; --bg-2: #d3dfec;
+  --acc1: #0057b8; --acc1-rgb: 0, 87, 184;
+  --acc2: #d6001c; --acc2-rgb: 214, 0, 28;
+  --glass-rgb: 40, 80, 140; --edge-rgb: 90, 120, 160; --grid-rgb: 120, 150, 185;
+  --txt-1: #10233a; --txt-2: #3d5069; --txt-3: #6e7f95;
+  --radius: 16px; --radius-sm: 10px;
+  --nav-bg: rgba(233, 240, 247, 0.85); --nav-solid: rgba(233, 240, 247, 0.98);
+  --footer-bg: #dfe8f2;
+}
+body.pg-gimbal .bg-grid::after,
+body.pg-gimbal #bg-canvas { display: none; }
+body.pg-gimbal .case-item,
+body.pg-gimbal .case-meta > div,
+body.pg-gimbal .pager-link {
+  background: #ffffff; border: 1px solid #b9c9db;
+  box-shadow: 0 14px 30px -20px rgba(16, 35, 58, 0.45);
+}
+body.pg-gimbal .case-step { color: var(--acc2); }
+body.pg-gimbal .case-tags { color: var(--acc1); }
+/* joystick gimbal rings behind the hero */
+body.pg-gimbal .case-hero { position: relative; }
+body.pg-gimbal .case-hero::before,
+body.pg-gimbal .case-hero::after {
+  content: ""; position: absolute; border-radius: 50%; pointer-events: none;
+  border: 2px solid rgba(0, 87, 184, 0.18);
+  box-shadow: inset 0 0 0 18px rgba(0, 87, 184, 0.05);
+}
+body.pg-gimbal .case-hero::before { width: 240px; height: 240px; top: 30px; right: 2%; }
+body.pg-gimbal .case-hero::after { width: 130px; height: 130px; top: 190px; right: 14%; border-color: rgba(214, 0, 28, 0.2); }
+.shop-badge {
+  display: inline-block; margin-top: 22px;
+  background: #d6001c; color: #ffffff;
+  font-size: 0.72rem; letter-spacing: 0.16em;
+  padding: 8px 16px; border-radius: 100px;
+  box-shadow: 0 8px 20px -10px rgba(214, 0, 28, 0.6);
+}
+
+/* ---- PHONE HOLDER: slicer / early 3D printing ---- */
+body.pg-phone {
+  --bg-0: #1b1d22; --bg-1: #22252b; --bg-2: #2a2e36;
+  --acc1: #ff6b5e; --acc1-rgb: 255, 107, 94;   /* red PLA */
+  --acc2: #4fc47e; --acc2-rgb: 79, 196, 126;   /* green PLA */
+  --glass-rgb: 255, 140, 120; --edge-rgb: 200, 140, 120; --grid-rgb: 120, 118, 125;
+  --txt-1: #f1eeec; --txt-2: #b5aeaa; --txt-3: #7b746f;
+  --nav-bg: rgba(27, 29, 34, 0.8); --nav-solid: rgba(27, 29, 34, 0.97);
+  --footer-bg: rgba(27, 29, 34, 0.85);
+}
+/* honeycomb infill behind the hero */
+body.pg-phone .case-hero { position: relative; }
+body.pg-phone .case-hero::before {
+  content: ""; position: absolute; top: 40px; right: 0; width: min(420px, 40vw); height: 300px;
+  pointer-events: none; opacity: 0.16;
+  --hex: 28px;
+  background:
+    radial-gradient(circle farthest-side at 0% 50%, transparent 47%, rgba(255,107,94,0.9) 49%, rgba(255,107,94,0.9) 52%, transparent 54%) 0 calc(var(--hex) * 0.577),
+    radial-gradient(circle farthest-side at 100% 50%, transparent 47%, rgba(255,107,94,0.9) 49%, rgba(255,107,94,0.9) 52%, transparent 54%) calc(var(--hex) * 0.5) calc(var(--hex) * 0.577);
+  background-size: var(--hex) calc(var(--hex) * 1.155);
+  mask-image: linear-gradient(90deg, transparent, black 30%);
+  -webkit-mask-image: linear-gradient(90deg, transparent, black 30%);
+}
+.gcode { color: var(--acc2); font-size: 0.78rem; letter-spacing: 0.1em; margin-bottom: 14px; }
+/* layer lines across media tops */
+body.pg-phone .case-item .case-media::before {
+  content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background: repeating-linear-gradient(180deg, rgba(255,255,255,0.045) 0 1px, transparent 1px 6px);
+}
+body.pg-phone .case-item--stack .case-media::before { position: static; display: none; }
+body.pg-phone .case-step { color: var(--acc2); }
+
+/* ---- HYDROGEN: electrolysis water ---- */
+body.pg-hydrogen {
+  --bg-0: #04222b; --bg-1: #062b36; --bg-2: #093642;
+  --acc1: #35e0d0; --acc1-rgb: 53, 224, 208;
+  --acc2: #ff8c42; --acc2-rgb: 255, 140, 66;
+  --glass-rgb: 90, 220, 210; --edge-rgb: 80, 200, 195; --grid-rgb: 60, 160, 160;
+  --txt-1: #e7fbf8; --txt-2: #a3c8c4; --txt-3: #628884;
+  --nav-bg: rgba(4, 34, 43, 0.8); --nav-solid: rgba(4, 34, 43, 0.97);
+  --footer-bg: rgba(4, 34, 43, 0.85);
+}
+/* slow rising bubbles */
+.bubbles-h2 { position: fixed; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; }
+.bubbles-h2 span {
+  position: absolute; bottom: -30px; border-radius: 50%;
+  border: 1px solid rgba(53, 224, 208, 0.25);
+  background: radial-gradient(circle at 35% 30%, rgba(53, 224, 208, 0.12), transparent 60%);
+  animation: h2rise linear infinite;
+}
+.bubbles-h2 span:nth-child(1) { left: 8%;  width: 14px; height: 14px; animation-duration: 16s; }
+.bubbles-h2 span:nth-child(2) { left: 22%; width: 8px;  height: 8px;  animation-duration: 22s; animation-delay: -6s; }
+.bubbles-h2 span:nth-child(3) { left: 37%; width: 18px; height: 18px; animation-duration: 14s; animation-delay: -3s; }
+.bubbles-h2 span:nth-child(4) { left: 55%; width: 10px; height: 10px; animation-duration: 20s; animation-delay: -11s; }
+.bubbles-h2 span:nth-child(5) { left: 68%; width: 16px; height: 16px; animation-duration: 17s; animation-delay: -8s; }
+.bubbles-h2 span:nth-child(6) { left: 81%; width: 9px;  height: 9px;  animation-duration: 24s; animation-delay: -14s; }
+.bubbles-h2 span:nth-child(7) { left: 90%; width: 13px; height: 13px; animation-duration: 15s; animation-delay: -5s; }
+.bubbles-h2 span:nth-child(8) { left: 47%; width: 7px;  height: 7px;  animation-duration: 26s; animation-delay: -18s; }
+@keyframes h2rise {
+  from { transform: translateY(0); opacity: 0; }
+  8%   { opacity: 1; }
+  92%  { opacity: 1; }
+  to   { transform: translateY(-110vh); opacity: 0; }
+}
+/* NFPA 704 diamond for hydrogen (health 0 / flammability 4 / instability 0) */
+.nfpa {
+  position: absolute; top: 110px; right: 4%;
+  width: 96px; height: 96px; transform: rotate(45deg);
+  display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr;
+  border: 2px solid rgba(231, 251, 248, 0.6); overflow: hidden;
+  opacity: 0.9;
+}
+.nfpa span {
+  display: grid; place-items: center;
+  font-family: var(--font-mono); font-weight: 600; font-size: 1.05rem;
+}
+.nfpa span > i { transform: rotate(-45deg); font-style: normal; }
+.nfpa-f { background: #c8342a; color: #fff; }
+.nfpa-h { background: #1f5fa8; color: #fff; }
+.nfpa-i { background: #e9c93b; color: #201c10; }
+.nfpa-s { background: #f2efe8; }
+@media (max-width: 900px) { .nfpa { display: none; } }
+body.pg-hydrogen .case-step { color: var(--acc2); }
+
+/* ---- MICROWAVE TRANSFORMER ARC: high-voltage signage ---- */
+body.pg-hv {
+  --bg-0: #0a0a08; --bg-1: #121210; --bg-2: #1a1a16;
+  --acc1: #ffd100; --acc1-rgb: 255, 209, 0;
+  --acc2: #dcd3ff; --acc2-rgb: 220, 211, 255;  /* arc violet-white */
+  --glass-rgb: 255, 215, 80; --edge-rgb: 210, 185, 70; --grid-rgb: 130, 120, 70;
+  --txt-1: #f5f2e6; --txt-2: #bdb8a4; --txt-3: #807b68;
+  --nav-bg: rgba(10, 10, 8, 0.82); --nav-solid: rgba(10, 10, 8, 0.97);
+  --footer-bg: rgba(10, 10, 8, 0.85);
+}
+body.pg-hv .case-hero h1,
+body.pg-hv .pager-title {
+  font-family: "Saira Stencil One", var(--font-display); font-weight: 400;
+  text-transform: uppercase; letter-spacing: 0.03em;
+}
+/* hazard stripe band under the hero */
+body.pg-hv .case-hero::after {
+  content: ""; display: block; height: 16px; margin-top: 34px;
+  background: repeating-linear-gradient(-45deg, #ffd100 0 22px, #0a0a08 22px 44px);
+  border-top: 2px solid #ffd100; border-bottom: 2px solid #ffd100;
+}
+/* danger-sign tag plate */
+body.pg-hv .case-tags {
+  display: inline-block; background: #ffd100; color: #0a0a08;
+  padding: 6px 14px; border: 2px solid #0a0a08;
+  outline: 2px solid #ffd100; font-weight: 600;
+}
+/* arc flicker glow behind hero */
+body.pg-hv .case-hero { position: relative; }
+body.pg-hv .case-hero::before {
+  content: ""; position: absolute; top: 40px; right: 6%;
+  width: 280px; height: 280px; pointer-events: none;
+  background: radial-gradient(circle, rgba(220, 211, 255, 0.16), transparent 60%);
+  animation: arcflicker 4.5s steps(1) infinite;
+}
+@keyframes arcflicker {
+  0%, 100% { opacity: 0.5; } 7% { opacity: 1; } 9% { opacity: 0.3; }
+  13% { opacity: 0.9; } 48% { opacity: 0.55; } 52% { opacity: 1; }
+  54% { opacity: 0.4; } 80% { opacity: 0.7; }
+}
+body.pg-hv .case-step { color: var(--acc1); }
+
+/* ---- THEREMIN: retro electro instrument ---- */
+body.pg-theremin {
+  --bg-0: #050208; --bg-1: #0a0510; --bg-2: #120a1c;
+  --acc1: #c77bff; --acc1-rgb: 199, 123, 255;
+  --acc2: #ff7bd5; --acc2-rgb: 255, 123, 213;
+  --glass-rgb: 210, 160, 255; --edge-rgb: 200, 150, 255; --grid-rgb: 170, 120, 240;
+  --txt-1: #f6edff; --txt-2: #beafd0; --txt-3: #7c6d90;
+  --nav-bg: rgba(5, 2, 8, 0.8); --nav-solid: rgba(5, 2, 8, 0.97);
+  --footer-bg: rgba(5, 2, 8, 0.85);
+}
+body.pg-theremin .case-hero h1,
+body.pg-theremin .pager-title {
+  font-family: "Righteous", var(--font-display); font-weight: 400;
+  letter-spacing: 0.02em;
+}
+.theremin-wave { width: min(560px, 100%); height: 54px; margin-top: 20px; overflow: visible; }
+.theremin-wave path {
+  fill: none; stroke: var(--acc2); stroke-width: 2.5; stroke-linecap: round;
+  stroke-dasharray: 8 6;
+  animation: thereminwave 2.6s linear infinite;
+  filter: drop-shadow(0 0 6px rgba(255, 123, 213, 0.5));
+}
+@keyframes thereminwave { to { stroke-dashoffset: -56; } }
+.wave-scale { font-size: 0.68rem; letter-spacing: 0.16em; color: var(--txt-3); margin-top: 6px; }
+body.pg-theremin .case-step { color: var(--acc2); }
+
+/* identity support fixes */
+body.pg-hydrogen .case-hero { position: relative; }
+body.pg-electronics .case-hero h1 { line-height: 1.2; }
+@media (max-width: 560px) {
+  .sheet-block { grid-template-columns: 1fr; }
+}
+
+/* 3D wireframe card models (index project cards) */
+.card-media .card-model {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  pointer-events: none;
+}
+.card-media:has(.card-model) {
+  background:
+    radial-gradient(ellipse 70% 60% at 50% 45%, rgba(var(--acc1-rgb), 0.06), transparent 70%),
+    var(--bg-1);
 }
