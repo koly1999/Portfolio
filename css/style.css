@@ -559,16 +559,16 @@ h1, h2, h3 { font-family: var(--font-display); color: var(--txt-1); line-height:
 
 .case-gallery { max-width: 1080px; margin: 0 auto; padding: 50px 24px 30px; display: grid; gap: 26px; }
 .case-item {
-  display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr);
+  display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 0.6fr);
   gap: 0; align-items: stretch;
   background: var(--glass); border: 1px solid var(--edge-soft); border-radius: var(--radius);
   overflow: hidden;
   transition: border-color 0.3s, box-shadow 0.35s;
 }
 .case-item:hover { border-color: var(--acc1-dim); box-shadow: 0 22px 54px -30px rgba(var(--acc1-rgb), 0.35); }
-.case-item:nth-child(even) { grid-template-columns: minmax(0, 0.75fr) minmax(0, 1.25fr); }
+.case-item:nth-child(even) { grid-template-columns: minmax(0, 0.6fr) minmax(0, 1.4fr); }
 .case-item:nth-child(even) .case-media { order: 2; }
-.case-media { background: var(--bg-1); min-height: 260px; position: relative; }
+.case-media { background: var(--bg-1); min-height: 330px; position: relative; }
 .case-media img, .case-media video {
   position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
   transition: transform 0.6s var(--ease);
@@ -743,29 +743,68 @@ body.brand-editorial .pager-link {
 body.brand-editorial .pager-title { font-family: Georgia, serif; }
 body.brand-editorial .pager-dir { color: var(--acc1); }
 body.brand-editorial .btn-primary { color: #f2efe6; }
-/* BRAND: Medieval — catapults, torchlight and timber */
+/* BRAND: Medieval — parchment, castle stone, blackletter, flying projectiles */
 body.brand-medieval {
-  --bg-0: #171007; --bg-1: #1f150a; --bg-2: #2a1c0e;
-  --acc1: #e2a94f; --acc1-rgb: 226, 169, 79;
-  --acc2: #c04a2f; --acc2-rgb: 192, 74, 47;
-  --glass-rgb: 226, 169, 79; --edge-rgb: 200, 150, 80; --grid-rgb: 160, 120, 60;
-  --txt-1: #f6e8cd; --txt-2: #c9b18a; --txt-3: #8a744f;
-  --nav-bg: rgba(23, 16, 7, 0.8); --nav-solid: rgba(23, 16, 7, 0.97);
-  --footer-bg: rgba(23, 16, 7, 0.85);
+  --bg-0: #e9dab4; --bg-1: #f4ead0; --bg-2: #e0cfa4;
+  --acc1: #8e2f21; --acc1-rgb: 142, 47, 33;   /* banner red */
+  --acc2: #7c5c22; --acc2-rgb: 124, 92, 34;   /* aged gold */
+  --glass-rgb: 90, 66, 33; --edge-rgb: 121, 94, 54; --grid-rgb: 150, 122, 78;
+  --txt-1: #332412; --txt-2: #5c452a; --txt-3: #8a6f4a;
+  --radius: 6px; --radius-sm: 5px;
+  --nav-bg: rgba(233, 218, 180, 0.88); --nav-solid: rgba(233, 218, 180, 0.98);
+  --footer-bg: #e0cfa4;
+  background:
+    radial-gradient(ellipse 80% 50% at 20% 0%, rgba(124, 92, 34, 0.12), transparent 60%),
+    radial-gradient(ellipse 60% 40% at 85% 90%, rgba(142, 47, 33, 0.08), transparent 60%),
+    radial-gradient(ellipse 120% 120% at 50% 50%, transparent 55%, rgba(90, 60, 20, 0.18)),
+    #e9dab4;
 }
-body.brand-medieval .case-hero h1,
+body.brand-medieval .bg-grid,
+body.brand-medieval #bg-canvas { display: none; }
+body.brand-medieval .case-hero h1 {
+  font-family: "Pirata One", "Cinzel", Georgia, serif; font-weight: 400;
+  font-size: clamp(3rem, 8.5vw, 5.4rem); letter-spacing: 0.01em;
+  color: #332412;
+}
 body.brand-medieval .case-item h3,
 body.brand-medieval .pager-title,
 body.brand-medieval .section-title {
   font-family: "Cinzel", Georgia, serif; letter-spacing: 0.02em;
 }
-body.brand-medieval .bg-grid { background-size: 72px 72px; }
-body.brand-medieval .case-hero h1 {
-  color: var(--acc1);
-  text-shadow: 0 0 34px rgba(226, 169, 79, 0.35);
+/* castle battlement wall under the hero */
+body.brand-medieval .case-hero::after {
+  content: ""; display: block; height: 30px; margin-top: 36px;
+  background:
+    repeating-linear-gradient(90deg, #6f6152 0 30px, transparent 30px 52px) top / 100% 14px no-repeat,
+    linear-gradient(#6f6152, #5c5044) bottom / 100% 16px no-repeat;
 }
-body.brand-medieval .case-tags { color: var(--acc2); }
-
+body.brand-medieval .case-item,
+body.brand-medieval .case-meta > div,
+body.brand-medieval .pager-link {
+  background: #f4ead0;
+  border: 1px solid #b3915d;
+  box-shadow: inset 0 0 0 3px rgba(179, 145, 93, 0.18), 0 10px 26px -18px rgba(51, 36, 18, 0.7);
+}
+/* wax-seal step markers */
+body.brand-medieval .case-step {
+  display: inline-block; background: #8e2f21; color: #f4ead0;
+  padding: 4px 14px; border-radius: 100px; letter-spacing: 0.12em;
+  box-shadow: 0 3px 8px -3px rgba(51, 36, 18, 0.6);
+}
+body.brand-medieval .case-tags { color: #7c5c22; }
+body.brand-medieval .crumb:hover { color: #8e2f21; }
+/* flying projectiles (positions driven by scroll in main.js) */
+.flight-layer { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
+.projectile {
+  position: absolute; top: 0; left: 0;
+  width: 16px; height: 16px; border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #8a7a60, #4a3a24 72%);
+  box-shadow: 0 3px 7px rgba(51, 36, 18, 0.4);
+  will-change: transform;
+}
+.projectile:nth-child(2) { width: 12px; height: 12px; }
+.projectile:nth-child(3) { width: 20px; height: 20px; }
+body.brand-medieval main { position: relative; z-index: 1; }
 /* ==========================================================================
    PROJECTS — group headers (Engineering / Fun & Experiments)
    ========================================================================== */
@@ -1031,15 +1070,26 @@ body.pg-pcblab .model-stage::after { bottom: 10px; right: 10px; border-left: non
 .axis-gizmo { width: 66px; height: 66px; margin-top: 18px; }
 .axis-gizmo text { font-family: var(--font-mono); font-size: 11px; }
 
-/* ---- ELECTRIC CAR: race telemetry ---- */
+/* ---- ELECTRIC CAR: motorsport livery ---- */
 body.pg-car {
   --bg-0: #101114; --bg-1: #16181c; --bg-2: #1e2126;
-  --acc1: #ffd400; --acc1-rgb: 255, 212, 0;
-  --acc2: #ffffff; --acc2-rgb: 255, 255, 255;
-  --glass-rgb: 255, 220, 90; --edge-rgb: 220, 195, 90; --grid-rgb: 140, 135, 110;
-  --txt-1: #f4f3ee; --txt-2: #b9b6ab; --txt-3: #7e7b6e;
+  --acc1: #ff2b1f; --acc1-rgb: 255, 43, 31;
+  --acc2: #f4f3ee; --acc2-rgb: 244, 243, 238;
+  --glass-rgb: 205, 210, 220; --edge-rgb: 210, 215, 225; --grid-rgb: 125, 130, 140;
+  --txt-1: #f4f3ee; --txt-2: #b6b8bd; --txt-3: #7d8087;
   --nav-bg: rgba(16, 17, 20, 0.8); --nav-solid: rgba(16, 17, 20, 0.97);
   --footer-bg: rgba(16, 17, 20, 0.85);
+}
+/* twin livery stripes with a red pin, running down the page */
+body.pg-car::before {
+  content: ""; position: fixed; top: 0; bottom: 0; right: clamp(30px, 9vw, 130px);
+  width: 44px; z-index: 0; pointer-events: none;
+  background: linear-gradient(90deg,
+    rgba(244, 243, 238, 0.05) 0 15px,
+    transparent 15px 20px,
+    rgba(244, 243, 238, 0.05) 20px 35px,
+    transparent 35px 38px,
+    rgba(255, 43, 31, 0.12) 38px 44px);
 }
 body.pg-car .case-hero h1,
 body.pg-car .pager-title {
@@ -1059,7 +1109,8 @@ body.pg-car .case-hero::after {
 body.pg-car .case-step {
   display: inline-block; background: #f4f3ee; color: #101114;
   font-weight: 600; font-style: italic;
-  padding: 3px 12px; border-radius: 4px; letter-spacing: 0.1em;
+  padding: 3px 12px 3px 10px; border-radius: 3px; letter-spacing: 0.1em;
+  border-left: 5px solid #ff2b1f;
 }
 .podium { display: flex; gap: 12px; margin-top: 24px; }
 .medal {
@@ -1140,45 +1191,86 @@ body.pg-phone .case-item .case-media::before {
 body.pg-phone .case-item--stack .case-media::before { position: static; display: none; }
 body.pg-phone .case-step { color: var(--acc2); }
 
-/* ---- HYDROGEN: electrolysis water ---- */
+/* ---- HYDROGEN: Frutiger Aero glass and gas ---- */
 body.pg-hydrogen {
-  --bg-0: #04222b; --bg-1: #062b36; --bg-2: #093642;
-  --acc1: #35e0d0; --acc1-rgb: 53, 224, 208;
-  --acc2: #ff8c42; --acc2-rgb: 255, 140, 66;
-  --glass-rgb: 90, 220, 210; --edge-rgb: 80, 200, 195; --grid-rgb: 60, 160, 160;
-  --txt-1: #e7fbf8; --txt-2: #a3c8c4; --txt-3: #628884;
-  --nav-bg: rgba(4, 34, 43, 0.8); --nav-solid: rgba(4, 34, 43, 0.97);
-  --footer-bg: rgba(4, 34, 43, 0.85);
+  --bg-0: #0b6d8e; --bg-1: rgba(6, 62, 82, 0.55); --bg-2: rgba(8, 76, 99, 0.6);
+  --acc1: #b9f34e; --acc1-rgb: 185, 243, 78;   /* aero lime */
+  --acc2: #eafcff; --acc2-rgb: 234, 252, 255;  /* glass white */
+  --glass-rgb: 255, 255, 255; --edge-rgb: 255, 255, 255; --grid-rgb: 200, 245, 255;
+  --txt-1: #ffffff; --txt-2: #d9f2f8; --txt-3: #9fcdd9;
+  --radius: 20px; --radius-sm: 12px;
+  --nav-bg: rgba(255, 255, 255, 0.16); --nav-solid: rgba(8, 76, 99, 0.94);
+  --footer-bg: rgba(255, 255, 255, 0.12);
+  background: linear-gradient(180deg, #2ba6cc 0%, #1584a8 34%, #0b6d8e 68%, #06485f 100%) fixed;
 }
-/* slow rising bubbles */
-.bubbles-h2 { position: fixed; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; }
+body.pg-hydrogen .bg-grid { display: none; }
+body.pg-hydrogen .case-item,
+body.pg-hydrogen .case-meta > div,
+body.pg-hydrogen .pager-link {
+  position: relative;
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.42);
+  backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 18px 40px -22px rgba(3, 40, 54, 0.7);
+}
+/* aero gloss shine across the top of every panel */
+body.pg-hydrogen .case-item::before,
+body.pg-hydrogen .case-meta > div::before,
+body.pg-hydrogen .pager-link::before {
+  content: ""; position: absolute; inset: 0 0 55% 0; z-index: 1; pointer-events: none;
+  border-radius: inherit;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.42), rgba(255, 255, 255, 0.06));
+}
+body.pg-hydrogen .case-meta dt { color: #eaffb0; }
+body.pg-hydrogen .case-meta dd,
+body.pg-hydrogen .case-item h3 { position: relative; z-index: 2; }
+body.pg-hydrogen .case-step {
+  display: inline-block; position: relative; z-index: 2;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0.18));
+  color: #063c4f; font-weight: 600;
+  padding: 4px 14px; border-radius: 100px;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+}
+body.pg-hydrogen .case-tags { color: #eaffb0; }
+body.pg-hydrogen .case-hero h1 { text-shadow: 0 2px 18px rgba(3, 40, 54, 0.55); }
+body.pg-hydrogen .case-tags,
+body.pg-hydrogen .case-intro,
+body.pg-hydrogen .crumb { text-shadow: 0 1px 8px rgba(3, 40, 54, 0.45); }
+body.pg-hydrogen .case-item figcaption { position: relative; z-index: 2; }
+body.pg-hydrogen .crumb { color: #cfeef7; }
+/* glossy aero bubbles */
+.bubbles-h2 { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
 .bubbles-h2 span {
-  position: absolute; bottom: -30px; border-radius: 50%;
-  border: 1px solid rgba(53, 224, 208, 0.25);
-  background: radial-gradient(circle at 35% 30%, rgba(53, 224, 208, 0.12), transparent 60%);
+  position: absolute; bottom: -60px; border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  background:
+    radial-gradient(circle at 32% 26%, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.25) 26%, rgba(255, 255, 255, 0.05) 55%, transparent 75%);
+  box-shadow: inset -3px -4px 8px rgba(9, 84, 108, 0.35);
   animation: h2rise linear infinite;
 }
-.bubbles-h2 span:nth-child(1) { left: 8%;  width: 14px; height: 14px; animation-duration: 16s; }
-.bubbles-h2 span:nth-child(2) { left: 22%; width: 8px;  height: 8px;  animation-duration: 22s; animation-delay: -6s; }
-.bubbles-h2 span:nth-child(3) { left: 37%; width: 18px; height: 18px; animation-duration: 14s; animation-delay: -3s; }
-.bubbles-h2 span:nth-child(4) { left: 55%; width: 10px; height: 10px; animation-duration: 20s; animation-delay: -11s; }
-.bubbles-h2 span:nth-child(5) { left: 68%; width: 16px; height: 16px; animation-duration: 17s; animation-delay: -8s; }
-.bubbles-h2 span:nth-child(6) { left: 81%; width: 9px;  height: 9px;  animation-duration: 24s; animation-delay: -14s; }
-.bubbles-h2 span:nth-child(7) { left: 90%; width: 13px; height: 13px; animation-duration: 15s; animation-delay: -5s; }
-.bubbles-h2 span:nth-child(8) { left: 47%; width: 7px;  height: 7px;  animation-duration: 26s; animation-delay: -18s; }
+.bubbles-h2 span:nth-child(1) { left: 7%;  width: 34px; height: 34px; animation-duration: 18s; }
+.bubbles-h2 span:nth-child(2) { left: 21%; width: 16px; height: 16px; animation-duration: 26s; animation-delay: -7s; }
+.bubbles-h2 span:nth-child(3) { left: 36%; width: 44px; height: 44px; animation-duration: 15s; animation-delay: -3s; }
+.bubbles-h2 span:nth-child(4) { left: 54%; width: 20px; height: 20px; animation-duration: 23s; animation-delay: -12s; }
+.bubbles-h2 span:nth-child(5) { left: 67%; width: 38px; height: 38px; animation-duration: 19s; animation-delay: -9s; }
+.bubbles-h2 span:nth-child(6) { left: 80%; width: 15px; height: 15px; animation-duration: 27s; animation-delay: -15s; }
+.bubbles-h2 span:nth-child(7) { left: 90%; width: 28px; height: 28px; animation-duration: 16s; animation-delay: -5s; }
+.bubbles-h2 span:nth-child(8) { left: 46%; width: 12px; height: 12px; animation-duration: 30s; animation-delay: -20s; }
 @keyframes h2rise {
   from { transform: translateY(0); opacity: 0; }
   8%   { opacity: 1; }
   92%  { opacity: 1; }
-  to   { transform: translateY(-110vh); opacity: 0; }
+  to   { transform: translateY(-115vh); opacity: 0; }
 }
 /* NFPA 704 diamond for hydrogen (health 0 / flammability 4 / instability 0) */
 .nfpa {
   position: absolute; top: 110px; right: 4%;
   width: 96px; height: 96px; transform: rotate(45deg);
   display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr;
-  border: 2px solid rgba(231, 251, 248, 0.6); overflow: hidden;
-  opacity: 0.9;
+  border: 2px solid rgba(255, 255, 255, 0.75); overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 10px 26px -12px rgba(3, 40, 54, 0.7);
+  opacity: 0.95;
 }
 .nfpa span {
   display: grid; place-items: center;
@@ -1190,8 +1282,7 @@ body.pg-hydrogen {
 .nfpa-i { background: #e9c93b; color: #201c10; }
 .nfpa-s { background: #f2efe8; }
 @media (max-width: 900px) { .nfpa { display: none; } }
-body.pg-hydrogen .case-step { color: var(--acc2); }
-
+body.pg-hydrogen .case-hero { position: relative; }
 /* ---- MICROWAVE TRANSFORMER ARC: high-voltage signage ---- */
 body.pg-hv {
   --bg-0: #0a0a08; --bg-1: #121210; --bg-2: #1a1a16;
@@ -1276,4 +1367,201 @@ body.pg-electronics .case-hero h1 { line-height: 1.2; }
   background:
     radial-gradient(ellipse 70% 60% at 50% 45%, rgba(var(--acc1-rgb), 0.06), transparent 70%),
     var(--bg-1);
+}
+
+/* RC drone flying around the gimbal-protector page */
+.drone {
+  position: fixed; top: 0; left: 0; z-index: 0;
+  width: 96px; pointer-events: none; opacity: 0.55;
+  animation: droneflight 30s ease-in-out infinite;
+}
+.drone .prop {
+  transform-box: fill-box; transform-origin: center;
+  animation: propspin 0.16s linear infinite;
+}
+@keyframes propspin { to { transform: rotate(360deg); } }
+@keyframes droneflight {
+  0%   { transform: translate(6vw, 68vh) rotate(-5deg); }
+  18%  { transform: translate(64vw, 16vh) rotate(6deg); }
+  38%  { transform: translate(84vw, 52vh) rotate(-4deg); }
+  55%  { transform: translate(46vw, 26vh) rotate(5deg); }
+  76%  { transform: translate(14vw, 44vh) rotate(-6deg); }
+  100% { transform: translate(6vw, 68vh) rotate(-5deg); }
+}
+body.pg-gimbal main { position: relative; z-index: 1; }
+@media (max-width: 720px) { .drone { display: none; } }
+/* ---- Medieval scene: labels, grass, castle, firing trebuchet ---- */
+body.brand-medieval .case-step,
+body.brand-medieval .case-tags,
+body.brand-medieval .crumb,
+body.brand-medieval .pager-dir {
+  font-family: "Cinzel", Georgia, serif;
+  font-weight: 600; letter-spacing: 0.09em;
+}
+/* open space so the scenery and flying stones read between cards */
+body.brand-medieval .case-gallery { row-gap: 64px; padding-top: 72px; padding-bottom: 90px; }
+body.brand-medieval .case-pager { padding-bottom: 240px; }
+
+.med-scene { position: fixed; inset: auto 0 0 0; height: 200px; z-index: 0; pointer-events: none; }
+.med-scene .grass {
+  position: absolute; inset: auto 0 0 0; height: 46px;
+  background:
+    repeating-linear-gradient(78deg, transparent 0 10px, rgba(52, 72, 34, 0.22) 10px 11px),
+    linear-gradient(180deg, #8aa25e, #637c46);
+  border-top: 3px solid #77914f;
+}
+.med-scene .castle { position: absolute; right: 3vw; bottom: 40px; width: 250px; opacity: 0.92; }
+.med-scene .treb-anim { position: absolute; left: 3vw; bottom: 40px; width: 210px; }
+.treb-arm { transform-box: view-box; transform-origin: 90px 60px; animation: trebswing 7s ease-in-out infinite; }
+@keyframes trebswing {
+  0%, 60%   { transform: rotate(0deg); }
+  65%       { transform: rotate(175deg); }
+  80%       { transform: rotate(175deg); }
+  94%, 100% { transform: rotate(0deg); }
+}
+.treb-stone { animation: trebstone 7s linear infinite; }
+@keyframes trebstone {
+  0%, 62%  { transform: translate(0, 0); opacity: 0; }
+  65%      { transform: translate(12px, -34px); opacity: 1; }
+  80%      { transform: translate(100px, -58px); opacity: 1; }
+  94%      { transform: translate(180px, -8px); opacity: 0; }
+  100%     { transform: translate(0, 0); opacity: 0; }
+}
+@media (max-width: 720px) {
+  .med-scene { display: none; }
+  body.brand-medieval .case-pager { padding-bottom: 90px; }
+}
+
+/* ==========================================================================
+   THEME DEPTH PASS — spec ribbons + per-page signature elements
+   ========================================================================== */
+.spec-ribbon {
+  overflow: hidden; position: relative; z-index: 1;
+  border-top: 1px solid var(--edge); border-bottom: 1px solid var(--edge);
+  background: var(--glass);
+}
+.spec-track { display: flex; width: max-content; animation: ribbonmove 30s linear infinite; }
+.spec-track span {
+  display: block; padding: 11px 0; white-space: nowrap;
+  font-family: var(--font-mono); font-size: 0.74rem; letter-spacing: 0.22em;
+  color: var(--acc1);
+}
+@keyframes ribbonmove { to { transform: translateX(-50%); } }
+body.brand-medieval .spec-track span { font-family: "Cinzel", Georgia, serif; font-weight: 600; color: #7c5c22; }
+body.pg-car .spec-track span { font-family: "Russo One", sans-serif; font-style: italic; }
+body.pg-hv .spec-track span { font-family: "Saira Stencil One", sans-serif; letter-spacing: 0.3em; }
+body.pg-theremin .spec-track span { font-family: "Righteous", sans-serif; letter-spacing: 0.2em; }
+body.brand-editorial .spec-track span { font-family: "Archivo Black", sans-serif; font-size: 0.95rem; letter-spacing: 0.12em; color: #14120e; }
+body.pg-hydrogen .spec-ribbon { background: rgba(255, 255, 255, 0.14); border-color: rgba(255, 255, 255, 0.4); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+body.pg-hydrogen .spec-track span { color: #eaffb0; }
+body.pg-electronics .spec-ribbon { background: #fffdf7; border-color: #8f8265; }
+body.pg-gimbal .spec-ribbon { background: #ffffff; border-color: #b9c9db; }
+body.pg-gimbal .spec-track span { color: #0057b8; }
+
+/* race scene: liveried car passes on a marked road */
+.race-scene { position: fixed; inset: auto 0 0 0; height: 70px; z-index: 0; pointer-events: none; }
+.race-road { position: absolute; left: 0; right: 0; bottom: 20px; border-top: 3px dashed rgba(244, 243, 238, 0.35); }
+.race-road::after {
+  content: ""; position: absolute; left: 0; right: 0; top: 10px;
+  border-top: 2px solid rgba(244, 243, 238, 0.12);
+}
+.race-car { position: absolute; bottom: 22px; left: 0; width: 128px; animation: racepass 9s linear infinite; }
+.race-car .rc-spokes {
+  animation: wheelspin 0.45s linear infinite;
+  transform-box: fill-box; transform-origin: center;
+}
+@keyframes wheelspin { to { transform: rotate(360deg); } }
+@keyframes racepass {
+  0%   { transform: translateX(-20vw); }
+  60%  { transform: translateX(112vw); }
+  100% { transform: translateX(112vw); }
+}
+body.pg-car main { position: relative; z-index: 1; }
+
+/* slicer print-progress bar (filled by main.js) */
+.print-progress {
+  position: fixed; top: var(--nav-h); left: 0; right: 0; z-index: 99;
+  display: flex; align-items: center; gap: 12px; padding: 6px 18px;
+  background: rgba(27, 29, 34, 0.92); border-bottom: 1px solid rgba(255, 107, 94, 0.3);
+  font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.14em; color: var(--txt-3);
+  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+}
+.print-progress .pp-bar { flex: 1; height: 6px; border-radius: 4px; background: rgba(255, 255, 255, 0.08); overflow: hidden; }
+.print-progress .pp-fill { display: block; height: 100%; width: 0; border-radius: 4px; background: linear-gradient(90deg, #ff6b5e, #4fc47e); }
+.print-progress .pp-num { color: #4fc47e; min-width: 12ch; text-align: right; }
+
+/* theremin: notes drift up */
+.note-layer { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+.note-layer span {
+  position: absolute; bottom: -50px; font-size: 1.5rem;
+  color: rgba(255, 123, 213, 0.5); text-shadow: 0 0 12px rgba(199, 123, 255, 0.6);
+  animation: notefloat linear infinite;
+}
+.note-layer span:nth-child(1) { left: 12%; animation-duration: 15s; }
+.note-layer span:nth-child(2) { left: 30%; animation-duration: 22s; animation-delay: -9s; font-size: 1.1rem; }
+.note-layer span:nth-child(3) { left: 55%; animation-duration: 18s; animation-delay: -4s; }
+.note-layer span:nth-child(4) { left: 74%; animation-duration: 25s; animation-delay: -15s; font-size: 1.2rem; }
+.note-layer span:nth-child(5) { left: 88%; animation-duration: 17s; animation-delay: -7s; }
+@keyframes notefloat {
+  from { transform: translateY(0) rotate(-8deg); opacity: 0; }
+  10%  { opacity: 1; }
+  88%  { opacity: 1; }
+  to   { transform: translateY(-112vh) rotate(10deg); opacity: 0; }
+}
+body.pg-theremin main { position: relative; z-index: 1; }
+
+/* CAD viewport status bar */
+.cad-status {
+  position: fixed; inset: auto 0 0 0; z-index: 5;
+  display: flex; gap: 28px; justify-content: center; padding: 8px 16px;
+  background: rgba(20, 22, 26, 0.92); border-top: 1px solid rgba(224, 163, 92, 0.3);
+  font-family: var(--font-mono); font-size: 0.64rem; letter-spacing: 0.16em; color: #7d766a;
+}
+.cad-status b { color: #e0a35c; font-weight: 400; }
+
+/* hazard sign plate */
+.danger-sign {
+  display: inline-grid; justify-items: center; gap: 2px;
+  margin-top: 26px; padding: 12px 26px;
+  background: #ffd100; color: #0a0a08;
+  border: 3px solid #0a0a08; outline: 3px solid #ffd100;
+  transform: rotate(-1.2deg);
+  font-family: "Saira Stencil One", sans-serif;
+}
+.danger-sign .ds-top { font-size: 1.45rem; letter-spacing: 0.08em; }
+.danger-sign .ds-sub { font-size: 0.8rem; letter-spacing: 0.32em; }
+
+/* schematic watermark on the sheet */
+body.pg-electronics .case-hero { position: relative; }
+.schematic-mark { position: absolute; top: 96px; right: 2%; width: min(340px, 32vw); opacity: 0.18; pointer-events: none; }
+
+/* glossy H2 molecules */
+.h2-mol { position: absolute; width: 56px; height: 34px; pointer-events: none; animation: moldrift 11s ease-in-out infinite; }
+.h2-mol::before, .h2-mol::after {
+  content: "H"; position: absolute; top: 0; width: 32px; height: 32px; border-radius: 50%;
+  display: grid; place-items: center;
+  font-family: var(--font-mono); font-weight: 600; color: #063c4f;
+  background: radial-gradient(circle at 32% 28%, #ffffff, #bfeffc 72%);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow: 0 6px 14px -6px rgba(3, 40, 54, 0.5);
+}
+.h2-mol::before { left: 0; } .h2-mol::after { right: 0; }
+.h2-mol.mol-b { transform: scale(0.72); animation-delay: -5s; }
+@keyframes moldrift { 0%, 100% { translate: 0 0; } 50% { translate: 10px -18px; } }
+@media (max-width: 900px) { .h2-mol { display: none; } }
+
+/* retail barcode chip */
+.pack-code {
+  display: inline-block; margin: 22px 0 0 14px; padding: 10px 14px 6px;
+  background: #ffffff; border: 1px solid #b9c9db; border-radius: 8px; vertical-align: middle;
+}
+.pack-code .bars {
+  display: block; width: 118px; height: 28px;
+  background: repeating-linear-gradient(90deg, #10233a 0 2px, transparent 2px 5px, #10233a 5px 6px, transparent 6px 10px);
+}
+.pack-code .sku { display: block; margin-top: 4px; font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.28em; color: #3d5069; text-align: center; }
+
+@media (max-width: 720px) {
+  .race-scene, .cad-status, .note-layer { display: none; }
+  body.pg-car::before { display: none; }
 }

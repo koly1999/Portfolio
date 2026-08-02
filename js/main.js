@@ -142,16 +142,8 @@
     document.querySelectorAll(".project-card").forEach((card) => {
       card.addEventListener("pointermove", (ev) => {
         const r = card.getBoundingClientRect();
-        const x = ev.clientX - r.left;
-        const y = ev.clientY - r.top;
-        card.style.setProperty("--mx", `${x}px`);
-        card.style.setProperty("--my", `${y}px`);
-        const rx = ((y / r.height) - 0.5) * -5; // deg
-        const ry = ((x / r.width) - 0.5) * 5;
-        card.style.transform = `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(-4px)`;
-      });
-      card.addEventListener("pointerleave", () => {
-        card.style.transform = "";
+        card.style.setProperty("--mx", `${ev.clientX - r.left}px`);
+        card.style.setProperty("--my", `${ev.clientY - r.top}px`);
       });
     });
   }
@@ -577,6 +569,64 @@
   });
 
   /* ==========================================================================
+     MEDIEVAL PAGE — projectiles arc across the page as you scroll
+     ========================================================================== */
+  if (document.body.classList.contains("brand-medieval") && !reducedMotion) {
+    const layer = document.createElement("div");
+    layer.className = "flight-layer";
+    layer.setAttribute("aria-hidden", "true");
+    const rocks = [];
+    for (let i = 0; i < 3; i++) {
+      const r = document.createElement("span");
+      r.className = "projectile";
+      layer.appendChild(r);
+      rocks.push(r);
+    }
+    document.body.appendChild(layer);
+    let ticking = false;
+    const fly = () => {
+      ticking = false;
+      const max = Math.max(1, document.documentElement.scrollHeight - innerHeight);
+      const p = window.scrollY / max;
+      rocks.forEach((r, i) => {
+        const t = (p * 1.6 + i * 0.34) % 1;
+        const x = (t * 116 - 8) * innerWidth / 100;
+        const arc = Math.sin(Math.PI * t);
+        const y = (24 + i * 24 - arc * 17) * innerHeight / 100;
+        const s = 0.7 + arc * 0.6 + i * 0.15;
+        r.style.transform = `translate(${x}px, ${y}px) rotate(${t * 720}deg) scale(${s})`;
+      });
+    };
+    window.addEventListener("scroll", () => {
+      if (!ticking) { ticking = true; requestAnimationFrame(fly); }
+    }, { passive: true });
+    fly();
+  }
+  /* ==========================================================================
+     SLICER PAGE — print-progress bar tied to scroll position
+     ========================================================================== */
+  if (document.body.classList.contains("pg-phone")) {
+    const bar = document.createElement("div");
+    bar.className = "print-progress";
+    bar.setAttribute("aria-hidden", "true");
+    bar.innerHTML = '<span>PRINTING: PHONE_HOLDER.GCODE</span><span class="pp-bar"><span class="pp-fill"></span></span><span class="pp-num">0% · L000/212</span>';
+    document.body.appendChild(bar);
+    const fill = bar.querySelector(".pp-fill");
+    const num = bar.querySelector(".pp-num");
+    let ticking = false;
+    const update = () => {
+      ticking = false;
+      const max = Math.max(1, document.documentElement.scrollHeight - innerHeight);
+      const pct = Math.min(100, Math.round((window.scrollY / max) * 100));
+      fill.style.width = pct + "%";
+      num.textContent = pct + "% · L" + String(Math.round(pct * 2.12)).padStart(3, "0") + "/212";
+    };
+    window.addEventListener("scroll", () => {
+      if (!ticking) { ticking = true; requestAnimationFrame(update); }
+    }, { passive: true });
+    update();
+  }
+  /* ==========================================================================
      CARD MODELS — one wireframe 3D object per project card.
      Same projection engine as the hero chip; shapes are the subjects.
      ========================================================================== */
@@ -621,7 +671,7 @@
         const s = make();
         box(s, 0, 18, 0, 116, 14, 52);
         box(s, -8, 32, 0, 46, 14, 44, 2);
-        for (const x of [-36, 36]) for (const z of [-30, 30]) ring(s, x, 12, z, 13, 12, "x", 1);
+        for (const x of [-36, 36]) for (const z of [-30, 30]) ring(s, x, 12, z, 13, 12, "z", 1);
         L(s, [-36, 12, -30], [-36, 12, 30], 2); L(s, [36, 12, -30], [36, 12, 30], 2);
         s.dots.push([58, 20, -16], [58, 20, 16]);
         return s;
@@ -753,6 +803,29 @@
         s.dots.push([-38, -32, 4], [38, -32, 4]);
         return s;
       },
+      crt() { // digital glitch: CRT monitor
+        const s = make();
+        const F = [[-52, 40, 26], [52, 40, 26], [52, -34, 26], [-52, -34, 26]];
+        const B = [[-32, 26, -30], [32, 26, -30], [32, -22, -30], [-32, -22, -30]];
+        for (let i = 0; i < 4; i++) { L(s, F[i], F[(i + 1) % 4]); L(s, B[i], B[(i + 1) % 4], 2); L(s, F[i], B[i], 2); }
+        const sc = [[-42, 32, 26.5], [42, 32, 26.5], [42, -26, 26.5], [-42, -26, 26.5]];
+        for (let i = 0; i < 4; i++) L(s, sc[i], sc[(i + 1) % 4], 1);
+        box(s, 0, -44, 0, 40, 12, 30, 2);
+        s.dots.push([46, -30, 26.5]);
+        s.scan = { x1: -42, x2: 42, top: 30, bot: -24, z: 27 };
+        return s;
+      },
+      plane() { // SEND IT! paper airplane
+        const s = make();
+        const nose = [62, 2, 0], tailT = [-48, 26, 0], keel = [-42, -22, 0];
+        const wingL = [-38, 6, -42], wingR = [-38, 6, 42];
+        L(s, nose, tailT); L(s, nose, keel, 2); L(s, tailT, keel, 2);
+        L(s, nose, wingL, 1); L(s, nose, wingR, 1);
+        L(s, wingL, [-46, 14, -10], 1); L(s, wingR, [-46, 14, 10], 1);
+        L(s, [-58, 18, 0], [-72, 16, 0], 2); L(s, [-64, 6, 0], [-80, 4, 0], 2); L(s, [-58, -6, 0], [-70, -8, 0], 2);
+        s.dots.push(nose);
+        return s;
+      },
       can() { // celsius
         const s = make();
         ring(s, 0, -40, 0, 30, 14, "y");
@@ -818,6 +891,14 @@
         ctx.beginPath(); ctx.arc(q[0], q[1], 1.8 * q[3], 0, Math.PI * 2); ctx.fill();
       }
       // shape-specific life
+      if (shape.scan) {
+        const u = reducedMotion ? 0.4 : ((t / 2600) % 1);
+        const yy = shape.scan.top - (shape.scan.top - shape.scan.bot) * u;
+        const a = proj([shape.scan.x1, yy, shape.scan.z]);
+        const b = proj([shape.scan.x2, yy, shape.scan.z]);
+        ctx.strokeStyle = `rgba(${ACC2_RGB}, 0.75)`;
+        ctx.beginPath(); ctx.moveTo(a[0], a[1]); ctx.lineTo(b[0], b[1]); ctx.stroke();
+      }
       if (shape.bubbles) {
         for (const [bx, ph, bz] of shape.bubbles) {
           const u = reducedMotion ? ph : ((t / 4000 + ph) % 1);
