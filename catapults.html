@@ -3,14 +3,14 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Catapults · Luke Morrison</title>
+  <title>Catapults &amp; Trebuchet · Luke Morrison</title>
   <meta name="description" content="Competition catapults: a torsion catapult and a counterweight trebuchet that launched a 5-pound rock up to 190 feet.">
-  <meta name="theme-color" content="#171007">
+  <meta name="theme-color" content="#e9dab4">
   <link rel="canonical" href="https://koly1999.github.io/Portfolio/catapults.html">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='8' y='8' width='16' height='16' rx='2' fill='none' stroke='%2300ff66' stroke-width='2'/%3E%3Crect x='13' y='13' width='6' height='6' fill='%23b6ff45'/%3E%3Cpath d='M12 8V3M16 8V3M20 8V3M12 29v-5M16 29v-5M20 29v-5M8 12H3M8 16H3M8 20H3M29 12h-5M29 16h-5M29 20h-5' stroke='%2300ff66' stroke-width='1.5'/%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Pirata+One&family=Cinzel:wght@600;700&family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="brand-medieval">
@@ -18,6 +18,37 @@
 <a class="skip-link" href="#main">Skip to content</a>
 <div class="bg-grid" aria-hidden="true"></div>
 <canvas id="bg-canvas" aria-hidden="true"></canvas>
+<div class="med-scene" aria-hidden="true">
+  <svg class="treb-anim" viewBox="0 0 260 160">
+    <g stroke="#5c5044" stroke-width="5" fill="none" stroke-linecap="round">
+      <path d="M50 150 L90 60 L130 150 M64 120 L116 120"/>
+    </g>
+    <g class="treb-arm">
+      <path d="M30 118 L138 32" stroke="#6f6152" stroke-width="6" fill="none" stroke-linecap="round"/>
+      <rect x="18" y="112" width="26" height="24" rx="3" fill="#5c5044"/>
+      <path d="M138 32 L150 52" stroke="#6f6152" stroke-width="3" fill="none"/>
+    </g>
+    <circle class="treb-stone" cx="146" cy="44" r="7" fill="#4a3a24"/>
+    <path d="M20 150 L245 150" stroke="#5c5044" stroke-width="4" stroke-linecap="round"/>
+  </svg>
+  <svg class="castle" viewBox="0 0 300 170">
+    <g fill="#6f6152">
+      <path d="M60 170 V60 h10 v-14 h12 v14 h12 v-14 h12 v14 h10 V170 Z"/>
+      <path d="M200 170 V52 h10 v-14 h12 v14 h12 v-14 h12 v14 h10 V170 Z"/>
+      <path d="M112 170 V96 h8 v-12 h10 v12 h10 v-12 h10 v12 h10 v-12 h10 v12 h10 v-12 h10 v12 h8 V170 Z"/>
+    </g>
+    <g fill="#4c4338">
+      <rect x="78" y="80" width="8" height="18" rx="4"/>
+      <rect x="218" y="72" width="8" height="18" rx="4"/>
+      <path d="M138 170 v-34 a12 12 0 0 1 24 0 v34 Z"/>
+    </g>
+    <g>
+      <path d="M226 38 V14" stroke="#4c4338" stroke-width="3"/>
+      <path d="M226 14 l20 6 -20 6 Z" fill="#8e2f21"/>
+    </g>
+  </svg>
+  <div class="grass"></div>
+</div>
 
 <header class="navbar" id="navbar">
   <nav class="nav-inner" aria-label="Primary">
@@ -48,11 +79,15 @@
   <header class="case-hero">
     <a href="index.html#projects" class="crumb mono">← ALL PROJECTS</a>
     <p class="case-tags mono">MECHANICAL ENGINEERING · STRUCTURES · FABRICATION</p>
-    <h1>Catapults</h1>
+    <h1>Catapults &amp; Trebuchet</h1>
     <p class="case-intro">
       Two competition launchers: a torsion catapult, then a counterweight trebuchet. Best throw: a 5-pound rock launched up to 190 feet.
     </p>
   </header>
+
+  <aside class="spec-ribbon" aria-hidden="true">
+    <div class="spec-track"><span>TORSION &middot; COUNTERWEIGHT &middot; 5 LB STONE &middot; 190 FEET &middot; RELOAD &amp; FIRE &middot;&nbsp;</span><span>TORSION &middot; COUNTERWEIGHT &middot; 5 LB STONE &middot; 190 FEET &middot; RELOAD &amp; FIRE &middot;&nbsp;</span></div>
+  </aside>
 
   <dl class="case-meta">
     <div class="reveal"><dt>Role</dt><dd>Design · fabrication · launch testing</dd></div>
@@ -60,7 +95,7 @@
     <div class="reveal"><dt>Result</dt><dd>Consistent reload and fire; best throw around 190 ft with a 5 lb rock</dd></div>
   </dl>
 
-  <section class="case-gallery">
+  <section class="case-gallery case-gallery--wide">
 
     <figure class="case-item reveal">
       <div class="case-media">
@@ -95,7 +130,7 @@
       </figcaption>
     </figure>
 
-    <figure class="case-item reveal">
+    <figure class="case-item case-item--stack reveal">
       <div class="case-media">
         <img src="media/catapult/final2.jpg" alt="Fully assembled counterweight trebuchet" loading="lazy" decoding="async">
       </div>
@@ -106,7 +141,7 @@
       </figcaption>
     </figure>
 
-    <figure class="case-item reveal">
+    <figure class="case-item case-item--stack reveal">
       <div class="case-media">
         <img src="media/catapult/catapult.gif" alt="Animation of the trebuchet launching a projectile" loading="lazy" decoding="async">
       </div>
